@@ -492,18 +492,3 @@ background-position:center;
   background-position: center;
   background-repeat: no-repeat;
 }
-
-/* ========================= */
-/* ❄️ FLOCOS VISÍVEIS DE VERDADE */
-/* ========================= */
-
-.snow-container {
-    position: fixed;
-    ...
-    z-index: 5;
-}
-
-.snowflake {
-    ...
-    animation: fall linear infinite;
-}
