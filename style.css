@@ -410,12 +410,14 @@ background-position:center;
   margin: 0 auto;
 }
 
-.grid-comic {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 20px;
-  scroll-snap-type: x mandatory;
+.grid-comic img {
+  height: 70vh; /* aumenta tamanho */
+  width: auto;
+
+  flex: 0 0 auto; /* ESSENCIAL pro carrossel */
+  scroll-snap-align: center;
+
+  border-radius: 10px;
 }
 
 .zoom {
