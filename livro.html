@@ -2,35 +2,36 @@
 <html lang="pt-br">
 
 <head>
+    <head>
     <meta charset="UTF-8">
     <title>Sagile Studios</title>
 
+    <!-- FAVICON AQUI -->
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ❄️ NEVE -->
-<div class="snow-container"></div>
-
-<!-- MENU -->
 <header>
-    <div class="logo">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </div>
 
-    <div class="search-box">
-        <input type="text" placeholder="Pesquisar livros, games, comics...">
-    </div>
+<div class="logo">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+</div>
 
-    <nav>
-        <a href="livro.html">Livros</a>
-        <a href="games.html">Games</a>
-        <a href="comics.html">Comics</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="novidades.html">Novidades</a>
-    </nav>
+<div class="search-box">
+<input type="text" placeholder="Pesquisar livros, games, comics...">
+</div>
+
+   <nav>
+    <a href="livro.html">Livros</a>
+    <a href="games.html">Games</a>
+    <a href="comics.html">Comics</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="#">Login</a>
+</nav>
+
 </header>
 
 <!-- 📚 CATÁLOGO -->
@@ -85,25 +86,6 @@
 </div>
 
 </section>
-
-<!-- ❄️ SCRIPT DA NEVE -->
-<script>
-const container = document.querySelector(".snow-container");
-
-if (container) {
-    for (let i = 0; i < 50; i++) {
-        const flake = document.createElement("div");
-        flake.classList.add("snowflake");
-        flake.innerHTML = "•";
-
-        flake.style.left = Math.random() * 100 + "vw";
-        flake.style.animationDuration = (5 + Math.random() * 5) + "s";
-        flake.style.fontSize = (5 + Math.random() * 10) + "px";
-
-        container.appendChild(flake);
-    }
-}
-</script>
 
 </body>
 </html>
