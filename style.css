@@ -123,10 +123,14 @@ nav a:hover {
 
 /* SOBRE */
 .sobre {
+    min-height: 100vh; /* mantém o fundo grande */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* joga pro topo */
+    align-items: center; /* mantém centralizado horizontalmente */
     text-align: center;
-    padding: 40px;
+    padding: 80px 20px;
 }
-
 .sobre h1 {
     margin-bottom: 20px;
 }
@@ -337,11 +341,13 @@ background-position:center;
 }
 
 .games-vazio {
+    min-height: 100vh; /* ocupa tela toda */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start; /* topo */
     align-items: center;
-    height: 70vh;
     text-align: center;
+    padding-top: 80px;
 }
 
 .games-vazio h1 {
