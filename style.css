@@ -1,0 +1,377 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("https://i.ibb.co/s98SSJPd/Em-meu-Destino-final-remake-AI-Definitiva.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* MENU */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #020617;
+}
+
+.search-box{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.search-box input{
+    width:400px;
+    padding:10px 15px;
+    border-radius:25px;
+    border:none;
+    outline:none;
+    background:#111;
+    color:white;
+    font-size:14px;
+}
+
+.search-box input::placeholder{
+    color:#888;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #4da6ff;
+}
+
+/* CARROSSEL */
+.carrossel {
+    position: relative;
+    padding: 40px;
+}
+
+/* LISTA HORIZONTAL */
+.container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+.card {
+    min-width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border: 3px solid transparent;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* efeito quando passa o mouse */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* card selecionado */
+.card.ativo {
+    border: 3px solid #7a5cff;
+    box-shadow: 0 0 15px #7a5cff;
+    transform: scale(1.08);
+}
+
+/* SETAS */
+.seta {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.esquerda {
+    left: 10px;
+}
+
+.direita {
+    right: 10px;
+}
+
+/* SOBRE */
+.sobre {
+    text-align: center;
+    padding: 40px;
+}
+
+.sobre h1 {
+    margin-bottom: 20px;
+}
+
+.pagina-livro{
+display:flex;
+align-items:flex-start;
+gap:60px; /* espaço entre as colunas */
+padding:80px;
+}
+
+/* coluna da capa */
+
+.coluna-capa{
+display:flex;
+flex-direction:column;
+align-items:center;
+max-width:220px;
+}
+
+.capa{
+width:180px;
+border-radius:10px;
+}
+
+/* título */
+
+.titulo-livro{
+margin-top:15px;
+font-size:32px;
+text-align:center;
+}
+
+.subtitulo-livro{
+font-size:20px;
+text-align:center;
+opacity:0.8;
+}
+
+/* coluna de informações */
+
+.coluna-info{
+max-width:250px;
+line-height:1.6;
+}
+
+/* sinopse */
+
+.coluna-sinopse{
+max-width:450px;
+line-height:1.7;
+}
+
+.area-seta{
+position:fixed;
+right:80px;
+top:50%;
+transform:translateY(-50%);
+}
+
+.seta{
+font-size:40px;
+color:white;
+text-decoration:none;
+animation:setaAnim 1.5s infinite;
+}
+
+@keyframes setaAnim{
+0%{transform:translateY(0);}
+50%{transform:translateY(10px);}
+100%{transform:translateY(0);}
+}
+
+.seta:hover{
+transform:translateY(6px);
+}
+
+#capa-grande{
+display:flex;
+justify-content:center;
+padding:120px 0;
+}
+
+#capa-grande img{
+width:600px;
+border-radius:12px;
+box-shadow:0 0 30px rgba(0,0,0,0.7);
+}
+
+.botao-comprar{
+
+margin-top:25px;
+margin-left:20px; /* empurra para direita */
+
+padding:12px 30px;
+
+font-size:18px;
+font-weight:bold;
+
+color:white;
+background:#0a84ff;
+
+border:none;
+border-radius:6px;
+
+cursor:pointer;
+
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+
+transition:0.25s;
+
+}
+
+.titulo-livro{
+font-size:38px;
+letter-spacing:2px;
+white-space:nowrap;
+}
+
+.subtitulo-livro{
+font-size:22px;
+margin-top:8px;
+white-space:nowrap;
+}
+
+.page-kamaisen{
+background-image:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dl7c0kv-8a9995a9-5ee5-434d-88a2-924b72b8ff5b.jpg/v1/fill/w_1192,h_670,q_70,strp/kamai_sen___protagonistas_remake_by_milesdeka2_dl7c0kv-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGw3YzBrdi04YTk5OTVhOS01ZWU1LTQzNGQtODhhMi05MjRiNzJiOGZmNWIuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.YiezQlBkY4qjafJ19J_GA0oPHvimxeWI9-yuS_Vd1yw");
+
+background-size:cover;
+background-position:center;
+}
+
+.page-emd{
+background-image:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url("https://i.ibb.co/p6NJjtKP/Em-meu-Destino-Rain-Realistic.jpg");
+
+background-size:cover;
+background-position:center;
+}
+
+.page-emd2{
+background-image:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dlcppi9-47bf0993-abf0-41ac-aa4b-3a8eb98d9de0.jpg/v1/fill/w_1095,h_730,q_70,strp/em_meu_destino_2____reimaginado_by_milesdeka2_dlcppi9-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxjcHBpOS00N2JmMDk5My1hYmYwLTQxYWMtYWE0Yi0zYThlYjk4ZDlkZTAuanBnIiwid2lkdGgiOiI8PTE1MzYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.ZMVT9j1rkTOpSstp34XN6p6ozmp15ZdZgzN-F48uMVY");
+
+background-size:cover;
+background-position:center;
+}
+
+.page-desolador{
+background-image:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dhqg074-92524498-c0a0-4e23-8f5b-32b9a7b60ffb.jpg/v1/fill/w_1192,h_670,q_70,strp/tnd___teaser_desolator_vs_black_owls__old_art__by_milesdeka2_dhqg074-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGhxZzA3NC05MjUyNDQ5OC1jMGEwLTRlMjMtOGY1Yi0zMmI5YTdiNjBmZmIuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.8pNZiL-Kg-Q5FxoEonpYY1LRmjPrcUtDV2M6ItRgCsE");
+
+background-size:cover;
+background-position:center;
+}
+
+.page-emdtrilogia{
+background-image:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dhqf2zx-55394669-77b1-4da6-9a9a-d1851c902e39.jpg/v1/fill/w_1192,h_670,q_70,strp/in_my_destiny___chapter_4_black_owl_atomic_suit_by_milesdeka2_dhqf2zx-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGhxZjJ6eC01NTM5NDY2OS03N2IxLTRkYTYtOWE5YS1kMTg1MWM5MDJlMzkuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.8aEs08SKjUV54PIw_mFL4gsOfpLgx1qz_cqoGvLiODQ");
+
+background-size:cover;
+background-position:center;
+}
+
+.page-attic{
+background-image:
+linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url("https://i.ibb.co/JRLyxvqm/2.jpg");
+
+background-size:cover;
+background-position:center;
+}
+
+.grid-livros {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 130px); /* menor */
+    gap: 30px; /* mais espaço */
+    justify-content: center;
+}
+
+.livro {
+    width: 130px;
+}
+
+.capa-livro {
+    width: 130px;
+    height: 190px;
+    object-fit: cover;
+}
+
+.catalogo {
+    padding: 40px;
+    min-height: 100vh;
+
+    background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("https://i.ibb.co/GQGGG1Jd/Sagile-Studios-new-Wallpaper-2026.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.games-vazio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+}
+
+.games-vazio h1 {
+    font-size: 36px;
+    opacity: 0.8;
+    letter-spacing: 2px;
+}
+
+.sobre-pagina {
+    max-width: 800px;
+    margin: auto;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.sobre-pagina h1 {
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.sobre-pagina p {
+    font-size: 18px;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.imagem-sobre {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+}
