@@ -499,28 +499,11 @@ background-position:center;
 
 .snow-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
+    ...
     z-index: 5;
 }
 
 .snowflake {
-    position: absolute;
-    top: -10px;
-
-    color: white;
-    font-size: 14px;
-
-    opacity: 0.9;
-
-    text-shadow: 
-        0 0 5px white,
-        0 0 10px white,
-        0 0 20px white;
-
+    ...
     animation: fall linear infinite;
 }
