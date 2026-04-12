@@ -31,27 +31,50 @@
     </nav>
 </header>
 
-<!-- CONTEÚDO -->
 <section class="novidades">
+    <h1>Novidades</h1>
 
-  <h1>Novidades</h1>
+    <div class="post">
+        <h2>Kamai SEN</h2>
+        <p><strong>Lançamento:</strong> 04/12/2026</p>
+        <p>Ainda não disponível, previsão ainda neste mês.</p>
+        <p>
+            Capítulo anterior:
+            <a href="https://www.webtoons.com/en/canvas/kamai-sen-fronteira-sem-linha/aprendendo-no-novo-mundo/viewer?title_no=1078509&episode_no=2" target="_blank">
+                Ler aqui
+            </a>
+        </p>
+    </div>
 
-  <div class="post">
-    <h2>Kamai SEN</h2>
-    <p><strong>Lançamento:</strong> 04/12/2026</p>
-    <p>Ainda não disponível, previsão ainda neste mês.</p>
-    <p>
-      Capítulo anterior:
-      <a href="https://www.webtoons.com/en/canvas/kamai-sen-fronteira-sem-linha/aprendendo-no-novo-mundo/viewer?title_no=1078509&episode_no=2" target="_blank">
-        Ler aqui
-      </a>
-    </p>
-  </div>
+    <div class="post">
+        <h2>Attic Horror's</h2>
+        <p>Projeto ainda em andamento.</p>
+    </div>
 
-  <div class="post">
-    <h2>Attic Horror's</h2>
-    <p>Projeto ainda em andamento.</p>
-  </div>
+    <div class="post">
+        <h2>Em meu Destino - Universos Alternativos</h2>
+        <p>Projeto ainda em andamento.</p>
+    </div>
+</section>
+
+<script>
+const container = document.querySelector(".snow-container");
+
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
+
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+    container.appendChild(flake);
+}
+</script>
+
+</body>
+</html>
 
   <div class="post">
     <h2>Em meu Destino - Universos Alternativos</h2>
