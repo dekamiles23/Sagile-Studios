@@ -32,34 +32,59 @@
         <a href="novidades.html">Novidades</a>
     </nav>
 </header>
-
+    
+<!-- 📚 CATÁLOGO -->
 <section class="catalogo">
-    <h1>Livros</h1>
 
-    <div class="grid-livros">
+<h1>Livros</h1>
 
-        <div class="livro">
+<div class="grid-livros">
+
+    <div class="livro">
+        <a href="emd.html">
             <img class="capa-livro" src="https://i.ibb.co/gZX00HX9/Em-meu-Destino-Remake-Arte-Conceitual-v2.png">
-            <p>Em meu destino</p>
-        </div>
-
+        </a>
+        <p>Em meu destino - Laços entrelaçados</p>
     </div>
+
+    <div class="livro">
+        <a href="desolador.html">
+            <img class="capa-livro" src="https://i.ibb.co/mVqrXCYQ/O-desolador-do-anoitecer-remake-AI.jpg">
+        </a>
+        <p>O Desolador do anoitecer</p>
+    </div>
+
+    <div class="livro">
+        <a href="emd2.html">
+            <img class="capa-livro" src="https://i.ibb.co/NgcjksNQ/Em-meu-Destino-2-Cover-Art-IA-Remake-v2.jpg">
+        </a>
+        <p>Em meu destino 2</p>
+    </div>
+
+    <div class="livro">
+        <a href="emdtrilogia.html">
+            <img class="capa-livro" src="https://i.ibb.co/C5Brdk0h/In-my-Destiny-Trilogy-Cover-art-V3-Com-m-scara.jpg">
+        </a>
+        <p>Em meu destino - Trilogia</p>
+    </div>
+
+    <div class="livro">
+        <a href="wayston.html">
+            <img class="capa-livro" src="https://i.ibb.co/YTkc9CMM/Wayston-Capa-AI.png">
+        </a>
+        <p>Wayston</p>
+    </div>
+
+    <div class="livro">
+        <a href="attic.html">
+            <img class="capa-livro" src="https://i.ibb.co/hFRXg1Q4/Attic-Horror-s-Cover-art-IA.jpg">
+        </a>
+        <p>Attic Horror's</p>
+    </div>
+
+</div>
+
 </section>
-
-<script>
-const container = document.querySelector(".snow-container");
-
-for (let i = 0; i < 30; i++) {
-    const flake = document.createElement("div");
-    flake.classList.add("snowflake");
-    flake.innerHTML = "•";
-
-    flake.style.left = Math.random() * 100 + "vw";
-    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
-
-    container.appendChild(flake);
-}
-</script>
 
 </body>
 </html>
