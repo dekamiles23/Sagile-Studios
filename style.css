@@ -508,20 +508,19 @@ background-position:center;
     z-index: 5;
 }
 
-/* floco individual */
 .snowflake {
     position: absolute;
     top: -10px;
+
     color: white;
-    font-size: 10px;
-    opacity: 0.8;
+    font-size: 14px;
+
+    opacity: 0.9;
+
+    text-shadow: 
+        0 0 5px white,
+        0 0 10px white,
+        0 0 20px white;
 
     animation: fall linear infinite;
-}
-
-/* animação */
-@keyframes fall {
-    to {
-        transform: translateY(100vh);
-    }
 }
