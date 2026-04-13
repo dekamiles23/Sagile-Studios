@@ -77,7 +77,7 @@ nav a:hover {
 /* CARROSSEL */
 .carrossel {
     position: relative;
-    padding: 40px;
+    padding: 10px 40px; /* menos espaço em cima */
 }
 
 /* LISTA HORIZONTAL */
@@ -714,4 +714,26 @@ nav a:hover::after {
 
     color: white;
     text-align: center;
+}
+
+.titulo-secao {
+    font-size: 36px;
+    margin-left: 40px;
+    margin-top: 60px;
+    margin-bottom: 10px; /* diminui o espaço embaixo */
+
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    position: relative;
+}
+
+/* linha embaixo do título */
+.titulo-secao::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #7a5cff;
+    margin-top: 8px;
 }
