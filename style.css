@@ -636,10 +636,14 @@ nav a:hover::after {
 
 /* IMAGEM */
 .intro img {
-    width: 300px;
-    opacity: 0;
+    max-width: 300px;
+    width: 100%;
 
-    animation: fadeIn 1.5s ease forwards;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 /* ENTRADA */
