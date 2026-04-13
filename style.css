@@ -693,3 +693,21 @@ nav a:hover::after {
 .card:hover {
     border: 2px solid gold;
 }
+
+.banner {
+    width: 100%;
+    height: 80vh;
+
+    background-image: url('https://i.ibb.co/ynsVKJT6/ezgif-51d7c61eec150381.gif'); /* caminho da imagem */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    text-align: center;
+}
