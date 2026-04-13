@@ -7,23 +7,36 @@
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
- 
+
+<script>
+const transition = document.querySelector(".transition");
+
+// REMOVE O PRETO QUANDO A PÁGINA CARREGA
+window.addEventListener("load", () => {
+    transition.classList.remove("active");
+});
+
+// FADE AO CLICAR
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("http")) return;
+
+        e.preventDefault();
+
+        transition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
+});
+</script>
+    
 <body>
-
-<div class="transition"></div>
-<div class="snow-container"></div>
-
-<header>...</header>
-
-<section>...</section>
-
-<script>NEVE</script>
-<script>CARROSSEL</script>
-<script>TRANSIÇÃO</script>
-
-</body>
-</html>
-
+    
 <div class="snow-container"></div>
 
 <!-- TODO seu conteúdo -->
