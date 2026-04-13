@@ -526,3 +526,8 @@ background-position:center;
         transform: translateY(100vh);
     }
 }
+
+.card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(122,92,255,0.8);
+}
