@@ -29,3 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+function revealOnScroll() {
+    const elements = document.querySelectorAll(".reveal");
+
+    elements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+
+        if (elementTop < screenHeight - 50) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
