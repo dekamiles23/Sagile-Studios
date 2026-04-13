@@ -14,7 +14,7 @@
 <header>
 
 <div class="logo">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
 </div>
 
 <div class="search-box">
@@ -37,16 +37,15 @@
 <!-- CAPA -->
 <div class="coluna-capa reveal">
 
-<img src="https://i.ibb.co/mVqrXCYQ/O-desolador-do-anoitecer-remake-AI.jpg"
-class="capa destaque">
+<img src="https://i.ibb.co/mVqrXCYQ/O-desolador-do-anoitecer-remake-AI.jpg" class="capa">
 
-<h1 class="titulo-livro reveal delay1">O Desolador</h1>
-<h2 class="subtitulo-livro reveal delay2">Do anoitecer</h2>
+<h1 class="titulo-livro">O Desolador</h1>
+<h2 class="subtitulo-livro">Do anoitecer</h2>
 
 </div>
 
 <!-- INFO -->
-<div class="coluna-info reveal delay2">
+<div class="coluna-info reveal">
 
 <p><b>Classificação:</b> +16</p>
 
@@ -54,21 +53,21 @@ class="capa destaque">
 <b>Gêneros:</b><br>
 Ação, aventura, misticismo, fantasia, luta, artes marciais, sobrenatural, magia, militar
 </p>
+<p><b>Plataforma</b> Amazon, Uiclap</p>
+<p><b>Formato</b> Ebook, Livro físico</p>
 
 </div>
 
 <!-- SINOPSE -->
-<div class="coluna-sinopse reveal delay3">
+<div class="coluna-sinopse reveal">
 
 <h2>Sinopse</h2>
 
 <p>
-Um garoto de 16 anos chamado Mikavil, é mandado para um quartel general para servir o exército, depois de um duro treinamento ele é mandado para uma missão arriscada, na qual acaba quase perdendo a vida. Depois do fracasso ele resolve se tornar um verdadeiro vigilante de sua cidade, protegendo quem merecesse e com as ordens do general. E se encontrando com vários outros personagens conhecidos do mesmo autor.
+Um garoto de 16 anos chamado Mikavil, é mandado para um quartel general para servir o exército...
 </p>
 
-<p>
-Preço: 30,00 R$ 
-</p>
+<p>Preço: 30,00 R$</p>
 
 <a href="https://loja.uiclap.com/titulo/ua63459/" target="_blank" class="botao-comprar">
 Comprar
@@ -78,20 +77,65 @@ Comprar
 
 </section>
 
-<!-- ⬇️ SETA -->
+<!-- ⭐ AVALIAÇÃO -->
+<section class="avaliacao-box">
+
+<h2>Avalie esta obra</h2>
+
+<div id="estrelas">
+<span data-v="1">★</span>
+<span data-v="2">★</span>
+<span data-v="3">★</span>
+<span data-v="4">★</span>
+<span data-v="5">★</span>
+</div>
+
+<p id="resultado">Clique nas estrelas</p>
+
+</section>
+
+<!-- SETA -->
 <div class="area-seta">
 <a href="#capa-grande" class="seta">▼</a>
 </div>
 
-<!-- 🖼️ CAPA GRANDE -->
+<!-- CAPA GRANDE -->
 <section id="capa-grande" class="reveal">
 
-<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dhqfwu0-e341774a-2a2b-462a-8d0c-4478bdd6ca2c.jpg/v1/fill/w_1192,h_670,q_70,strp/the_nightfall_desolator___green_steel_vs_desolator_by_milesdeka2_dhqfwu0-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGhxZnd1MC1lMzQxNzc0YS0yYTJiLTQ2MmEtOGQwYy00NDc4YmRkNmNhMmMuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.hHHngLOdXYy2jWx6x7M2lV9KoxSIY7KDaB2lqzK3t9M">
+<img src="https://i.ibb.co/RG74LRPL/Attic-Horror-s.jpg">
 
 </section>
 
-<!-- 🔥 SCRIPT REVEAL -->
+<!-- SCRIPT -->
 <script>
+
+/* ⭐ SISTEMA DE AVALIAÇÃO */
+const estrelas = document.querySelectorAll("#estrelas span");
+const resultado = document.getElementById("resultado");
+
+let notaAtual = localStorage.getItem("desoladorNota") || 0;
+
+function pintarEstrelas(nota){
+    estrelas.forEach(star => {
+        star.classList.remove("ativo");
+        if(star.dataset.v <= nota){
+            star.classList.add("ativo");
+        }
+    });
+}
+
+pintarEstrelas(notaAtual);
+
+estrelas.forEach(star => {
+    star.addEventListener("click", () => {
+        notaAtual = star.dataset.v;
+        localStorage.setItem("desoladorNota", notaAtual);
+        pintarEstrelas(notaAtual);
+        resultado.innerText = "Você avaliou com " + notaAtual + " estrelas ⭐";
+    });
+});
+
+/* SCROLL REVEAL */
 function revealOnScroll() {
     const elements = document.querySelectorAll(".reveal");
 
@@ -107,35 +151,8 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+
 </script>
 
 </body>
 </html>
-
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
-</footer>
