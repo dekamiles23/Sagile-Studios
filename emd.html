@@ -2,14 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <head>
-    <meta charset="UTF-8">
-    <title>Sagile Studios</title>
+<meta charset="UTF-8">
+<title>Sagile Studios</title>
 
-    <!-- FAVICON AQUI -->
-    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-
-    <link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body class="page-emd">
@@ -24,30 +21,32 @@
 <input type="text" placeholder="Pesquisar livros, games, comics...">
 </div>
 
-   <nav>
-     <a href="livro.html">Livros</a>
-    <a href="games.html">Games</a>
-    <a href="comics.html">Comics</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="novidades.html">novidades</a>
+<nav>
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+<a href="#">Login</a>
 </nav>
 
 </header>
 
-
+<!-- 🔥 PÁGINA DO LIVRO -->
 <section class="pagina-livro">
 
-<!-- capa -->
-<div class="coluna-capa">
+<!-- CAPA -->
+<div class="coluna-capa reveal">
 
-<img src="https://i.ibb.co/gZX00HX9/Em-meu-Destino-Remake-Arte-Conceitual-v2.png" class="capa">
+<img src="https://i.ibb.co/gZX00HX9/Em-meu-Destino-Remake-Arte-Conceitual-v2.png"
+class="capa destaque">
 
-<h1 class="titulo-livro">Em meu Destino</h1>
-<h2 class="subtitulo-livro">Laços entrelaçados</h2>
+<h1 class="titulo-livro reveal delay1">Em meu Destino</h1>
+<h2 class="subtitulo-livro reveal delay2">Laços entrelaçados</h2>
 
 </div>
 
-<div class="coluna-info">
+<!-- INFO -->
+<div class="coluna-info reveal delay2">
 
 <p><b>Classificação:</b> +16</p>
 
@@ -58,10 +57,8 @@ Ação, Aventura, Misticismo, Fantasia, Luta, Artes marciais, Sobrenatural, Magi
 
 </div>
 
-</div>
-
-<!-- sinopse -->
-<div class="coluna-sinopse">
+<!-- SINOPSE -->
+<div class="coluna-sinopse reveal delay3">
 
 <h2>Sinopse</h2>
 
@@ -73,26 +70,44 @@ Um pingente mágico pode mudar tudo. Mas até onde vai a coragem de quem ainda e
 Preço: 30,00 R$ 
 </p>
 
-<a href="https://loja.uiclap.com/titulo/ua103421/" target="_blank" class="botao-comprar">Comprar</a>
+<a href="https://loja.uiclap.com/titulo/ua103421/" target="_blank" class="botao-comprar">
+Comprar
+</a>
 
 </div>
 
 </section>
 
-
-<!-- SETA -->
-
+<!-- ⬇️ SETA -->
 <div class="area-seta">
-
 <a href="#capa-grande" class="seta">▼</a>
-
 </div>
 
-
-<!-- CAPA GRANDE -->
-
-<section id="capa-grande">
+<!-- 🖼️ CAPA GRANDE -->
+<section id="capa-grande" class="reveal">
 
 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dlflapq-1b4472b1-2697-4664-9772-696e70ba908b.jpg/v1/fill/w_1095,h_730,q_70,strp/em_meu_destino___lacos_entrelacados_wallpaper_by_milesdeka2_dlflapq-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTAyNCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxmbGFwcS0xYjQ0NzJiMS0yNjk3LTQ2NjQtOTc3Mi02OTZlNzBiYTkwOGIuanBnIiwid2lkdGgiOiI8PTE1MzYifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.SQK-CDQLz61jgF3zooSDDr9_c8rtktrucib1GXGLf1A">
 
 </section>
+
+<!-- 🔥 SCRIPT SCROLL REVEAL -->
+<script>
+function revealOnScroll() {
+    const elements = document.querySelectorAll(".reveal");
+
+    elements.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
+
+</body>
+</html>
