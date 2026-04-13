@@ -50,12 +50,24 @@ header {
 
 nav a {
     color: white;
-    margin-left: 20px;
     text-decoration: none;
+    margin-left: 20px;
+
+    padding: 8px 18px;
+
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 25px;
+
+    background: transparent;
+
+    transition: 0.3s ease;
 }
 
+/* HOVER MODERNO */
 nav a:hover {
-    color: #4da6ff;
+    border-color: #7a5cff;
+    box-shadow: 0 0 10px #7a5cff;
+    transform: translateY(-2px);
 }
 
 /* CARROSSEL */
