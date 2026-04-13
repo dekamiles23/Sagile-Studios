@@ -9,7 +9,35 @@
 </head>
 
 <script>
-const transition = document.querySelector(".transition");
+window.addEventListener("load", () => {
+
+    const transition = document.querySelector(".transition");
+
+    if (!transition) return;
+
+    // fade-in
+    transition.classList.remove("active");
+
+    // fade-out ao clicar
+    document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function(e) {
+
+            const href = this.getAttribute("href");
+
+            if (!href || href.startsWith("http")) return;
+
+            e.preventDefault();
+
+            transition.classList.add("active");
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 500);
+        });
+    });
+
+});
+</script>
 
 // REMOVE O PRETO QUANDO A PÁGINA CARREGA
 window.addEventListener("load", () => {
