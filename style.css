@@ -569,3 +569,22 @@ header {
     box-shadow: 0 0 20px #7a5cff;
     transform: scale(1.08);
 }
+
+nav a {
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #7a5cff;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
