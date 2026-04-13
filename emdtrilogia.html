@@ -2,13 +2,10 @@
 <html lang="pt-br">
 
 <head>
-    <head>
     <meta charset="UTF-8">
     <title>Sagile Studios</title>
 
-    <!-- FAVICON AQUI -->
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,21 +21,21 @@
 <input type="text" placeholder="Pesquisar livros, games, comics...">
 </div>
 
-   <nav>
-      <a href="livro.html">Livros</a>
-    <a href="games.html">Games</a>
-    <a href="comics.html">Comics</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="novidades.html">novidades</a>
+<nav>
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+<a href="#">Login</a>
 </nav>
 
 </header>
 
-
+<!-- CONTEÚDO -->
 <section class="pagina-livro">
 
 <!-- capa -->
-<div class="coluna-capa">
+<div class="coluna-capa reveal">
 
 <img src="https://i.ibb.co/C5Brdk0h/In-my-Destiny-Trilogy-Cover-art-V3-Com-m-scara.jpg" class="capa">
 
@@ -47,7 +44,7 @@
 
 </div>
 
-<div class="coluna-info">
+<div class="coluna-info reveal">
 
 <p><b>Classificação:</b> +16</p>
 
@@ -58,10 +55,8 @@ Ação, Aventura, Misticismo, Fantasia, Luta, Artes marciais, Sobrenatural, Magi
 
 </div>
 
-</div>
-
 <!-- sinopse -->
-<div class="coluna-sinopse">
+<div class="coluna-sinopse reveal">
 
 <h2>Sinopse</h2>
 
@@ -79,20 +74,36 @@ Preço: 70,00 R$
 
 </section>
 
-
 <!-- SETA -->
-
 <div class="area-seta">
-
 <a href="#capa-grande" class="seta">▼</a>
-
 </div>
 
-
 <!-- CAPA GRANDE -->
-
-<section id="capa-grande">
+<section id="capa-grande" class="reveal">
 
 <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dleo46m-fe94ff40-2b91-47b2-a766-f2f7f6191048.jpg/v1/fill/w_1192,h_670,q_70,strp/em_meu_destino__2025____ultima_foto__by_milesdeka2_dleo46m-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxlbzQ2bS1mZTk0ZmY0MC0yYjkxLTQ3YjItYTc2Ni1mMmY3ZjYxOTEwNDguanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Jce71SDMmSufVES-YWAV79VvbvOYQx_3zK2ogodCCOM">
 
 </section>
+
+<!-- SCRIPT -->
+<script>
+function revealOnScroll() {
+    const elements = document.querySelectorAll(".reveal");
+
+    elements.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+</script>
+
+</body>
+</html>
