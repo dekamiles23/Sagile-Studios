@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato - Sagile Studios</title>
+
+    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .contato-page {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 30px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .contato-page h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .contato-page p {
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .redes {
+            margin-bottom: 30px;
+        }
+
+        .redes a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .redes a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .form-contato {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-contato input,
+        .form-contato textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        .form-contato textarea {
+            min-height: 120px;
+            resize: none;
+        }
+
+        .form-contato button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: #00aaff;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .form-contato button:hover {
+            background: #0088cc;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+    </div>
+
+    <a href="#contato" class="contato-icon">
+    💬
+</a>
+
+    <div class="search-box">
+        <input type="text" placeholder="Pesquisar...">
+    </div>
+
+    <nav>
+        <a href="livro.html">Livros</a>
+        <a href="games.html">Games</a>
+        <a href="comics.html">Comics</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="novidades.html">Novidades</a>
+    </nav>
+
+</header>
+
+<section class="contato-page">
+    <h1>Fale conosco</h1>
+    <p>Envie sugestões ou reporte problemas</p>
+
+    <div class="redes">
+        <h2>Nossas redes sociais</h2>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+    </div>
+
+    <h2>Sugestões</h2>
+    <p>(Eles enviam e apenas você pode ler)</p>
+
+    <form class="form-contato">
+        <input type="text" placeholder="Seu nome" required>
+        <input type="email" placeholder="Seu email" required>
+        <textarea placeholder="Sua mensagem..." required></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+</body>
+</html>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+            <p>Sagile Studios © 2026</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="livro.html">Livros</a>
+            <a href="games.html">Games</a>
+            <a href="comics.html">Comics</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+
+        <div class="footer-social">
+            <p>Redes</p>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>Todos os direitos reservados.</p>
+    </div>
+</footer>
