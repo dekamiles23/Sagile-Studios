@@ -635,3 +635,49 @@ nav a:hover::after {
         visibility: hidden;
     }
 }
+
+/* ========================= */
+/* 🔥 CARD AAA (FUNCIONA 100%) */
+/* ========================= */
+
+.card {
+    position: relative;
+    transition: 0.3s;
+}
+
+/* glow externo forte */
+.card:hover {
+    transform: scale(1.08) translateY(-5px);
+    box-shadow:
+        0 0 20px rgba(122,92,255,0.7),
+        0 0 40px rgba(122,92,255,0.6),
+        0 0 80px rgba(122,92,255,0.5);
+}
+
+/* BORDA REAL VISÍVEL */
+.card:hover {
+    border: 2px solid #7a5cff;
+}
+
+/* LINHA DE ENERGIA PASSANDO */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+
+    transition: 0.5s;
+}
+
+.card:hover {
+    border: 2px solid gold;
+}
