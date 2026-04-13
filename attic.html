@@ -2,13 +2,10 @@
 <html lang="pt-br">
 
 <head>
-    <head>
     <meta charset="UTF-8">
     <title>Sagile Studios</title>
 
-    <!-- FAVICON AQUI -->
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -24,21 +21,21 @@
 <input type="text" placeholder="Pesquisar livros, games, comics...">
 </div>
 
-   <nav>
+<nav>
     <a href="livro.html">Livros</a>
     <a href="games.html">Games</a>
     <a href="comics.html">Comics</a>
     <a href="sobre.html">Sobre</a>
-    <a href="novidades.html">novidades</a>
+    <a href="#">Login</a>
 </nav>
 
 </header>
 
 
-<section class="pagina-livro">
+<section class="pagina-livro reveal">
 
 <!-- capa -->
-<div class="coluna-capa">
+<div class="coluna-capa reveal">
 
 <img src="https://i.ibb.co/hFRXg1Q4/Attic-Horror-s-Cover-art-IA.jpg" class="capa">
 
@@ -46,7 +43,7 @@
 
 </div>
 
-<div class="coluna-info">
+<div class="coluna-info reveal">
 
 <p><b>Classificação:</b> +18</p>
 
@@ -57,15 +54,15 @@ Terror
 
 </div>
 
-</div>
-
 <!-- sinopse -->
-<div class="coluna-sinopse">
+<div class="coluna-sinopse reveal">
 
 <h2>Sinopse</h2>
 
 <p>
-Uma coletânia de histórias de terror lhe aguarda nesse livro, sinta o medo transbordando em seu corpo e sinta o que ele o pode transformar.
+Uma coletânea de histórias de terror lhe aguarda nesse livro. Sinta o medo transbordando em seu corpo e descubra até onde ele pode te transformar.
+</p>
+
 <p>
 Preço: 30,00 R$ 
 </p>
@@ -78,18 +75,40 @@ Preço: 30,00 R$
 
 
 <!-- SETA -->
-
 <div class="area-seta">
-
 <a href="#capa-grande" class="seta">▼</a>
-
 </div>
 
 
 <!-- CAPA GRANDE -->
-
 <section id="capa-grande">
 
-<img src="https://i.ibb.co/RG74LRPL/Attic-Horror-s.jpg">
+<img src="https://i.ibb.co/RG74LRPL/Attic-Horror-s.jpg" class="capa-grande">
 
 </section>
+
+
+<!-- SCRIPT -->
+<script>
+
+/* REVEAL AO SCROLL */
+function revealOnScroll() {
+    const elements = document.querySelectorAll(".reveal");
+
+    elements.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < windowHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+</script>
+
+</body>
+</html>
