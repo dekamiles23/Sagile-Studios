@@ -59,6 +59,51 @@ for (let i = 0; i < 50; i++) {
 }
 </script>
 
+</body><body>
+
+<div class="transition active"></div>
+<div class="snow-container"></div>
+
+<header>
+    ...
+</header>
+
+<section class="carrossel">
+    ...
+</section>
+
+<section class="sobre">
+    ...
+</section>
+
+<!-- SCRIPTS SEMPRE AQUI EMBAIXO -->
+<script>
+const transition = document.querySelector(".transition");
+
+// fade-in quando carrega
+window.addEventListener("load", () => {
+    transition.classList.remove("active");
+});
+
+// fade-out ao clicar
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("http")) return;
+
+        e.preventDefault();
+
+        transition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
+});
+</script>
+
 </body>
     
 <header>
