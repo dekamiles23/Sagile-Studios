@@ -26,7 +26,7 @@
     <a href="games.html">Games</a>
     <a href="comics.html">Comics</a>
     <a href="sobre.html">Sobre</a>
-    <a href="novidades.html">Novidades</a>a>
+    <a href="novidades.html">Novidades</a>
 </nav>
 
 </header>
@@ -84,8 +84,26 @@ Preço: 30,00 R$
 
 <!-- CAPA GRANDE -->
 <section id="capa-grande">
-
 <img src="https://i.ibb.co/RG74LRPL/Attic-Horror-s.jpg" class="capa-grande">
+</section>
+
+
+<!-- ⭐ AVALIAÇÃO -->
+<section class="avaliacoes reveal">
+
+<h2>Avalie esta obra</h2>
+
+<div class="nota">
+  <div id="estrelas">
+    <span data-v="1">★</span>
+    <span data-v="2">★</span>
+    <span data-v="3">★</span>
+    <span data-v="4">★</span>
+    <span data-v="5">★</span>
+  </div>
+
+  <p id="resultado">Clique nas estrelas</p>
+</div>
 
 </section>
 
@@ -109,6 +127,38 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+
+
+/* ⭐ AVALIAÇÃO */
+const estrelas = document.querySelectorAll("#estrelas span");
+const resultado = document.getElementById("resultado");
+
+const chave = "nota-attic"; // IMPORTANTE: chave única
+
+let notaSalva = localStorage.getItem(chave);
+
+if (notaSalva) pintar(notaSalva);
+
+estrelas.forEach(star => {
+    star.addEventListener("click", () => {
+        let valor = star.getAttribute("data-v");
+
+        localStorage.setItem(chave, valor);
+        pintar(valor);
+    });
+});
+
+function pintar(valor) {
+    estrelas.forEach(star => {
+        star.classList.remove("ativo");
+
+        if (star.getAttribute("data-v") <= valor) {
+            star.classList.add("ativo");
+        }
+    });
+
+    resultado.innerText = valor + " / 5";
+}
 
 </script>
 
