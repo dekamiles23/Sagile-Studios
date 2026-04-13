@@ -15,27 +15,6 @@ const transition = document.querySelector(".transition");
 window.addEventListener("load", () => {
     transition.classList.remove("active");
 });
-
-// FADE AO CLICAR
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function(e) {
-
-        const href = this.getAttribute("href");
-
-        if (!href || href.startsWith("http")) return;
-
-        e.preventDefault();
-
-        transition.classList.add("active");
-
-        setTimeout(() => {
-            window.location.href = href;
-        }, 500);
-    });
-});
-</script>
-
-<script src="script.js"></script>
     
 <body> <div class="transition active"></div>
     
