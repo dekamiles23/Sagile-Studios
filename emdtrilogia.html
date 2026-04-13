@@ -2,11 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Sagile Studios</title>
+<meta charset="UTF-8">
+<title>Sagile Studios</title>
 
-    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-    <link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body class="page-emdtrilogia">
@@ -14,7 +14,7 @@
 <header>
 
 <div class="logo">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
 </div>
 
 <div class="search-box">
@@ -26,7 +26,7 @@
 <a href="games.html">Games</a>
 <a href="comics.html">Comics</a>
 <a href="sobre.html">Sobre</a>
-<a href="#">Login</a>
+<a href="novidades.html">Novidades</a>
 </nav>
 
 </header>
@@ -34,45 +34,54 @@
 <!-- CONTEÚDO -->
 <section class="pagina-livro">
 
-<!-- capa -->
 <div class="coluna-capa reveal">
-
 <img src="https://i.ibb.co/C5Brdk0h/In-my-Destiny-Trilogy-Cover-art-V3-Com-m-scara.jpg" class="capa">
 
 <h1 class="titulo-livro">Em meu Destino</h1>
 <h2 class="subtitulo-livro">Trilogia</h2>
-
 </div>
 
 <div class="coluna-info reveal">
-
 <p><b>Classificação:</b> +16</p>
 
 <p>
 <b>Gêneros:</b><br>
 Ação, Aventura, Misticismo, Fantasia, Luta, Artes marciais, Sobrenatural, Magia
 </p>
+</div>
 <p><b>Plataforma</b> Amazon, Uiclap</p>
 <p><b>Formato</b> Ebook, Livro físico</p>
 
-</div>
-
-<!-- sinopse -->
 <div class="coluna-sinopse reveal">
-
 <h2>Sinopse</h2>
 
 <p>
 Dois jovens encontram, escondido em uma floresta, um livro sagrado que mudará suas vidas para sempre. Guiados por um pingente enigmático chamado Eve, eles enfrentam forças poderosas que desafiam tudo o que conhecem. Entre batalhas épicas e encontros com guardiões misteriosos, figuras que protegem a cidade agindo como justiceiros silenciosos, segredos antigos começam a surgir em San Bernardino, na Califórnia. Uma história de aventura, magia e escolhas que podem alterar o destino de todos… você está pronto para descobrir o que se esconde nas sombras?
 </p>
 
-<p>
-Preço: 70,00 R$ 
-</p>
+<p>Preço: 70,00 R$</p>
 
-<a href="https://loja.uiclap.com/titulo/ua63465/" target="_blank" class="botao-comprar">Comprar</a>
-
+<a href="https://loja.uiclap.com/titulo/ua63465/" target="_blank" class="botao-comprar">
+Comprar
+</a>
 </div>
+
+</section>
+
+<!-- ⭐ AVALIAÇÃO -->
+<section class="avaliacao-box">
+
+<h2>Avalie esta obra</h2>
+
+<div id="estrelas">
+<span data-v="1">★</span>
+<span data-v="2">★</span>
+<span data-v="3">★</span>
+<span data-v="4">★</span>
+<span data-v="5">★</span>
+</div>
+
+<p id="resultado">Clique nas estrelas</p>
 
 </section>
 
@@ -90,6 +99,35 @@ Preço: 70,00 R$
 
 <!-- SCRIPT -->
 <script>
+
+/* ⭐ AVALIAÇÃO */
+const estrelas = document.querySelectorAll("#estrelas span");
+const resultado = document.getElementById("resultado");
+
+/* nome único da página */
+let notaAtual = localStorage.getItem("trilogiaNota") || 0;
+
+function pintarEstrelas(nota){
+    estrelas.forEach(star => {
+        star.classList.remove("ativo");
+        if(star.dataset.v <= nota){
+            star.classList.add("ativo");
+        }
+    });
+}
+
+pintarEstrelas(notaAtual);
+
+estrelas.forEach(star => {
+    star.addEventListener("click", () => {
+        notaAtual = star.dataset.v;
+        localStorage.setItem("trilogiaNota", notaAtual);
+        pintarEstrelas(notaAtual);
+        resultado.innerText = "Você avaliou com " + notaAtual + " estrelas ⭐";
+    });
+});
+
+/* SCROLL REVEAL */
 function revealOnScroll() {
     const elements = document.querySelectorAll(".reveal");
 
@@ -105,35 +143,8 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+
 </script>
 
 </body>
 </html>
-
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
-</footer>
