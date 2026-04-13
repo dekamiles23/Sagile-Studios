@@ -592,3 +592,46 @@ nav a:hover::after {
     width: 100%;
 }
 
+/* INTRO FULLSCREEN */
+.intro {
+    position: fixed;
+    inset: 0;
+    background: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 9999;
+
+    animation: fadeOut 2s ease forwards;
+    animation-delay: 2s; /* tempo que fica na tela */
+}
+
+/* IMAGEM */
+.intro img {
+    width: 300px;
+    opacity: 0;
+
+    animation: fadeIn 1.5s ease forwards;
+}
+
+/* ENTRADA */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* SAÍDA */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
