@@ -527,9 +527,12 @@ background-position:center;
     }
 }
 
-.card:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px rgba(122,92,255,0.8);
+.card img {
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
 }
 
 header {
@@ -588,3 +591,4 @@ nav a::after {
 nav a:hover::after {
     width: 100%;
 }
+
