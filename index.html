@@ -8,12 +8,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
+
+<!-- TRANSIÇÃO -->
+<div class="transition active"></div>
+
+<!-- NEVE -->
+<div class="snow-container"></div>
+
+<!-- MENU -->
+<header>
+    <div class="logo">
+        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+    </div>
+
+    <div class="search-box">
+        <input type="text" placeholder="Pesquisar...">
+    </div>
+
+    <nav>
+        <a href="livro.html">Livros</a>
+        <a href="games.html">Games</a>
+        <a href="comics.html">Comics</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="novidades.html">Novidades</a>
+    </nav>
+</header>
+
+<!-- CARROSSEL -->
+<section class="carrossel">
+
+<button class="seta esquerda">&#10094;</button>
+
+<div class="container" id="lista">
+
+    <div class="card">
+        <a href="emd.html">
+            <img src="https://i.ibb.co/gZX00HX9/Em-meu-Destino-Remake-Arte-Conceitual-v2.png">
+        </a>
+    </div>
+
+    <!-- outros cards... -->
+
+</div>
+
+<button class="seta direita">&#10095;</button>
+
+</section>
+
+<!-- SOBRE -->
+<section class="sobre">
+    <h1>O QUE É A SAGILE STUDIOS?</h1>
+    <p>Texto aqui...</p>
+</section>
+
+<!-- SCRIPTS (SEMPRE NO FINAL) -->
 <script>
+
 window.addEventListener("load", () => {
 
     const transition = document.querySelector(".transition");
-
-    if (!transition) return;
 
     // fade-in
     transition.classList.remove("active");
@@ -37,15 +91,8 @@ window.addEventListener("load", () => {
     });
 
 });
-</script>
-    
-<body><div class="transition active"></div>
-<div class="snow-container"></div>
-<header>
 
-<!-- TODO seu conteúdo -->
-
-<script>
+// NEVE
 const container = document.querySelector(".snow-container");
 
 for (let i = 0; i < 50; i++) {
@@ -59,142 +106,19 @@ for (let i = 0; i < 50; i++) {
 
     container.appendChild(flake);
 }
+
+// CARROSSEL
+const lista = document.getElementById("lista");
+
+document.querySelector(".direita").onclick = () => {
+    lista.scrollBy({ left: 300, behavior: 'smooth' });
+};
+
+document.querySelector(".esquerda").onclick = () => {
+    lista.scrollBy({ left: -300, behavior: 'smooth' });
+};
+
 </script>
-
-<div class="transition active"></div>
-<div class="snow-container"></div>
-
-<header>
-
-<section class="carrossel">
-
-</section>
-
-<section class="sobre">
-
-</section>
-
-<!-- SCRIPTS SEMPRE AQUI EMBAIXO -->
-<script>
-const transition = document.querySelector(".transition");
-
-// fade-in quando carrega
-window.addEventListener("load", () => {
-    transition.classList.remove("active");
-});
-
-// fade-out ao clicar
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function(e) {
-
-        const href = this.getAttribute("href");
-
-        if (!href || href.startsWith("http")) return;
-
-        e.preventDefault();
-
-        transition.classList.add("active");
-
-        setTimeout(() => {
-            window.location.href = href;
-        }, 500);
-    });
-});
-</script>
-
-</body>
-    
-<header>
-    <div class="logo">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </div>
-
-    <div class="search-box">
-        <input type="text" placeholder="Pesquisar livros, games, comics...">
-    </div>
-
-    <nav>
-        <a href="livro.html">Livros</a>
-        <a href="games.html">Games</a>
-        <a href="comics.html">Comics</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="novidades.html">Novidades</a>
-    </nav>
-</header>
-
-    <!-- CARROSSEL CORRETO -->
-    <section class="carrossel">
-
-        <button class="seta esquerda">&#10094;</button>
-
-<div class="container" id="lista">
-
-    <div class="card">
-        <a href="emd.html">
-            <img src="https://i.ibb.co/gZX00HX9/Em-meu-Destino-Remake-Arte-Conceitual-v2.png">
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="desolador.html">
-            <img src="https://i.ibb.co/mVqrXCYQ/O-desolador-do-anoitecer-remake-AI.jpg">
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="emd2.html">
-            <img src="https://i.ibb.co/NgcjksNQ/Em-meu-Destino-2-Cover-Art-IA-Remake-v2.jpg">
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="emdtrilogia.html">
-            <img src="https://i.ibb.co/C5Brdk0h/In-my-Destiny-Trilogy-Cover-art-V3-Com-m-scara.jpg">
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="wayston.html">
-            <img src="https://i.ibb.co/YTkc9CMM/Wayston-Capa-AI.png">
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="attic.html">
-            <img src="https://i.ibb.co/hFRXg1Q4/Attic-Horror-s-Cover-art-IA.jpg">
-        </a>
-    </div>
-
-    <div class="card">
-        <a href="kamaisen.html">
-            <img src="https://i.ibb.co/bMTcBthr/Kamai-SEN-2026-Cover-art.jpg">
-        </a>
-    </div>
-
-        <button class="seta direita">&#10095;</button>
-
-    </section>
-
-    <!-- SOBRE -->
-    <section class="sobre">
-        <h1>O QUE É A SAGILE STUDIOS?</h1>
-        <p>
-             A Sagile studios é uma empresa fundada por Miles Deka no ano de 2025, já havia resquicios de sua criação desde 2020, o projeto da empresa foi andar para frente nesse ano por agora. A Sagile Studios é uma empresa que distribui webcomics, livros e afins para o público alvo, no momento só há um integrante, futuramente haverá mais atualizações do que será a empresa daqui para frente. Inicialmente teve sua marca registrada na webcomic de Miles Deka, denominada: "Kamai SEN" posteriormente, a marca sendo dona também dos livros do dono. No futuro próximo continuará produzindo e publicando livros, webcomic, animações...
-        </p>
-    </section>
-
-    <!-- SCRIPT (AGORA NO LUGAR CERTO) -->
-    <script>
-        const lista = document.getElementById("lista");
-
-        document.querySelector(".direita").onclick = () => {
-            lista.scrollBy({ left: 300, behavior: 'smooth' });
-        };
-
-        document.querySelector(".esquerda").onclick = () => {
-            lista.scrollBy({ left: -300, behavior: 'smooth' });
-        };
-    </script>
 
 </body>
 </html>
