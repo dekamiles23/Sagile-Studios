@@ -973,3 +973,30 @@ nav a:hover::after {
     justify-content: center;
     gap: 10px;
 }
+
+.contato-icon {
+    font-size: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+
+    color: white;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.contato-icon:hover {
+    border-color: #7a5cff;
+    box-shadow: 0 0 10px #7a5cff;
+
+    transform: scale(1.1);
+}
+
