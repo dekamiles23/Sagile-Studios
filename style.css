@@ -881,8 +881,8 @@ nav a:hover::after {
 }
 
 .news-card:hover {
-    transform: translateY(-5px);
     border-color: #7a5cff;
+    transform: translateY(-5px);
 }
 
 .news-card h3 {
@@ -892,4 +892,9 @@ nav a:hover::after {
 .news-card span {
     font-size: 12px;
     opacity: 0.6;
+}
+
+.news-card.ativo {
+    border: 1px solid #7a5cff;
+    box-shadow: 0 0 15px rgba(122,92,255,0.4);
 }
