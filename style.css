@@ -835,3 +835,61 @@ nav a:hover::after {
     opacity: 0.5;
 }
 
+.home-news {
+    padding: 80px 40px;
+}
+
+/* topo da seção */
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.news-header h2 {
+    font-size: 36px;
+}
+
+.ver-tudo {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.ver-tudo:hover {
+    color: white;
+}
+
+/* cards */
+.news-preview {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.news-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+
+    padding: 20px;
+    width: 300px;
+
+    border-radius: 12px;
+
+    transition: 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    border-color: #7a5cff;
+}
+
+.news-card h3 {
+    margin-bottom: 10px;
+}
+
+.news-card span {
+    font-size: 12px;
+    opacity: 0.6;
+}
