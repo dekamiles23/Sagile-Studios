@@ -927,3 +927,39 @@ nav a:hover::after {
 
     border-radius: 10px;
 }
+
+#estrelas span {
+    font-size: 30px;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: 0.2s;
+}
+
+#estrelas span.ativo {
+    opacity: 1;
+    color: gold;
+}
+
+.avaliacoes {
+    padding: 80px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTRALIZA TUDO */
+    justify-content: center;
+
+    text-align: center;
+}
+
+.avaliacao-box {
+    width: 100%;
+    max-width: 800px;
+
+    margin: 120px auto 60px; /* 👈 joga pra baixo do header */
+    
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
