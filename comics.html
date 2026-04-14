@@ -2,11 +2,14 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Sagile Studios</title>
+<meta charset="UTF-8">
+<title>Sagile Studios</title>
 
-    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-    <link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+<link rel="stylesheet" href="style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
@@ -17,29 +20,33 @@
 <!-- MENU -->
 <header>
 
-    <div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </a>
+<div class="logo">
+<a href="index.html">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+</a>
 </div>
 
-     <a href="faleconosco.html" class="contato-icon">
-    💬
+<a href="faleconosco.html" class="contato-icon">
+💬
 </a>
 
-    <div class="search-box">
-        <input type="text" placeholder="Pesquisar livros, games, comics...">
-    </div>
+<div class="search-box">
+<input type="text" placeholder="Pesquisar livros, games, comics...">
+</div>
 
-    <nav>
-        <a href="livro.html">Livros</a>
-        <a href="games.html">Games</a>
-        <a href="comics.html">Comics</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="novidades.html">Novidades</a>
-    </nav>
+<!-- BOTÃO MOBILE -->
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+<a href="novidades.html">Novidades</a>
+</nav>
 
 </header>
+
 
 <!-- 📚 CATÁLOGO -->
 <section class="catalogo reveal">
@@ -47,63 +54,111 @@
 <h1>Comics</h1>
 
 <p class="subtitulo-catalogo">
-Uma aventura lhe aguarda, nossas história em quadrinhos, irá transformar seu lazer em algo explorativo e aventureiro
+Uma aventura lhe aguarda, nossas história em quadrinhos irá transformar seu lazer em algo explorativo e aventureiro
 </p>
 
-    <div class="grid-livros">
+<div class="grid-livros">
 
-        <!-- ITEM -->
-        <div class="comics reveal item">
-            <a href="kamaisen.html">
-                <img class="capa-livro" src="https://i.ibb.co/Q3LyN0B6/Kamai-SEN-2026-Cover-art.jpg">
-            </a>
-            <p>Kamai SEN - Fronteira sem linha</p>
-        </div>
+<div class="comics reveal item">
 
-    </div>
+<a href="kamaisen.html">
+<img class="capa-livro" src="https://i.ibb.co/Q3LyN0B6/Kamai-SEN-2026-Cover-art.jpg">
+</a>
+
+<p>Kamai SEN - Fronteira sem linha</p>
+
+</div>
+
+</div>
 
 </section>
 
+
+<!-- FOOTER -->
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-logo">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+<p>Sagile Studios © 2026</p>
+</div>
+
+<div class="footer-links">
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+</div>
+
+<div class="footer-social">
+<p>Redes</p>
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>Todos os direitos reservados.</p>
+</div>
+
+</footer>
+
+
 <!-- SCRIPTS -->
 <script>
+
+/// MENU MOBILE
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
 
 /// 🎬 TRANSIÇÃO
 const transition = document.querySelector(".transition");
 
 window.addEventListener("load", () => {
-    transition.classList.remove("active");
+transition.classList.remove("active");
 });
 
 document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function(e) {
 
-        const href = this.getAttribute("href");
+link.addEventListener("click", function(e){
 
-        if (!href || href.startsWith("http")) return;
+const href = this.getAttribute("href");
 
-        e.preventDefault();
+if(!href || href.startsWith("http")) return;
 
-        transition.classList.add("active");
+e.preventDefault();
 
-        setTimeout(() => {
-            window.location.href = href;
-        }, 500);
-    });
+transition.classList.add("active");
+
+setTimeout(()=>{
+window.location.href = href;
+},500);
+
+});
+
 });
 
 
 /// 🔥 SCROLL REVEAL
-function revealOnScroll() {
-    const elements = document.querySelectorAll(".reveal");
+function revealOnScroll(){
 
-    elements.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
+const elements = document.querySelectorAll(".reveal");
 
-        if (elementTop < windowHeight - 100) {
-            el.classList.add("active");
-        }
-    });
+elements.forEach(el => {
+
+const windowHeight = window.innerHeight;
+const elementTop = el.getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 100){
+el.classList.add("active");
+}
+
+});
+
 }
 
 window.addEventListener("scroll", revealOnScroll);
@@ -112,45 +167,20 @@ window.addEventListener("load", revealOnScroll);
 
 /// 🟣 SELEÇÃO ESTILO STEAM
 document.querySelectorAll(".item").forEach(item => {
-    item.addEventListener("click", () => {
 
-        document.querySelectorAll(".item").forEach(i => {
-            i.classList.remove("ativo");
-        });
+item.addEventListener("click", () => {
 
-        item.classList.add("ativo");
-    });
+document.querySelectorAll(".item").forEach(i=>{
+i.classList.remove("ativo");
+});
+
+item.classList.add("ativo");
+
+});
+
 });
 
 </script>
 
 </body>
 </html>
-
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
-</footer>
