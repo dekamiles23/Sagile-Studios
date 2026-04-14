@@ -3,6 +3,8 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Kamai SEN</title>
 
 <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
@@ -20,11 +22,67 @@
     width: 100%;
     height: auto;
     border-radius: 6px;
+    cursor: zoom-in;
     display: block;
+}
+
+/* ZOOM (LIGHTBOX) */
+.zoom {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.zoom img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+}
+
+/* UPLOAD BOX */
+.upload-box {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.upload-box input,
+.upload-box button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.upload-box button {
+    padding: 10px;
+    background: #6c5ce7;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.upload-box button:hover {
+    background: #5a4bd6;
+}
+
+.upload-box img {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
 }
 </style>
 
 </head>
+
+<body class="cap2">
 
 <!-- UPLOAD SUPABASE -->
 <div class="upload-box">
@@ -39,13 +97,11 @@
 
 </div>
 
-<body class="cap2">
-
 <header>
 
 <div class="logo">
     <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
     </a>
 </div>
 
@@ -65,25 +121,30 @@
 
 </header>
 
-<!-- 📌 GALERIA LIMPA -->
+<!-- GRID -->
 <section class="leitor">
 
 <div class="grid-comic">
 
-<img src="https://i.ibb.co/5Xj2V6RG/PAG-1.jpg">
-<img src="https://i.ibb.co/QjJwrt0C/PAG-2.jpg">
-<img src="https://i.ibb.co/W469H73K/PAG-3.jpg">
-<img src="https://i.ibb.co/d0ghhm6M/PAG-4.jpg">
-<img src="https://i.ibb.co/YTq5x0Fz/PAG-5.jpg">
-<img src="https://i.ibb.co/mVbpYCfY/PAG-6.jpg">
-<img src="https://i.ibb.co/cSNRKmvS/PAG-7.jpg">
-<img src="https://i.ibb.co/23x5Fmd5/PAG-8.jpg">
-<img src="https://i.ibb.co/x8DpWQLq/PAG-9.jpg">
-<img src="https://i.ibb.co/qLC1yzDC/PAG-10.jpg">
+<img src="https://i.ibb.co/5Xj2V6RG/PAG-1.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/QjJwrt0C/PAG-2.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/W469H73K/PAG-3.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/d0ghhm6M/PAG-4.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/YTq5x0Fz/PAG-5.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/mVbpYCfY/PAG-6.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/cSNRKmvS/PAG-7.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/23x5Fmd5/PAG-8.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/x8DpWQLq/PAG-9.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/qLC1yzDC/PAG-10.jpg" onclick="abrirZoom(this)">
 
 </div>
 
 </section>
+
+<!-- ZOOM -->
+<div id="zoom" class="zoom" onclick="fecharZoom()">
+    <img id="zoomImg">
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -116,32 +177,86 @@
 
 </footer>
 
+<!-- JS ZOOM + SUPABASE -->
+<script>
+let zoomLevel = 2.5;
+let posX = 0;
+let posY = 0;
+let isDragging = false;
+let startX, startY;
+
+window.abrirZoom = function(img) {
+    const zoom = document.getElementById("zoom");
+    const zoomImg = document.getElementById("zoomImg");
+
+    zoomImg.src = img.src;
+
+    zoom.style.display = "flex";
+
+    zoomLevel = 2.5;
+    posX = 0;
+    posY = 0;
+
+    updateTransform();
+}
+
+/* fechar */
+window.fecharZoom = function() {
+    document.getElementById("zoom").style.display = "none";
+}
+
+/* aplicar transformação */
+function updateTransform() {
+    const img = document.getElementById("zoomImg");
+    img.style.transform = `translate(${posX}px, ${posY}px) scale(${zoomLevel})`;
+}
+
+/* 🔥 ZOOM COM SCROLL */
+document.addEventListener("wheel", function(e) {
+    const zoom = document.getElementById("zoom");
+
+    if (zoom.style.display === "flex") {
+
+        e.preventDefault();
+
+        if (e.deltaY < 0) zoomLevel += 0.2;
+        else zoomLevel -= 0.2;
+
+        if (zoomLevel < 1) zoomLevel = 1;
+        if (zoomLevel > 6) zoomLevel = 6;
+
+        updateTransform();
+    }
+}, { passive: false });
+
+/* 🖐️ ARRASTAR (MÃOZINHA) */
+document.addEventListener("mousedown", function(e) {
+    const zoom = document.getElementById("zoom");
+
+    if (zoom.style.display !== "flex") return;
+
+    isDragging = true;
+
+    startX = e.clientX - posX;
+    startY = e.clientY - posY;
+
+    document.body.style.cursor = "grabbing";
+});
+
+document.addEventListener("mouseup", function() {
+    isDragging = false;
+    document.body.style.cursor = "default";
+});
+
+document.addEventListener("mousemove", function(e) {
+    if (!isDragging) return;
+
+    posX = e.clientX - startX;
+    posY = e.clientY - startY;
+
+    updateTransform();
+});
+</script>
+
 </body>
 </html>
-
-<script type="module">
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-
-const supabaseUrl = "SUA_URL";
-const supabaseKey = "SUA_KEY";
-
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-window.uploadImage = async function () {
-    const file = document.getElementById("file").files[0];
-
-    if (!file) return;
-
-    const fileName = Date.now() + "_" + file.name;
-
-    await supabase.storage
-        .from("comics")
-        .upload(fileName, file);
-
-    const { data } = supabase.storage
-        .from("comics")
-        .getPublicUrl(fileName);
-
-    document.getElementById("preview").src = data.publicUrl;
-}
-</script>
