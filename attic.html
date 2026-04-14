@@ -2,11 +2,13 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Sagile Studios</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-    <link rel="stylesheet" href="style.css">
+<title>Sagile Studios</title>
+
+<link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body class="page-attic">
@@ -14,25 +16,28 @@
 <header>
 
 <div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </a>
+<a href="index.html">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+</a>
 </div>
 
-     <a href="faleconosco.html" class="contato-icon">
-    💬
+<a href="faleconosco.html" class="contato-icon">
+💬
 </a>
 
 <div class="search-box">
 <input type="text" placeholder="Pesquisar livros, games, comics...">
 </div>
 
-<nav>
-    <a href="livro.html">Livros</a>
-    <a href="games.html">Games</a>
-    <a href="comics.html">Comics</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="novidades.html">Novidades</a>
+<!-- BOTÃO MENU CELULAR -->
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+<a href="novidades.html">Novidades</a>
 </nav>
 
 </header>
@@ -40,7 +45,6 @@
 
 <section class="pagina-livro reveal">
 
-<!-- capa -->
 <div class="coluna-capa reveal">
 
 <img src="https://i.ibb.co/hFRXg1Q4/Attic-Horror-s-Cover-art-IA.jpg" class="capa">
@@ -57,12 +61,12 @@
 <b>Gêneros:</b><br>
 Terror
 </p>
+
 <p><b>Plataforma</b> Amazon, Uiclap</p>
 <p><b>Formato</b> Ebook, Livro físico</p>
 
 </div>
 
-<!-- sinopse -->
 <div class="coluna-sinopse reveal">
 
 <h2>Sinopse</h2>
@@ -72,7 +76,7 @@ Uma coletânea de histórias de terror lhe aguarda nesse livro. Sinta o medo tra
 </p>
 
 <p>
-Preço: 30,00 R$ 
+Preço: 30,00 R$
 </p>
 
 <button class="botao-comprar">Ainda não disponível</button>
@@ -82,53 +86,55 @@ Preço: 30,00 R$
 </section>
 
 
-<!-- SETA -->
 <div class="area-seta">
 <a href="#capa-grande" class="seta">▼</a>
 </div>
 
 
-<!-- CAPA GRANDE -->
 <section id="capa-grande">
 <img src="https://i.ibb.co/RG74LRPL/Attic-Horror-s.jpg" class="capa-grande">
 </section>
 
 
-<!-- ⭐ AVALIAÇÃO -->
 <section class="avaliacoes reveal">
 
 <h2>Avalie esta obra</h2>
 
 <div class="nota">
-  <div id="estrelas">
-    <span data-v="1">★</span>
-    <span data-v="2">★</span>
-    <span data-v="3">★</span>
-    <span data-v="4">★</span>
-    <span data-v="5">★</span>
-  </div>
 
-  <p id="resultado">Clique nas estrelas</p>
+<div id="estrelas">
+<span data-v="1">★</span>
+<span data-v="2">★</span>
+<span data-v="3">★</span>
+<span data-v="4">★</span>
+<span data-v="5">★</span>
+</div>
+
+<p id="resultado">Clique nas estrelas</p>
+
 </div>
 
 </section>
 
 
-<!-- SCRIPT -->
 <script>
 
-/* REVEAL AO SCROLL */
+/* REVEAL */
 function revealOnScroll() {
-    const elements = document.querySelectorAll(".reveal");
 
-    elements.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
+const elements = document.querySelectorAll(".reveal");
 
-        if (elementTop < windowHeight - 100) {
-            el.classList.add("active");
-        }
-    });
+elements.forEach(el => {
+
+const windowHeight = window.innerHeight;
+const elementTop = el.getBoundingClientRect().top;
+
+if (elementTop < windowHeight - 100) {
+el.classList.add("active");
+}
+
+});
+
 }
 
 window.addEventListener("scroll", revealOnScroll);
@@ -136,65 +142,85 @@ window.addEventListener("load", revealOnScroll);
 
 
 /* ⭐ AVALIAÇÃO */
+
 const estrelas = document.querySelectorAll("#estrelas span");
 const resultado = document.getElementById("resultado");
 
-const chave = "nota-attic"; // IMPORTANTE: chave única
+const chave = "nota-attic";
 
 let notaSalva = localStorage.getItem(chave);
 
 if (notaSalva) pintar(notaSalva);
 
 estrelas.forEach(star => {
-    star.addEventListener("click", () => {
-        let valor = star.getAttribute("data-v");
 
-        localStorage.setItem(chave, valor);
-        pintar(valor);
-    });
+star.addEventListener("click", () => {
+
+let valor = star.getAttribute("data-v");
+
+localStorage.setItem(chave, valor);
+
+pintar(valor);
+
 });
 
-function pintar(valor) {
-    estrelas.forEach(star => {
-        star.classList.remove("ativo");
+});
 
-        if (star.getAttribute("data-v") <= valor) {
-            star.classList.add("ativo");
-        }
-    });
+function pintar(valor){
 
-    resultado.innerText = valor + " / 5";
+estrelas.forEach(star => {
+
+star.classList.remove("ativo");
+
+if(star.getAttribute("data-v") <= valor){
+star.classList.add("ativo");
+}
+
+});
+
+resultado.innerText = valor + " / 5";
+
+}
+
+
+/* MENU MOBILE */
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
 }
 
 </script>
 
-</body>
-</html>
 
 <footer class="footer">
-    <div class="footer-container">
 
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
+<div class="footer-container">
 
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
+<div class="footer-logo">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+<p>Sagile Studios © 2026</p>
+</div>
 
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
+<div class="footer-links">
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+</div>
 
-    </div>
+<div class="footer-social">
+<p>Redes</p>
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+</div>
 
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
+</div>
+
+<div class="footer-bottom">
+<p>Todos os direitos reservados.</p>
+</div>
+
 </footer>
+
+</body>
+</html>
