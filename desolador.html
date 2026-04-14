@@ -7,6 +7,8 @@
 
 <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
 <link rel="stylesheet" href="style.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body class="page-desolador">
@@ -14,20 +16,23 @@
 <header>
 
 <div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </a>
+<a href="index.html">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+</a>
 </div>
 
-     <a href="faleconosco.html" class="contato-icon">
-    💬
+<a href="faleconosco.html" class="contato-icon">
+💬
 </a>
-    
+
 <div class="search-box">
 <input type="text" placeholder="Pesquisar livros, games, comics...">
 </div>
 
-<nav>
+<!-- BOTÃO MENU MOBILE -->
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
 <a href="livro.html">Livros</a>
 <a href="games.html">Games</a>
 <a href="comics.html">Comics</a>
@@ -59,6 +64,7 @@
 <b>Gêneros:</b><br>
 Ação, aventura, misticismo, fantasia, luta, artes marciais, sobrenatural, magia, militar
 </p>
+
 <p><b>Plataforma</b> Amazon, Uiclap</p>
 <p><b>Formato</b> Ebook, Livro físico</p>
 
@@ -87,7 +93,10 @@ Um garoto de 16 anos chamado Mikavil, é mandado para um quartel general para se
 
 </div>
 
+</div>
+
 </section>
+
 
 <!-- ⭐ AVALIAÇÃO -->
 <section class="avaliacao-box">
@@ -106,10 +115,12 @@ Um garoto de 16 anos chamado Mikavil, é mandado para um quartel general para se
 
 </section>
 
+
 <!-- SETA -->
 <div class="area-seta">
 <a href="#capa-grande" class="seta">▼</a>
 </div>
+
 
 <!-- CAPA GRANDE -->
 <section id="capa-grande" class="reveal">
@@ -118,8 +129,45 @@ Um garoto de 16 anos chamado Mikavil, é mandado para um quartel general para se
 
 </section>
 
-<!-- SCRIPT -->
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-logo">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+<p>Sagile Studios © 2026</p>
+</div>
+
+<div class="footer-links">
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+</div>
+
+<div class="footer-social">
+<p>Redes</p>
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>Todos os direitos reservados.</p>
+</div>
+
+</footer>
+
+
 <script>
+
+/* MENU MOBILE */
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
 
 /* ⭐ SISTEMA DE AVALIAÇÃO */
 const estrelas = document.querySelectorAll("#estrelas span");
@@ -128,37 +176,42 @@ const resultado = document.getElementById("resultado");
 let notaAtual = localStorage.getItem("desoladorNota") || 0;
 
 function pintarEstrelas(nota){
-    estrelas.forEach(star => {
-        star.classList.remove("ativo");
-        if(star.dataset.v <= nota){
-            star.classList.add("ativo");
-        }
-    });
+estrelas.forEach(star=>{
+star.classList.remove("ativo");
+if(star.dataset.v <= nota){
+star.classList.add("ativo");
+}
+});
 }
 
 pintarEstrelas(notaAtual);
 
-estrelas.forEach(star => {
-    star.addEventListener("click", () => {
-        notaAtual = star.dataset.v;
-        localStorage.setItem("desoladorNota", notaAtual);
-        pintarEstrelas(notaAtual);
-        resultado.innerText = "Você avaliou com " + notaAtual + " estrelas ⭐";
-    });
+estrelas.forEach(star=>{
+star.addEventListener("click", ()=>{
+notaAtual = star.dataset.v;
+localStorage.setItem("desoladorNota", notaAtual);
+pintarEstrelas(notaAtual);
+resultado.innerText = "Você avaliou com " + notaAtual + " estrelas ⭐";
+});
 });
 
+
 /* SCROLL REVEAL */
-function revealOnScroll() {
-    const elements = document.querySelectorAll(".reveal");
+function revealOnScroll(){
 
-    elements.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
+const elements = document.querySelectorAll(".reveal");
 
-        if (elementTop < windowHeight - 100) {
-            el.classList.add("active");
-        }
-    });
+elements.forEach(el=>{
+
+const windowHeight = window.innerHeight;
+const elementTop = el.getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 100){
+el.classList.add("active");
+}
+
+});
+
 }
 
 window.addEventListener("scroll", revealOnScroll);
@@ -168,32 +221,3 @@ window.addEventListener("load", revealOnScroll);
 
 </body>
 </html>
-
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
-</footer>
-
