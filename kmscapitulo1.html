@@ -3,13 +3,14 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Kamai SEN</title>
 
 <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
 <link rel="stylesheet" href="style.css">
 
 <style>
-/* GRID BÁSICO (caso seu CSS não tenha isso) */
 .grid-comic {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -21,18 +22,88 @@
     width: 100%;
     height: auto;
     border-radius: 6px;
+    cursor: zoom-in;
+    display: block;
+}
+
+/* ZOOM (LIGHTBOX) */
+.zoom {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.zoom img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    cursor: grab;
+    transform-origin: center center;
+}
+
+.zoom img:active {
+    cursor: grabbing;
+}
+
+/* UPLOAD BOX */
+.upload-box {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.upload-box input,
+.upload-box button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.upload-box button {
+    padding: 10px;
+    background: #6c5ce7;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.upload-box button:hover {
+    background: #5a4bd6;
+}
+
+.upload-box img {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
 }
 </style>
 
 </head>
 
-<body class="cap1">
+<body class="cap2">
+
+<!-- UPLOAD -->
+<div class="upload-box">
+  <h3>Enviar nova página</h3>
+
+  <input type="file" id="file">
+  <button onclick="uploadImage()">📤 Enviar imagem</button>
+  <img id="preview">
+</div>
 
 <header>
-
 <div class="logo">
     <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
     </a>
 </div>
 
@@ -49,72 +120,115 @@
 <a href="sobre.html">Sobre</a>
 <a href="novidades.html">Novidades</a>
 </nav>
-
 </header>
 
-<!-- 📌 GALERIA DE IMAGENS -->
+<!-- GRID -->
 <section class="leitor">
-
 <div class="grid-comic">
 
-<img src="https://i.ibb.co/jkj4qJt8/PAG-1.jpg">
-<img src="https://i.ibb.co/v4M0Jxpr/PAG-2.jpg">
-<img src="https://i.ibb.co/cckwnbCr/PAG-3.jpg">
-<img src="https://i.ibb.co/39FjxFDK/PAG-4.jpg">
-<img src="https://i.ibb.co/HT69TMX7/PAG-5.jpg">
-<img src="https://i.ibb.co/7MvczCM/PAG-6.jpg">
-<img src="https://i.ibb.co/hJkSxFv6/PAG-7.jpg">
-<img src="https://i.ibb.co/7xcnPhd4/PAG-8.jpg">
-<img src="https://i.ibb.co/yBWGg3f2/PAG-9.jpg">
-<img src="https://i.ibb.co/m5sDxjHw/PAG-10.jpg">
-<img src="https://i.ibb.co/S71dGRqY/PAG-11.jpg">
-<img src="https://i.ibb.co/HLRHtX2M/PAG-12.jpg">
-<img src="https://i.ibb.co/GNMz1Fg/PAG-13.jpg">
-<img src="https://i.ibb.co/q3C5sWMZ/PAG-14.jpg">
-<img src="https://i.ibb.co/KpFP7zJC/PAG-15.jpg">
-<img src="https://i.ibb.co/TDcW8Q2K/PAG-16.jpg">
-<img src="https://i.ibb.co/d4MPgJRt/PAG-17.jpg">
-<img src="https://i.ibb.co/cSQYtt4n/PAG-18.jpg">
-<img src="https://i.ibb.co/MkSmTFZ0/PAG-19.jpg">
-<img src="https://i.ibb.co/5grD6TRM/PAG-20.jpg">
-<img src="https://i.ibb.co/PZ56Z4sy/PAG-21.jpg">
-<img src="https://i.ibb.co/Jfx1Nzs/PAG-22.jpg">
-<img src="https://i.ibb.co/nNgtqxWv/PAG-23.jpg">
+<img src="https://i.ibb.co/jkj4qJt8/PAG-1.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/v4M0Jxpr/PAG-2.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/cckwnbCr/PAG-3.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/39FjxFDK/PAG-4.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/HT69TMX7/PAG-5.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/7MvczCM/PAG-6.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/hJkSxFv6/PAG-7.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/7xcnPhd4/PAG-8.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/yBWGg3f2/PAG-9.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/m5sDxjHw/PAG-10.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/S71dGRqY/PAG-11.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/HLRHtX2M/PAG-12.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/GNMz1Fg/PAG-13.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/q3C5sWMZ/PAG-14.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/KpFP7zJC/PAG-15.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/TDcW8Q2K/PAG-16.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/d4MPgJRt/PAG-17.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/cSQYtt4n/PAG-18.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/MkSmTFZ0/PAG-19.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/5grD6TRM/PAG-20.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/PZ56Z4sy/PAG-21.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/Jfx1Nzs/PAG-22.jpg" onclick="abrirZoom(this)">
+<img src="https://i.ibb.co/nNgtqxWv/PAG-23.jpg" onclick="abrirZoom(this)">
 
 </div>
-
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-
-<div class="footer-container">
-
-<div class="footer-logo">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-<p>Sagile Studios © 2026</p>
+<!-- ZOOM -->
+<div id="zoom" class="zoom" onclick="fecharZoom()">
+    <img id="zoomImg">
 </div>
 
-<div class="footer-links">
-<a href="livro.html">Livros</a>
-<a href="games.html">Games</a>
-<a href="comics.html">Comics</a>
-<a href="sobre.html">Sobre</a>
-</div>
+<!-- JS -->
+<script>
+let zoomLevel = 2.5;
+let posX = 0;
+let posY = 0;
+let isDragging = false;
+let startX, startY;
 
-<div class="footer-social">
-<p>Redes</p>
-<a href="#">Instagram</a>
-<a href="#">YouTube</a>
-</div>
+function abrirZoom(img) {
+    const zoom = document.getElementById("zoom");
+    const zoomImg = document.getElementById("zoomImg");
 
-</div>
+    zoomImg.src = img.src;
+    zoom.style.display = "flex";
 
-<div class="footer-bottom">
-<p>Todos os direitos reservados.</p>
-</div>
+    zoomLevel = 2.5;
+    posX = 0;
+    posY = 0;
 
-</footer>
+    updateTransform();
+}
+
+function fecharZoom() {
+    document.getElementById("zoom").style.display = "none";
+}
+
+/* atualizar zoom + posição */
+function updateTransform() {
+    const img = document.getElementById("zoomImg");
+    img.style.transform = `translate(${posX}px, ${posY}px) scale(${zoomLevel})`;
+}
+
+/* ZOOM COM SCROLL */
+document.addEventListener("wheel", function(e) {
+    const zoom = document.getElementById("zoom");
+    if (zoom.style.display !== "flex") return;
+
+    e.preventDefault();
+
+    if (e.deltaY < 0) zoomLevel += 0.2;
+    else zoomLevel -= 0.2;
+
+    if (zoomLevel < 1) zoomLevel = 1;
+    if (zoomLevel > 6) zoomLevel = 6;
+
+    updateTransform();
+}, { passive: false });
+
+/* MOVER IMAGEM (MOUSE) */
+document.addEventListener("mousedown", function(e) {
+    const zoom = document.getElementById("zoom");
+    if (zoom.style.display !== "flex") return;
+
+    isDragging = true;
+    startX = e.clientX - posX;
+    startY = e.clientY - posY;
+});
+
+document.addEventListener("mouseup", function() {
+    isDragging = false;
+});
+
+document.addEventListener("mousemove", function(e) {
+    if (!isDragging) return;
+
+    posX = e.clientX - startX;
+    posY = e.clientY - startY;
+
+    updateTransform();
+});
+</script>
 
 </body>
 </html>
