@@ -1086,22 +1086,24 @@ height:60px;
 
 }
 
-/* AJUSTE SOMENTE PARA CELULAR */
-@media (max-width: 768px) {
+@media (max-width: 768px){
 
-.livro-container{
+.pagina-livro{
 flex-direction: column;
 align-items: center;
-}
-
-.livro-info{
-margin-left: 0;
-margin-top: 20px;
 text-align: center;
 }
 
-.sinopse{
-margin-top: 20px;
+.coluna-capa,
+.coluna-info,
+.coluna-sinopse{
+width: 100%;
+max-width: 400px;
+margin-bottom: 25px;
+}
+
+.coluna-info{
+text-align: left;
 }
 
 }
