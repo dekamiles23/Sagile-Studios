@@ -1013,3 +1013,9 @@ nav a:hover::after {
 
     transform: scale(1.1);
 }
+
+.novidades .post{
+    padding-bottom:20px;
+    margin-bottom:25px;
+    border-bottom:2px solid #2a2a2a;
+}
