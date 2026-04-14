@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // 🔍 BUSCA
     const searchInput = document.getElementById("search");
     const cards = document.querySelectorAll(".card");
 
@@ -17,31 +18,44 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 🔍 enquanto digita
-    searchInput.addEventListener("input", filtrar);
+    if (searchInput) {
+        searchInput.addEventListener("input", filtrar);
 
-    // ⌨️ quando aperta ENTER
-    searchInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-            e.preventDefault(); // evita reload
-            filtrar();
+        searchInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                filtrar();
+            }
+        });
+    }
+
+    // 🎬 TRANSIÇÃO
+    const transition = document.querySelector(".transition");
+
+    document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function(e) {
+
+            const href = this.getAttribute("href");
+
+            if (!href || href.startsWith("http") || href.startsWith("#")) return;
+
+            if (!transition) return; // evita erro
+
+            e.preventDefault();
+
+            transition.classList.add("active");
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 400);
+        });
+    });
+
+    // 🔥 Corrige tela travada
+    window.addEventListener("pageshow", () => {
+        if (transition) {
+            transition.classList.remove("active");
         }
     });
 
 });
-
-function revealOnScroll() {
-    const elements = document.querySelectorAll(".reveal");
-
-    elements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        const screenHeight = window.innerHeight;
-
-        if (elementTop < screenHeight - 50) {
-            el.classList.add("active");
-        }
-    });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
