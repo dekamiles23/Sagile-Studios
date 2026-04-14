@@ -960,26 +960,20 @@ nav a:hover::after {
 
 .avaliacoes {
     width: 100%;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-top: 100px;
 }
 
 .avaliacao-box {
     width: 100%;
     max-width: 800px;
-
     margin: 100px auto 60px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-
-    text-align: center;
 }
 
 #estrelas {
@@ -1018,4 +1012,51 @@ nav a:hover::after {
     padding-bottom:20px;
     margin-bottom:25px;
     border-bottom:2px solid #2a2a2a;
+}
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* BOTÃO MENU MOBILE */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+color:white;
+z-index:9999;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+.menu-toggle{
+display:block;
+position:absolute;
+right:20px;
+top:25px;
+}
+
+/* esconder menu normal */
+nav{
+display:none;
+flex-direction:column;
+background:#020617;
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+padding:20px;
+}
+
+/* quando abre */
+nav.active{
+display:flex;
+}
+
 }
