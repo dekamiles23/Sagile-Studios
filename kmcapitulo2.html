@@ -26,6 +26,19 @@
 
 </head>
 
+<!-- UPLOAD SUPABASE -->
+<div class="upload-box">
+
+  <h3>Enviar nova página</h3>
+
+  <input type="file" id="file">
+
+  <button onclick="uploadImage()">📤 Enviar imagem</button>
+
+  <img id="preview">
+
+</div>
+
 <body class="cap2">
 
 <header>
@@ -105,3 +118,30 @@
 
 </body>
 </html>
+
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+const supabaseUrl = "SUA_URL";
+const supabaseKey = "SUA_KEY";
+
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+window.uploadImage = async function () {
+    const file = document.getElementById("file").files[0];
+
+    if (!file) return;
+
+    const fileName = Date.now() + "_" + file.name;
+
+    await supabase.storage
+        .from("comics")
+        .upload(fileName, file);
+
+    const { data } = supabase.storage
+        .from("comics")
+        .getPublicUrl(fileName);
+
+    document.getElementById("preview").src = data.publicUrl;
+}
+</script>
