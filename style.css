@@ -1031,32 +1031,57 @@ color:white;
 z-index:9999;
 }
 
-/* MOBILE */
-
-@media (max-width:768px){
+/* ========================= */
+/* MENU MOBILE */
+/* ========================= */
 
 .menu-toggle{
-display:block;
-position:absolute;
-right:20px;
-top:25px;
+display:none;
+font-size:28px;
+cursor:pointer;
+color:white;
 }
 
-/* esconder menu normal */
+/* celular */
+@media (max-width:768px){
+
+/* mostra botão */
+.menu-toggle{
+display:block;
+}
+
+/* esconde menu normal */
 nav{
 display:none;
 flex-direction:column;
-background:#020617;
 position:absolute;
-top:80px;
-left:0;
-width:100%;
+top:100px;
+right:20px;
+background:rgba(0,0,0,0.95);
 padding:20px;
+border-radius:10px;
+gap:10px;
 }
 
-/* quando abre */
+/* quando clicar */
 nav.active{
 display:flex;
+}
+
+/* links do menu */
+nav a{
+margin:0;
+text-align:center;
+}
+
+/* barra de pesquisa menor */
+.search-box input{
+width:160px;
+}
+
+/* logo menor */
+.logo img{
+height:60px;
 }
 
 }
