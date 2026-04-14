@@ -7,9 +7,13 @@
 
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
     <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body> <div class="transition"></div>
+<body> 
+
+<div class="transition"></div>
 
 <!-- ❄️ NEVE -->
 <div class="snow-container"></div>
@@ -17,18 +21,21 @@
 <!-- MENU -->
 <header>
     <div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </a>
-</div>
+        <a href="index.html">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+        </a>
+    </div>
 
-     <a href="faleconosco.html" class="contato-icon">
-    💬
-</a>
+    <a href="faleconosco.html" class="contato-icon">
+        💬
+    </a>
 
     <div class="search-box">
         <input type="text" placeholder="Pesquisar livros, games, comics...">
     </div>
+
+    <!-- 🔥 BOTÃO HAMBURGUER (ADICIONADO) -->
+    <div class="menu-toggle">☰</div>
 
     <nav>
         <a href="livro.html">Livros</a>
@@ -85,6 +92,14 @@ if (container) {
         container.appendChild(flake);
     }
 }
+
+/// 📱 MENU MOBILE (ADICIONADO)
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
 </script>
 
 </body>
