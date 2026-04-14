@@ -19,19 +19,28 @@
 <div class="snow-container"></div>
 
 <script>
-const container = document.querySelector(".snow-container");
+window.addEventListener("load", () => {
 
-for (let i = 0; i < 50; i++) {
-    const flake = document.createElement("div");
-    flake.classList.add("snowflake");
-    flake.innerHTML = "•";
+    const container = document.querySelector(".snow-container");
 
-    flake.style.left = Math.random() * 100 + "vw";
-    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
-    flake.style.fontSize = (5 + Math.random() * 10) + "px";
+    if (!container) return;
 
-    container.appendChild(flake);
-}
+    for (let i = 0; i < 50; i++) {
+        const flake = document.createElement("div");
+        flake.classList.add("snowflake");
+
+        // só adiciona depois do layout pronto
+        flake.innerHTML = "•";
+
+        flake.style.position = "fixed";
+        flake.style.top = "-10px";
+        flake.style.left = Math.random() * 100 + "vw";
+        flake.style.opacity = "0.8";
+
+        container.appendChild(flake);
+    }
+
+});
 </script>
 
 <header>
