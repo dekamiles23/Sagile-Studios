@@ -4,19 +4,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("search");
     const cards = document.querySelectorAll(".card");
 
-    function filtrar() {
-        const valor = searchInput.value.toLowerCase();
+function filtrar() {
+    const valor = searchInput.value.toLowerCase();
 
-        cards.forEach(card => {
-            const nome = card.dataset.nome.toLowerCase();
+    cards.forEach(card => {
+        const nome = (card.dataset.nome || "").toLowerCase();
 
-            if (nome.includes(valor)) {
-                card.style.display = "";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    }
+        if (nome.includes(valor)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
 
     if (searchInput) {
         searchInput.addEventListener("input", filtrar);
@@ -59,3 +59,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
