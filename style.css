@@ -1107,3 +1107,13 @@ text-align: left;
 }
 
 }
+
+.botao-comprar {
+    padding: 10px 20px;
+    border: 2px solid white;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    background: transparent;
+    transition: 0.3s;
+}
