@@ -2,14 +2,16 @@
 <html lang="pt-br">
 
 <head>
-    <head>
     <meta charset="UTF-8">
     <title>Kamai SEN</title>
 
-    <!-- FAVICON AQUI -->
+    <!-- FAVICON -->
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- 📱 MOBILE -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -22,15 +24,18 @@
     </a>
 </div>
 
-     <a href="faleconosco.html" class="contato-icon">
+<a href="faleconosco.html" class="contato-icon">
     💬
 </a>
 
 <div class="search-box">
-<input type="text" placeholder="Pesquisar livros, games, comics...">
+    <input type="text" placeholder="Pesquisar livros, games, comics...">
 </div>
 
-   <nav>
+<!-- 🔥 BOTÃO HAMBURGUER (ADICIONADO) -->
+<div class="menu-toggle">☰</div>
+
+<nav>
     <a href="livro.html">Livros</a>
     <a href="games.html">Games</a>
     <a href="comics.html">Comics</a>
@@ -64,6 +69,16 @@
 </div>
 
 </section>
+
+<!-- 📱 SCRIPT MENU MOBILE -->
+<script>
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
+</script>
 
 </body>
 </html>
