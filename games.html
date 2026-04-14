@@ -6,52 +6,88 @@
     <title>Games - Sagile Studios</title>
 
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body>
+<body> 
 
 <div class="transition"></div>
 
 <!-- ❄️ NEVE -->
 <div class="snow-container"></div>
 
+<!-- MENU -->
 <header>
+    <div class="logo">
+        <a href="index.html">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+        </a>
+    </div>
 
-<div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+    <a href="faleconosco.html" class="contato-icon">
+        💬
     </a>
-</div>
 
-<a href="faleconosco.html" class="contato-icon">💬</a>
+    <div class="search-box">
+        <input type="text" placeholder="Pesquisar livros, games, comics...">
+    </div>
 
-<div class="search-box">
-<input type="text" placeholder="Pesquisar livros, games, comics...">
-</div>
+    <!-- 🔥 BOTÃO HAMBURGUER (ADICIONADO) -->
+    <div class="menu-toggle">☰</div>
 
-<!-- ☰ MENU -->
-<div class="menu-toggle" style="font-size:28px; cursor:pointer; padding:10px;">
-☰
-</div>
-
-<!-- MENU ESCONDIDO -->
-<nav id="menu" style="display:none;">
-    <a href="livro.html">Livros</a>
-    <a href="games.html">Games</a>
-    <a href="comics.html">Comics</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="novidades.html">Novidades</a>
-</nav>
-
+    <nav>
+        <a href="livro.html">Livros</a>
+        <a href="games.html">Games</a>
+        <a href="comics.html">Comics</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="novidades.html">Novidades</a>
+    </nav>
 </header>
 
 <!-- CONTEÚDO -->
-<section class="games-vazio">
-    <h1>Ainda não há jogos disponível</h1>
+<section class="novidades">
+
+  <h1>Ainda não há jogos disponível</h1>
+
+  <div class="post">
+    <h2></h2>
+    <p><strong></strong></p>
+    <p></p>
+    <p>
+
 </section>
+
+<!-- ❄️ SCRIPT DA NEVE -->
+<script>
+const container = document.querySelector(".snow-container");
+
+if (container) {
+    for (let i = 0; i < 50; i++) {
+        const flake = document.createElement("div");
+        flake.classList.add("snowflake");
+        flake.innerHTML = "•";
+
+        flake.style.left = Math.random() * 100 + "vw";
+        flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+        flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+        container.appendChild(flake);
+    }
+}
+
+/// 📱 MENU MOBILE (ADICIONADO)
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>
 
 <footer class="footer">
     <div class="footer-container">
@@ -80,61 +116,3 @@
         <p>Todos os direitos reservados.</p>
     </div>
 </footer>
-
-<!-- 🔥 SCRIPTS -->
-<script>
-
-/* ❄️ NEVE CORRIGIDA */
-window.addEventListener("load", () => {
-
-    const container = document.querySelector(".snow-container");
-
-    if (!container) return;
-
-    container.style.position = "fixed";
-    container.style.top = "0";
-    container.style.left = "0";
-    container.style.width = "100%";
-    container.style.height = "100%";
-    container.style.pointerEvents = "none";
-
-    for (let i = 0; i < 50; i++) {
-        const flake = document.createElement("div");
-
-        flake.innerHTML = "•";
-        flake.style.position = "absolute";
-        flake.style.color = "white";
-        flake.style.left = Math.random() * 100 + "vw";
-        flake.style.top = Math.random() * 100 + "vh";
-        flake.style.fontSize = (5 + Math.random() * 10) + "px";
-
-        container.appendChild(flake);
-    }
-
-});
-
-/* 🔥 MENU FUNCIONANDO */
-const menuToggle = document.querySelector(".menu-toggle");
-const menu = document.getElementById("menu");
-
-menuToggle.addEventListener("click", function(e) {
-    e.stopPropagation();
-
-    if (menu.style.display === "block") {
-        menu.style.display = "none";
-    } else {
-        menu.style.display = "block";
-    }
-});
-
-/* FECHAR AO CLICAR FORA */
-document.addEventListener("click", function(e) {
-    if (!menu.contains(e.target) && !menuToggle.contains(e.target)) {
-        menu.style.display = "none";
-    }
-});
-
-</script>
-
-</body>
-</html>
