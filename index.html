@@ -52,7 +52,9 @@
         <input type="text" id="search" placeholder="Pesquisar...">
     </div>
 
-    <nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
         <a href="livro.html">Livros</a>
         <a href="games.html">Games</a>
         <a href="comics.html">Comics</a>
@@ -221,6 +223,11 @@ window.addEventListener("load", revealOnScroll);
 </script>
 
 <script src="script.js"></script>
+    <script>
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+</script>
 </body>
 </html>
 </body>
