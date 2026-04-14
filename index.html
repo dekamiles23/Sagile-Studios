@@ -22,6 +22,8 @@
  <meta name="twitter:description" content="Site Oficial da Sagile Studios">
   <meta name="twitter:image" content="https://i.ibb.co/yFdkmtrW/banner-Sagile.jpg">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body> 
 
@@ -38,29 +40,32 @@
 
 <!-- MENU -->
 <header>
-    <div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </a>
+
+<div class="logo">
+<a href="index.html">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+</a>
 </div>
 
-     <a href="faleconosco.html" class="contato-icon">
-    💬
+<a href="faleconosco.html" class="contato-icon">
+💬
 </a>
 
-    <div class="search-box">
-        <input type="text" id="search" placeholder="Pesquisar...">
-    </div>
+<div class="search-box">
+<input type="text" placeholder="Pesquisar...">
+</div>
 
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
+<!-- MENU -->
 <nav id="menu">
-        <a href="livro.html">Livros</a>
-        <a href="games.html">Games</a>
-        <a href="comics.html">Comics</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="novidades.html">Novidades</a>
-    </nav>
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+<a href="novidades.html">Novidades</a>
+</nav>
+
 </header>
 
 <!-- BANNER -->
@@ -223,11 +228,13 @@ window.addEventListener("load", revealOnScroll);
 </script>
 
 <script src="script.js"></script>
-    <script>
-function toggleMenu(){
+
+<script>
+function toggleMenu() {
 document.getElementById("menu").classList.toggle("active");
 }
 </script>
+
 </body>
 </html>
 </body>
