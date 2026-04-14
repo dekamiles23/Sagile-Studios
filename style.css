@@ -372,13 +372,7 @@ background-position:center;
     padding: 40px;
     min-height: 100vh;
 
-    background: 
-        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-        url("https://i.ibb.co/GQGGG1Jd/Sagile-Studios-new-Wallpaper-2026.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: none; /* 🔥 remove isso */
 }
 
 .games-vazio {
@@ -1125,4 +1119,15 @@ text-align: left;
 
     background-size: cover;
     background-position: center;
+}
+
+.page-comics {
+    background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/djvpwpw-bb9c0595-d6d1-41f8-802b-a4fb03843602.jpg/v1/fill/w_1192,h_670,q_70,strp/kamai_sen_world_by_milesdeka2_djvpwpw-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGp2cHdwdy1iYjljMDU5NS1kNmQxLTQxZjgtODAyYi1hNGZiMDM4NDM2MDIuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.JAapQX6Lj_Er0AK9rM6qbv_v_0z_lPA8YqBi_LKKFow");
+
+    background-size: cover;       /* 🔥 evita repetição */
+    background-position: center;  /* centraliza */
+    background-repeat: no-repeat; /* 🔥 ESSENCIAL */
+    min-height: 100vh;
 }
