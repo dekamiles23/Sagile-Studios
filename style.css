@@ -247,28 +247,36 @@ border-radius:12px;
 box-shadow:0 0 30px rgba(0,0,0,0.7);
 }
 
-.botao-comprar{
+.botoes-compra {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
 
-margin-top:25px;
-margin-left:20px; /* empurra para direita */
+.botao-comprar {
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-padding:12px 30px;
+/* Ebook */
+.botao-comprar.ebook {
+    background: #6c5ce7;
+    color: white;
+}
 
-font-size:18px;
-font-weight:bold;
+/* Físico */
+.botao-comprar.fisico {
+    background: #00b894;
+    color: white;
+}
 
-color:white;
-background:#0a84ff;
-
-border:none;
-border-radius:6px;
-
-cursor:pointer;
-
-box-shadow:0 0 15px rgba(0,0,0,0.4);
-
-transition:0.25s;
-
+.botao-comprar:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
 }
 
 .titulo-livro{
@@ -999,4 +1007,3 @@ nav a:hover::after {
 
     transform: scale(1.1);
 }
-
