@@ -8,30 +8,7 @@
 <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
 <link rel="stylesheet" href="style.css">
 
-<style>
-/* ⭐ AVALIAÇÃO */
-.nota {
-    text-align: center;
-    margin: 80px auto;
-}
-
-#estrelas span {
-    font-size: 40px;
-    cursor: pointer;
-    color: #555;
-    transition: 0.3s;
-}
-
-#estrelas span:hover,
-#estrelas span.ativo {
-    color: gold;
-}
-
-#resultado {
-    margin-top: 10px;
-    opacity: 0.7;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -45,12 +22,17 @@
     </a>
 </div>
 
-     <a href="faleconosco.html" class="contato-icon">
+<a href="faleconosco.html" class="contato-icon">
     💬
 </a>
 
 <div class="search-box">
 <input type="text" placeholder="Pesquisar livros, games, comics...">
+</div>
+
+<!-- 🔥 BOTÃO HAMBURGUER (AGORA VISÍVEL) -->
+<div class="menu-toggle" style="font-size:28px; cursor:pointer; padding:10px;">
+☰
 </div>
 
 <nav>
@@ -88,11 +70,7 @@ Terror, survival horror, ação, aventura, fantasia
 <h2>Sinopse</h2>
 
 <p>
-Quando duas realidades colidem, Wayston deixa de ser apenas uma cidade, e se torna o epicentro de um pesadelo. Um incidente inexplicável funde dimensões, distorcendo o mundo como todos conheciam. O caos se espalha pelas ruas, criaturas medonhas emergem das sombras e o medo ultrapassa os limites da cidade, ameaçando toda a humanidade.
-
-A caminho de visitar o pai no hospital, Jane percebe que algo está profundamente errado. O que deveria ser um dia comum se transforma em uma luta brutal pela sobrevivência. Cercada por perigos desconhecidos e horrores que desafiam a lógica, ela precisará encontrar respostas antes que Wayston seja completamente consumida.
-
-Em meio a uma jornada apocalíptica repleta de tensão, mistério e criaturas aterradoras, Jane enfrentará não apenas monstros, mas a própria ruptura da realidade.
+Quando duas realidades colidem, Wayston deixa de ser apenas uma cidade, e se torna o epicentro de um pesadelo. Um incidente inexplicável funde dimensões, distorcendo o mundo como todos conheciam...
 </p>
 
 <p>Preço: 30,00 R$</p>
@@ -109,7 +87,7 @@ Em meio a uma jornada apocalíptica repleta de tensão, mistério e criaturas at
 
 </section>
 
-<!-- ⭐ AVALIAÇÃO (CENTRALIZADA E NO LUGAR CERTO) -->
+<!-- ⭐ AVALIAÇÃO -->
 <section class="nota">
     <h2>Avalie esta obra</h2>
 
@@ -131,13 +109,19 @@ Em meio a uma jornada apocalíptica repleta de tensão, mistério e criaturas at
 
 <!-- 🖼️ CAPA GRANDE -->
 <section id="capa-grande" class="reveal">
-
-<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dles1gg-5eccd093-4def-4ba5-b383-bb20a83f8b15.jpg/v1/fill/w_1192,h_670,q_70,strp/wayston___jane_artwork_remake_by_milesdeka2_dles1gg-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxlczFnZy01ZWNjZDA5My00ZGVmLTRiYTUtYjM4My1iYjIwYTgzZjhiMTUuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.-PxySdCIUSKDSgj6Gn_h3SBP_mRnAlcq0C6M36sDoHQ">
-
+<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dles1gg-5eccd093-4def-4ba5-b383-bb20a83f8b15.jpg">
 </section>
 
 <!-- 🔥 SCRIPT -->
 <script>
+
+/* MENU MOBILE */
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector("nav");
+
+menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+});
 
 /* SCROLL REVEAL */
 function revealOnScroll() {
@@ -156,8 +140,7 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
-
-/* ⭐ SISTEMA DE AVALIAÇÃO */
+/* ⭐ AVALIAÇÃO */
 const estrelas = document.querySelectorAll("#estrelas span");
 const resultado = document.getElementById("resultado");
 
