@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -8,9 +7,26 @@
 
 <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
 <link rel="stylesheet" href="style.css">
+
+<style>
+.grid-comic {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+.grid-comic img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+}
+</style>
+
 </head>
-    
-    <body class="cap2">
+
+<body class="cap2">
 
 <header>
 
@@ -20,9 +36,7 @@
     </a>
 </div>
 
-     <a href="faleconosco.html" class="contato-icon">
-    💬
-</a>
+<a href="faleconosco.html" class="contato-icon">💬</a>
 
 <div class="search-box">
 <input type="text" placeholder="Pesquisar livros, games, comics...">
@@ -38,63 +52,56 @@
 
 </header>
 
+<!-- 📌 GALERIA LIMPA -->
 <section class="leitor">
 
-  <!-- CARROSSEL -->
-<div class="carrossel">
+<div class="grid-comic">
 
-  <button class="seta esquerda" onclick="scrollComic(-1)">❮</button>
-
-  <div class="grid-comic" id="comic">
-
-    <img src="https://i.ibb.co/jkj4qJt8/PAG-1.jpg">
-    <img src="https://i.ibb.co/v4M0Jxpr/PAG-2.jpg">
-    <img src="https://i.ibb.co/cckwnbCr/PAG-3.jpg">
-    <img src="https://i.ibb.co/39FjxFDK/PAG-4.jpg">
-
-  </div>
-
-  <button class="seta direita" onclick="scrollComic(1)">❯</button>
+<img src="https://i.ibb.co/5Xj2V6RG/PAG-1.jpg">
+<img src="https://i.ibb.co/QjJwrt0C/PAG-2.jpg">
+<img src="https://i.ibb.co/W469H73K/PAG-3.jpg">
+<img src="https://i.ibb.co/d0ghhm6M/PAG-4.jpg">
+<img src="https://i.ibb.co/YTq5x0Fz/PAG-5.jpg">
+<img src="https://i.ibb.co/mVbpYCfY/PAG-6.jpg">
+<img src="https://i.ibb.co/cSNRKmvS/PAG-7.jpg">
+<img src="https://i.ibb.co/23x5Fmd5/PAG-8.jpg">
+<img src="https://i.ibb.co/x8DpWQLq/PAG-9.jpg">
+<img src="https://i.ibb.co/qLC1yzDC/PAG-10.jpg">
 
 </div>
 
-  <a href="https://i.ibb.co/5Xj2V6RG/PAG-1.jpg" target="_blank"><img src="https://i.ibb.co/5Xj2V6RG/PAG-1.jpg"></a>
-  <a href="https://i.ibb.co/QjJwrt0C/PAG-2.jpg" target="_blank"><img src="https://i.ibb.co/QjJwrt0C/PAG-2.jpg"></a>
-  <a href="https://i.ibb.co/W469H73K/PAG-3.jpg" target="_blank"><img src="https://i.ibb.co/W469H73K/PAG-3.jpg"></a>
-  <a href="https://i.ibb.co/d0ghhm6M/PAG-4.jpg" target="_blank"><img src="https://i.ibb.co/d0ghhm6M/PAG-4.jpg"></a>
-  <a href="https://i.ibb.co/YTq5x0Fz/PAG-5.jpg" target="_blank"><img src="https://i.ibb.co/YTq5x0Fz/PAG-5.jpg"></a>
-  <a href="https://i.ibb.co/mVbpYCfY/PAG-6.jpg" target="_blank"><img src="https://i.ibb.co/mVbpYCfY/PAG-6.jpg"></a>
-  <a href="https://i.ibb.co/cSNRKmvS/PAG-7.jpg" target="_blank"><img src="https://i.ibb.co/cSNRKmvS/PAG-7.jpg"></a>
-  <a href="https://i.ibb.co/23x5Fmd5/PAG-8.jpg" target="_blank"><img src="https://i.ibb.co/23x5Fmd5/PAG-8.jpg"></a>
-  <a href="https://i.ibb.co/x8DpWQLq/PAG-9.jpg" target="_blank"><img src="https://i.ibb.co/x8DpWQLq/PAG-9.jpg"></a>
-  <a href="https://i.ibb.co/qLC1yzDC/PAG-10.jpg" target="_blank"><img src="https://i.ibb.co/qLC1yzDC/PAG-10.jpg"></a>
-
 </section>
 
-        <footer class="footer">
-    <div class="footer-container">
+<!-- FOOTER -->
+<footer class="footer">
 
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
+<div class="footer-container">
 
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
+<div class="footer-logo">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+<p>Sagile Studios © 2026</p>
+</div>
 
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
+<div class="footer-links">
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+</div>
 
-    </div>
+<div class="footer-social">
+<p>Redes</p>
+<a href="#">Instagram</a>
+<a href="#">YouTube</a>
+</div>
 
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
+</div>
+
+<div class="footer-bottom">
+<p>Todos os direitos reservados.</p>
+</div>
+
 </footer>
+
+</body>
+</html>
