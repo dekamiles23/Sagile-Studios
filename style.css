@@ -540,7 +540,7 @@ background-position:center;
     height: 100%;
 
     pointer-events: none;
-    z-index: 5;
+    z-index: 1;
 }
 
 /* floco individual */
@@ -1008,23 +1008,6 @@ nav a:hover::after {
     border-bottom:2px solid #2a2a2a;
 }
 
-.menu-toggle{
-display:none;
-font-size:28px;
-color:white;
-cursor:pointer;
-}
-
-/* BOTÃO MENU MOBILE */
-
-.menu-toggle{
-display:none;
-font-size:28px;
-cursor:pointer;
-color:white;
-z-index:9999;
-}
-
 /* ========================= */
 /* MENU MOBILE */
 /* ========================= */
@@ -1130,4 +1113,40 @@ text-align: left;
     background-position: center;  /* centraliza */
     background-repeat: no-repeat; /* 🔥 ESSENCIAL */
     min-height: 100vh;
+}
+
+.upload-box {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 15px;
+    background: #111;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+}
+
+.upload-box input {
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+}
+
+.upload-box button {
+    padding: 10px 15px;
+    border: none;
+    background: #6c5ce7;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.upload-box button:hover {
+    background: #5a4bd6;
+}
+
+.upload-box img {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
 }
