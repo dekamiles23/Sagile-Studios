@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
+
     <meta charset="UTF-8">
     <title>Sagile Studios</title>
 
@@ -9,40 +9,55 @@
     <link rel="stylesheet" href="style.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
 
-<!-- TRANSIÇÃO -->
-<div class="transition active"></div>
+<!-- TRANSIÇÃO (sem active pra não bugar) -->
+<div class="transition"></div>
 
-<!-- MENU -->
+<!-- NEVE -->
+<div class="snow-container"></div>
+
+<!-- MENU NOVO (DO INDEX) -->
 <header>
 
     <div class="logo">
         <a href="index.html">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
         </a>
     </div>
 
-    <a href="faleconosco.html" class="contato-icon">
-        💬
-    </a>
+<div class="right-area">
 
-  <div class="search-box">
-<input type="text" id="search" placeholder="Pesquisar livros, games, comics...">
-</div>
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
 
-    <!-- 🔥 BOTÃO HAMBURGUER (ADICIONADO) -->
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
+    </div>
+
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
     <div class="menu-toggle">☰</div>
 
-    <nav>
-        <a href="livro.html">Livros</a>
-        <a href="games.html">Games</a>
-        <a href="comics.html">Comics</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="novidades.html">Novidades</a>
-    </nav>
+</div>
+
+ <nav class="menu" id="menu">
+    <div class="highlight"></div>
+
+    <a href="livro.html">Livros</a>
+    <a href="games.html">Games</a>
+    <a href="comics.html">Comics</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="novidades.html">Novidades</a>
+</nav>
 
 </header>
 
@@ -54,10 +69,15 @@
     </div>
 </section>
 
-<!-- ✨ LINHA SEPARADORA -->
+<!-- 🔍 PESQUISA (AGORA NO LUGAR CERTO) -->
+<div class="search-area">
+    <input type="text" id="search" placeholder="Pesquisar livros, games, comics...">
+</div>
+
+<!-- ✨ LINHA -->
 <div class="divider"></div>
 
-<!-- 📚 CATÁLOGO -->
+<!-- 📚 CATÁLOGO (100% ORIGINAL - NÃO ALTERADO) -->
 <section class="catalogo reveal">
 
     <h1>Livros</h1>
@@ -66,7 +86,6 @@
         Prepare-se para uma aventura longa de fantasia e ficção científica, aproveite totalmente de nossas histórias.
     </p>
 
-    <!-- 🌐 TODOS -->
     <h2>🌐 Todos</h2>
     <div class="grid-livros">
 
@@ -114,10 +133,8 @@
 
     </div>
 
-    <!-- ⭐ POPULARES -->
     <h2>⭐ Populares</h2>
     <div class="grid-livros">
-
         <div class="livro reveal item">
             <a href="emd.html">
                 <img class="capa-livro" src="https://i.ibb.co/gZX00HX9/Em-meu-Destino-Remake-Arte-Conceitual-v2.png">
@@ -131,13 +148,10 @@
             </a>
             <p>Desolador do anoitecer</p>
         </div>
-
     </div>
 
-    <!-- 🆕 RECENTES -->
     <h2>🆕 Recentes</h2>
     <div class="grid-livros">
-
         <div class="livro reveal item">
             <a href="attic.html">
                 <img class="capa-livro" src="https://i.ibb.co/hFRXg1Q4/Attic-Horror-s-Cover-art-IA.jpg">
@@ -151,13 +165,10 @@
             </a>
             <p>Wayston</p>
         </div>
-
     </div>
 
-    <!-- 😱 TERROR -->
     <h2>😱 Terror</h2>
     <div class="grid-livros">
-
         <div class="livro reveal item">
             <a href="wayston.html">
                 <img class="capa-livro" src="https://i.ibb.co/YTkc9CMM/Wayston-Capa-AI.png">
@@ -171,13 +182,10 @@
             </a>
             <p>Attic Horror's</p>
         </div>
-
     </div>
 
-    <!-- ⚔️ AÇÃO -->
     <h2>⚔️ Ação</h2>
     <div class="grid-livros">
-
         <div class="livro reveal item">
             <a href="emd.html">
                 <img class="capa-livro" src="https://i.ibb.co/gZX00HX9/Em-meu-Destino-Remake-Arte-Conceitual-v2.png">
@@ -198,20 +206,16 @@
             </a>
             <p>Desolador do anoitecer</p>
         </div>
-
     </div>
 
-    <!-- 📖 TRILOGIA -->
     <h2>📖 Trilogia</h2>
     <div class="grid-livros">
-
         <div class="livro reveal item">
             <a href="emdtrilogia.html">
                 <img class="capa-livro" src="https://i.ibb.co/C5Brdk0h/In-my-Destiny-Trilogy-Cover-art-V3-Com-m-scara.jpg">
             </a>
             <p>Em meu Destino - Trilogia</p>
         </div>
-
     </div>
 
 </section>
@@ -219,11 +223,28 @@
 <!-- SCRIPTS -->
 <script>
 
-/// 🎬 TRANSIÇÃO
+/// ❄️ NEVE
+const container = document.querySelector(".snow-container");
+
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
+
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+    container.appendChild(flake);
+}
+
+/// 🎬 TRANSIÇÃO (corrigida)
 const transition = document.querySelector(".transition");
 
 window.addEventListener("load", () => {
-    transition.classList.remove("active");
+    setTimeout(() => {
+        transition.classList.remove("active");
+    }, 100);
 });
 
 document.querySelectorAll("a").forEach(link => {
@@ -243,16 +264,10 @@ document.querySelectorAll("a").forEach(link => {
     });
 });
 
-
-/// 🔥 SCROLL REVEAL
+/// 🔥 SCROLL
 function revealOnScroll() {
-    const elements = document.querySelectorAll(".reveal");
-
-    elements.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-
-        if (elementTop < windowHeight - 100) {
+    document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
             el.classList.add("active");
         }
     });
@@ -261,26 +276,38 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
+/// 📱 MENU
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
 
-/// 🟣 SELEÇÃO ESTILO STEAM
-document.querySelectorAll(".item").forEach(item => {
-    item.addEventListener("click", () => {
+/// 🔵 HIGHLIGHT AZUL (menu)
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
 
-        document.querySelectorAll(".item").forEach(i => {
-            i.classList.remove("ativo");
-        });
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
 
-        item.classList.add("ativo");
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
+}
+
+// quando passa o mouse
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
     });
 });
 
-
-/// 📱 MENU MOBILE (ADICIONADO)
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector("nav");
-
-menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
+// quando carrega a página (fica no botão atual)
+window.addEventListener("load", () => {
+    links.forEach(link => {
+        if (link.href.includes("livro.html")) {
+            moveHighlight(link);
+        }
+    });
 });
 
 </script>
