@@ -10,79 +10,6 @@
 <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
 <link rel="stylesheet" href="style.css">
 
-<style>
-.grid-comic {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 10px;
-    padding: 20px;
-}
-
-.grid-comic img {
-    width: 100%;
-    height: auto;
-    border-radius: 6px;
-    cursor: zoom-in;
-    display: block;
-}
-
-/* ZOOM */
-.zoom {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    overflow: hidden;
-}
-
-.zoom img {
-    max-width: none;
-    max-height: none;
-    border-radius: 10px;
-    cursor: grab;
-    user-select: none;
-}
-
-/* UPLOAD BOX */
-.upload-box {
-    max-width: 400px;
-    margin: 20px auto;
-    padding: 15px;
-    background: #111;
-    border-radius: 10px;
-    text-align: center;
-    color: white;
-}
-
-.upload-box input,
-.upload-box button {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.upload-box button {
-    padding: 10px;
-    background: #6c5ce7;
-    border: none;
-    color: white;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.upload-box button:hover {
-    background: #5a4bd6;
-}
-
-.upload-box img {
-    margin-top: 10px;
-    max-width: 100%;
-    border-radius: 8px;
-}
-</style>
-
 </head>
 
 <body class="cap2">
@@ -148,7 +75,13 @@
 
 <!-- ZOOM -->
 <div id="zoom" class="zoom" onclick="fecharZoom()">
+
+    <button class="nav prev" onclick="event.stopPropagation(); anterior()">❮</button>
+
     <img id="zoomImg" onclick="event.stopPropagation()">
+
+    <button class="nav next" onclick="event.stopPropagation(); proxima()">❯</button>
+
 </div>
 
 <footer class="footer">
@@ -181,10 +114,11 @@
 
 <script>
 
-/// 🔍 ZOOM + ARRASTAR
-
 const zoom = document.getElementById("zoom");
 const zoomImg = document.getElementById("zoomImg");
+
+let imagens = document.querySelectorAll(".grid-comic img");
+let indexAtual = 0;
 
 let scale = 2;
 let isDragging = false;
@@ -194,17 +128,53 @@ let translateY = 0;
 
 function abrirZoom(img) {
     zoom.style.display = "flex";
-    zoomImg.src = img.src;
 
-    scale = 2;
+    imagens = document.querySelectorAll(".grid-comic img");
+    indexAtual = Array.from(imagens).indexOf(img);
+
+    zoomImg.src = imagens[indexAtual].src;
+
     translateX = 0;
     translateY = 0;
+
+    // 🔥 FIT NA TELA (sem zoom inicial)
+    scale = Math.min(
+        window.innerWidth / img.naturalWidth,
+        window.innerHeight / img.naturalHeight
+    );
+
+    // garante que nunca fique menor que 1 (opcional)
+    if (scale > 1) scale = 1;
 
     updateTransform();
 }
 
 function fecharZoom() {
     zoom.style.display = "none";
+}
+
+function proxima() {
+    if (indexAtual < imagens.length - 1) {
+        indexAtual++;
+        trocarImagem();
+    }
+}
+
+function anterior() {
+    if (indexAtual > 0) {
+        indexAtual--;
+        trocarImagem();
+    }
+}
+
+function trocarImagem() {
+    zoomImg.src = imagens[indexAtual].src;
+
+    scale = 1.2;
+    translateX = 0;
+    translateY = 0;
+
+    updateTransform();
 }
 
 zoom.addEventListener("wheel", (e) => {
@@ -244,6 +214,15 @@ function updateTransform() {
     zoomImg.style.transform =
         `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 }
+
+/// teclado
+document.addEventListener("keydown", (e) => {
+    if (zoom.style.display !== "flex") return;
+
+    if (e.key === "ArrowRight") proxima();
+    if (e.key === "ArrowLeft") anterior();
+    if (e.key === "Escape") fecharZoom();
+});
 
 </script>
 
