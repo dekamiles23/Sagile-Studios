@@ -57,13 +57,16 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("DOMContentLoaded", () => {
 
   function playClick() {
-    const audio = new Audio("button1.mp3");
+    const audio = new Audio("./button1.mp3");
     audio.volume = 0.3;
+    audio.currentTime = 0;
     audio.play().catch(() => {});
   }
 
-  document.querySelectorAll("a, button, .icon-btn").forEach(el => {
-    el.addEventListener("click", playClick);
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("a, button, .icon-btn")) {
+      playClick();
+    }
   });
 
 });
