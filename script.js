@@ -139,3 +139,26 @@ const notifBox = document.getElementById("notifBox");
 btnNotif.addEventListener("click", () => {
     notifBox.classList.toggle("active");
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const btnUser = document.getElementById("btnUser");
+    const loginOverlay = document.getElementById("loginOverlay");
+    const closeLogin = document.getElementById("closeLogin");
+
+    if (!btnUser || !loginOverlay || !closeLogin) {
+        console.log("Login não encontrado no HTML");
+        return;
+    }
+
+    btnUser.addEventListener("click", (e) => {
+        e.preventDefault();
+        loginOverlay.classList.add("active");
+    });
+
+    closeLogin.addEventListener("click", () => {
+        loginOverlay.classList.remove("active");
+    });
+
+});
