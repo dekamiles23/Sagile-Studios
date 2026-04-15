@@ -175,3 +175,9 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+function playClick() {
+  const audio = new Audio("./button1.mp3");
+  audio.volume = 0.3;
+  audio.play().catch(() => {});
+}
