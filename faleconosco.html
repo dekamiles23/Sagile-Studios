@@ -7,6 +7,8 @@
     <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
     <link rel="stylesheet" href="style.css">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         .contato-page {
             max-width: 800px;
@@ -84,32 +86,55 @@
 
 <body>
 
+<!-- TRANSIÇÃO -->
+<div class="transition"></div>
+
+<!-- NEVE -->
+<div class="snow-container"></div>
+
 <header>
 
-   <div class="logo">
+<div class="logo">
     <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
     </a>
 </div>
 
-    <a href="#contato" class="contato-icon">
-    💬
-</a>
+<div class="right-area">
 
-    <div class="search-box">
-        <input type="text" placeholder="Pesquisar...">
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
     </div>
 
-    <nav>
-        <a href="livro.html">Livros</a>
-        <a href="games.html">Games</a>
-        <a href="comics.html">Comics</a>
-        <a href="sobre.html">Sobre</a>
-        <a href="novidades.html">Novidades</a>
-    </nav>
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
+    <div class="menu-toggle">☰</div>
+
+</div>
+
+<nav class="menu" id="menu">
+    <div class="highlight"></div>
+
+    <a href="livro.html">Livros</a>
+    <a href="games.html">Games</a>
+    <a href="comics.html">Comics</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="novidades.html">Novidades</a>
+</nav>
 
 </header>
 
+<div class="divider"></div>
+
+<!-- ✅ SEU CORPO (INTACTO) -->
 <section class="contato-page">
     <h1>Fale conosco</h1>
     <p>Envie sugestões ou reporte problemas</p>
@@ -117,7 +142,7 @@
     <div class="redes">
         <h2>Nossas redes sociais</h2>
         <a href="https://www.instagram.com/sagilestudios/" target="_blank">Instagram</a>
-<a href="https://www.youtube.com/@milesdekaofc" target="_blank">YouTube</a>
+        <a href="https://www.youtube.com/@milesdekaofc" target="_blank">YouTube</a>
     </div>
 
     <h2>Sugestões</h2>
@@ -131,9 +156,53 @@
     </form>
 </section>
 
-</body>
-</html>
+<!-- SCRIPTS -->
+<script>
 
+// ❄️ NEVE
+const container = document.querySelector(".snow-container");
+
+if (container) {
+    for (let i = 0; i < 50; i++) {
+        const flake = document.createElement("div");
+        flake.classList.add("snowflake");
+        flake.innerHTML = "•";
+
+        flake.style.left = Math.random() * 100 + "vw";
+        flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+        flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+        container.appendChild(flake);
+    }
+}
+
+// 📱 MENU
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
+
+// 🔵 HIGHLIGHT
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
+
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
+
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
+}
+
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
+    });
+});
+
+</script>
+
+<!-- FOOTER -->
 <footer class="footer">
     <div class="footer-container">
 
@@ -161,3 +230,6 @@
         <p>Todos os direitos reservados.</p>
     </div>
 </footer>
+
+</body>
+</html>
