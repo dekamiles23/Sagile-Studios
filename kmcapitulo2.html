@@ -105,21 +105,39 @@
     </a>
 </div>
 
-<a href="faleconosco.html" class="contato-icon">💬</a>
+<div class="right-area">
 
-<div class="search-box">
-<input type="text" placeholder="Pesquisar livros, games, comics...">
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
+    </div>
+
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
+    <div class="menu-toggle">☰</div>
+
 </div>
 
-<nav>
-<a href="livro.html">Livros</a>
-<a href="games.html">Games</a>
-<a href="comics.html">Comics</a>
-<a href="sobre.html">Sobre</a>
-<a href="novidades.html">Novidades</a>
+<nav class="menu" id="menu">
+    <div class="highlight"></div>
+
+    <a href="livro.html">Livros</a>
+    <a href="games.html">Games</a>
+    <a href="comics.html">Comics</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="novidades.html">Novidades</a>
 </nav>
 
 </header>
+
+<div class="divider"></div>
 
 <!-- GRID -->
 <section class="leitor">
@@ -179,82 +197,92 @@
 
 <!-- JS ZOOM + SUPABASE -->
 <script>
-let zoomLevel = 2.5;
-let posX = 0;
-let posY = 0;
-let isDragging = false;
-let startX, startY;
 
-window.abrirZoom = function(img) {
-    const zoom = document.getElementById("zoom");
-    const zoomImg = document.getElementById("zoomImg");
+/// ❄️ NEVE
+const container = document.querySelector(".snow-container");
 
-    zoomImg.src = img.src;
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
 
-    zoom.style.display = "flex";
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
 
-    zoomLevel = 2.5;
-    posX = 0;
-    posY = 0;
-
-    updateTransform();
+    container.appendChild(flake);
 }
 
-/* fechar */
-window.fecharZoom = function() {
-    document.getElementById("zoom").style.display = "none";
-}
+/// 🎬 TRANSIÇÃO (corrigida)
+const transition = document.querySelector(".transition");
 
-/* aplicar transformação */
-function updateTransform() {
-    const img = document.getElementById("zoomImg");
-    img.style.transform = `translate(${posX}px, ${posY}px) scale(${zoomLevel})`;
-}
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        transition.classList.remove("active");
+    }, 100);
+});
 
-/* 🔥 ZOOM COM SCROLL */
-document.addEventListener("wheel", function(e) {
-    const zoom = document.getElementById("zoom");
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
 
-    if (zoom.style.display === "flex") {
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("http")) return;
 
         e.preventDefault();
 
-        if (e.deltaY < 0) zoomLevel += 0.2;
-        else zoomLevel -= 0.2;
+        transition.classList.add("active");
 
-        if (zoomLevel < 1) zoomLevel = 1;
-        if (zoomLevel > 6) zoomLevel = 6;
-
-        updateTransform();
-    }
-}, { passive: false });
-
-/* 🖐️ ARRASTAR (MÃOZINHA) */
-document.addEventListener("mousedown", function(e) {
-    const zoom = document.getElementById("zoom");
-
-    if (zoom.style.display !== "flex") return;
-
-    isDragging = true;
-
-    startX = e.clientX - posX;
-    startY = e.clientY - posY;
-
-    document.body.style.cursor = "grabbing";
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
 });
 
-document.addEventListener("mouseup", function() {
-    isDragging = false;
-    document.body.style.cursor = "default";
+/// 🔥 SCROLL
+function revealOnScroll() {
+    document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+/// 📱 MENU
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
+
+/// 🔵 HIGHLIGHT AZUL (menu)
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
+
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
+
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
+}
+
+// quando passa o mouse
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
+    });
 });
 
-document.addEventListener("mousemove", function(e) {
-    if (!isDragging) return;
-
-    posX = e.clientX - startX;
-    posY = e.clientY - startY;
-
-    updateTransform();
+// quando carrega a página (fica no botão atual)
+window.addEventListener("load", () => {
+    links.forEach(link => {
+        if (link.href.includes("livro.html")) {
+            moveHighlight(link);
+        }
+    });
 });
 </script>
 
