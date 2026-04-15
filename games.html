@@ -13,40 +13,59 @@
 
 <body> 
 
+<!-- TRANSIÇÃO -->
 <div class="transition"></div>
 
 <!-- ❄️ NEVE -->
 <div class="snow-container"></div>
 
-<!-- MENU -->
+<!-- MENU NOVO -->
 <header>
+
     <div class="logo">
         <a href="index.html">
             <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
         </a>
     </div>
 
-    <a href="faleconosco.html" class="contato-icon">
-        💬
-    </a>
+<div class="right-area">
 
-    <div class="search-box">
-        <input type="text" placeholder="Pesquisar livros, games, comics...">
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
     </div>
 
-    <!-- 🔥 BOTÃO HAMBURGUER (ADICIONADO) -->
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
     <div class="menu-toggle">☰</div>
 
-    <nav>
+</div>
+
+    <nav class="menu" id="menu">
+        <div class="highlight"></div>
+
         <a href="livro.html">Livros</a>
         <a href="games.html">Games</a>
         <a href="comics.html">Comics</a>
         <a href="sobre.html">Sobre</a>
         <a href="novidades.html">Novidades</a>
     </nav>
+
 </header>
 
-<!-- CONTEÚDO -->
+<!-- 🔍 PESQUISA -->
+<div class="search-area">
+    <input type="text" placeholder="Pesquisar livros, games, comics...">
+</div>
+
+<!-- CONTEÚDO (INALTERADO) -->
 <section class="novidades">
 
   <h1>Ainda não há jogos disponível</h1>
@@ -61,34 +80,82 @@
 
 <!-- ❄️ SCRIPT DA NEVE -->
 <script>
+
 const container = document.querySelector(".snow-container");
 
-if (container) {
-    for (let i = 0; i < 50; i++) {
-        const flake = document.createElement("div");
-        flake.classList.add("snowflake");
-        flake.innerHTML = "•";
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
 
-        flake.style.left = Math.random() * 100 + "vw";
-        flake.style.animationDuration = (5 + Math.random() * 5) + "s";
-        flake.style.fontSize = (5 + Math.random() * 10) + "px";
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
 
-        container.appendChild(flake);
-    }
+    container.appendChild(flake);
 }
 
-/// 📱 MENU MOBILE (ADICIONADO)
-const menuToggle = document.querySelector(".menu-toggle");
-const nav = document.querySelector("nav");
+/// 🎬 TRANSIÇÃO
+const transition = document.querySelector(".transition");
 
-menuToggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        transition.classList.remove("active");
+    }, 100);
 });
+
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("http")) return;
+
+        e.preventDefault();
+
+        transition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
+});
+
+/// 📱 MENU MOBILE
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
+
+/// 🔵 HIGHLIGHT AZUL
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
+
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
+
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
+}
+
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
+    });
+});
+
+window.addEventListener("load", () => {
+    links.forEach(link => {
+        if (link.href.includes("games.html")) {
+            moveHighlight(link);
+        }
+    });
+});
+
 </script>
 
-</body>
-</html>
-
+<!-- RODAPÉ -->
 <footer class="footer">
     <div class="footer-container">
 
@@ -116,3 +183,6 @@ menuToggle.addEventListener("click", () => {
         <p>Todos os direitos reservados.</p>
     </div>
 </footer>
+
+</body>
+</html>
