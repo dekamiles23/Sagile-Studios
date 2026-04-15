@@ -37,13 +37,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
   music.volume = 0.03;
 
-  const tryPlay = () => {
-    music.play().catch(() => {});
+  const startMusic = () => {
+    music.play().catch(err => {
+      console.log("Autoplay bloqueado:", err);
+    });
   };
 
-  tryPlay();
+  startMusic();
 
-  document.addEventListener("click", tryPlay, { once: true });
+  document.addEventListener("click", () => {
+    startMusic();
+  });
 });
 </script>
 
