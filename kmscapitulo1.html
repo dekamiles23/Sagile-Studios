@@ -2,13 +2,13 @@
 <html lang="pt-br">
 <head>
 
-    <meta charset="UTF-8">
-    <title>Sagile Studios</title>
+<meta charset="UTF-8">
+<title>Kamai SEN - Capítulo 1</title>
 
-    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-    <link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+<link rel="stylesheet" href="style.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -25,7 +25,6 @@
 </div>
 
 <header>
-
 <div class="logo">
     <a href="index.html">
         <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
@@ -54,7 +53,6 @@
     <a href="sobre.html">Sobre</a>
     <a href="novidades.html">Novidades</a>
 </nav>
-
 </header>
 
 <div class="divider"></div>
@@ -91,15 +89,22 @@
 
 <!-- ZOOM -->
 <div id="zoom" class="zoom" onclick="fecharZoom()">
-    <img id="zoomImg" onclick="event.stopPropagation()">
+
+<button class="nav prev" onclick="event.stopPropagation(); anterior()">❮</button>
+
+<img id="zoomImg" onclick="event.stopPropagation()">
+
+<button class="nav next" onclick="event.stopPropagation(); proxima()">❯</button>
+
 </div>
 
 <script>
 
-/// 🔍 ZOOM + ARRASTAR
-
 const zoom = document.getElementById("zoom");
 const zoomImg = document.getElementById("zoomImg");
+
+let imagens = document.querySelectorAll(".grid-comic img");
+let indexAtual = 0;
 
 let scale = 2;
 let isDragging = false;
@@ -109,17 +114,53 @@ let translateY = 0;
 
 function abrirZoom(img) {
     zoom.style.display = "flex";
-    zoomImg.src = img.src;
 
-    scale = 2;
+    imagens = document.querySelectorAll(".grid-comic img");
+    indexAtual = Array.from(imagens).indexOf(img);
+
+    zoomImg.src = imagens[indexAtual].src;
+
     translateX = 0;
     translateY = 0;
+
+    // 🔥 FIT NA TELA (sem zoom inicial)
+    scale = Math.min(
+        window.innerWidth / img.naturalWidth,
+        window.innerHeight / img.naturalHeight
+    );
+
+    // garante que nunca fique menor que 1 (opcional)
+    if (scale > 1) scale = 1;
 
     updateTransform();
 }
 
 function fecharZoom() {
     zoom.style.display = "none";
+}
+
+function proxima() {
+    if (indexAtual < imagens.length - 1) {
+        indexAtual++;
+        trocarImagem();
+    }
+}
+
+function anterior() {
+    if (indexAtual > 0) {
+        indexAtual--;
+        trocarImagem();
+    }
+}
+
+function trocarImagem() {
+    zoomImg.src = imagens[indexAtual].src;
+
+    scale = 1.2;
+    translateX = 0;
+    translateY = 0;
+
+    updateTransform();
 }
 
 zoom.addEventListener("wheel", (e) => {
@@ -159,6 +200,15 @@ function updateTransform() {
     zoomImg.style.transform =
         `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 }
+
+/// teclado
+document.addEventListener("keydown", (e) => {
+    if (zoom.style.display !== "flex") return;
+
+    if (e.key === "ArrowRight") proxima();
+    if (e.key === "ArrowLeft") anterior();
+    if (e.key === "Escape") fecharZoom();
+});
 
 </script>
 
