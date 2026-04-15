@@ -1,22 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // 🔍 BUSCA
+    /* =========================
+       🔍 BUSCA
+    ========================= */
     const searchInput = document.getElementById("search");
     const cards = document.querySelectorAll(".card");
 
-function filtrar() {
-    const valor = searchInput.value.toLowerCase();
+    function filtrar() {
+        if (!searchInput) return;
 
-    cards.forEach(card => {
-        const nome = (card.dataset.nome || "").toLowerCase();
+        const valor = searchInput.value.toLowerCase();
 
-        if (nome.includes(valor)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
+        cards.forEach(card => {
+            const nome = (card.dataset.nome || "").toLowerCase();
+            card.style.display = nome.includes(valor) ? "" : "none";
+        });
+    }
 
     if (searchInput) {
         searchInput.addEventListener("input", filtrar);
@@ -29,7 +28,10 @@ function filtrar() {
         });
     }
 
-    // 🎬 TRANSIÇÃO
+
+    /* =========================
+       🎬 TRANSIÇÃO DE PÁGINA
+    ========================= */
     const transition = document.querySelector(".transition");
 
     document.querySelectorAll("a").forEach(link => {
@@ -38,8 +40,7 @@ function filtrar() {
             const href = this.getAttribute("href");
 
             if (!href || href.startsWith("http") || href.startsWith("#")) return;
-
-            if (!transition) return; // evita erro
+            if (!transition) return;
 
             e.preventDefault();
 
@@ -51,13 +52,90 @@ function filtrar() {
         });
     });
 
-    // 🔥 Corrige tela travada
+    // Corrige tela travada ao voltar
     window.addEventListener("pageshow", () => {
-        if (transition) {
-            transition.classList.remove("active");
+        if (transition) transition.classList.remove("active");
+    });
+
+
+    /* =========================
+       🍔 MENU MOBILE
+    ========================= */
+    const menuToggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("#menu");
+
+    if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+    }
+
+
+    /* =========================
+       🔥 HEADER SCROLL EFFECT
+    ========================= */
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+        if (header) {
+            header.classList.toggle("scroll", window.scrollY > 50);
         }
     });
 
+
+    /* =========================
+       ✨ HIGHLIGHT MENU (PS STYLE)
+    ========================= */
+    const menu = document.querySelector(".menu");
+    const highlight = document.querySelector(".highlight");
+    const items = document.querySelectorAll(".menu a");
+
+    if (menu && highlight && items.length > 0) {
+
+        function moveHighlight(el) {
+            const rect = el.getBoundingClientRect();
+            const parentRect = menu.getBoundingClientRect();
+
+            highlight.style.width = rect.width + "px";
+            highlight.style.height = rect.height + "px";
+            highlight.style.left = (rect.left - parentRect.left) + "px";
+            highlight.style.top = (rect.top - parentRect.top) + "px";
+        }
+
+        items.forEach(item => {
+            item.addEventListener("mouseenter", () => moveHighlight(item));
+        });
+
+        // Mantém no ativo (se existir)
+        const ativo = document.querySelector(".menu a.ativo");
+        if (ativo) moveHighlight(ativo);
+    }
+
+
+    /* =========================
+       ❄️ NEVE (opcional)
+    ========================= */
+    const snowContainer = document.querySelector(".snow-container");
+
+    if (snowContainer) {
+        for (let i = 0; i < 40; i++) {
+            const flake = document.createElement("div");
+            flake.classList.add("snowflake");
+            flake.innerHTML = "•";
+
+            flake.style.left = Math.random() * 100 + "vw";
+            flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+            flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+            snowContainer.appendChild(flake);
+        }
+    }
+
 });
 
-document.getElementById("menu")
+const btnNotif = document.getElementById("btnNotif");
+const notifBox = document.getElementById("notifBox");
+
+btnNotif.addEventListener("click", () => {
+    notifBox.classList.toggle("active");
+});
