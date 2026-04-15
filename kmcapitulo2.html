@@ -240,6 +240,26 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") fecharZoom();
 });
 
+// 🔔 NOTIFICAÇÕES
+const btnNotif = document.getElementById("btnNotif");
+const notifBox = document.getElementById("notifBox");
+
+if (btnNotif && notifBox) {
+
+    // abrir/fechar
+    btnNotif.addEventListener("click", () => {
+        notifBox.classList.toggle("active");
+    });
+
+    // fechar clicando fora
+    document.addEventListener("click", (e) => {
+        if (!btnNotif.contains(e.target) && !notifBox.contains(e.target)) {
+            notifBox.classList.remove("active");
+        }
+    });
+
+}
+
 </script>
 
 </body>
