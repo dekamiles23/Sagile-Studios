@@ -56,14 +56,11 @@ window.addEventListener("DOMContentLoaded", () => {
 <script>
 window.addEventListener("DOMContentLoaded", () => {
 
-  const clickSound = new Audio("button1.mp3");
-  clickSound.volume = 0.3;
-
- function playClick() {
-  const audio = new Audio("button1.mp3");
-  audio.volume = 0.3;
-  audio.play();
-}
+  function playClick() {
+    const audio = new Audio("button1.mp3");
+    audio.volume = 0.3;
+    audio.play().catch(() => {});
+  }
 
   document.querySelectorAll("a, button, .icon-btn").forEach(el => {
     el.addEventListener("click", playClick);
