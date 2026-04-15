@@ -9,52 +9,69 @@
 <link rel="stylesheet" href="style.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body class="page-comics">
 
 <!-- TRANSIÇÃO -->
-<div class="transition active"></div>
+<div class="transition"></div>
 
-<!-- MENU -->
+<!-- NEVE -->
+<div class="snow-container"></div>
+
+<!-- MENU NOVO (PADRÃO INDEX) -->
 <header>
 
 <div class="logo">
 <a href="index.html">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
 </a>
 </div>
 
-<a href="faleconosco.html" class="contato-icon">
-💬
-</a>
+<div class="right-area">
 
-<div class="search-box">
-<input type="text" placeholder="Pesquisar livros, games, comics...">
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
+    </div>
+
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
+    <div class="menu-toggle">☰</div>
+
 </div>
 
-<!-- BOTÃO MOBILE -->
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav class="menu" id="menu">
+    <div class="highlight"></div>
 
-<nav id="menu">
-<a href="livro.html">Livros</a>
-<a href="games.html">Games</a>
-<a href="comics.html">Comics</a>
-<a href="sobre.html">Sobre</a>
-<a href="novidades.html">Novidades</a>
+    <a href="livro.html">Livros</a>
+    <a href="games.html">Games</a>
+    <a href="comics.html">Comics</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="novidades.html">Novidades</a>
 </nav>
 
 </header>
 
+<!-- 🔍 PESQUISA (PADRÃO) -->
+<div class="search-area">
+<input type="text" placeholder="Pesquisar livros, games, comics...">
+</div>
 
-<!-- 📚 CATÁLOGO -->
+<!-- 📚 CATÁLOGO (INTACTO) -->
 <section class="catalogo reveal">
 
 <h1>Comics</h1>
 
 <p class="subtitulo-catalogo">
-Uma aventura lhe aguarda, nossas história em quadrinhos irá transformar seu lazer em algo explorativo e aventureiro
+Uma aventura lhe aguarda, nossas história em quadrinhos irá transformar seu lazer em algo explorativo e aventureiro.
 </p>
 
 <div class="grid-livros">
@@ -72,7 +89,6 @@ Uma aventura lhe aguarda, nossas história em quadrinhos irá transformar seu la
 </div>
 
 </section>
-
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -105,82 +121,125 @@ Uma aventura lhe aguarda, nossas história em quadrinhos irá transformar seu la
 
 </footer>
 
-
 <!-- SCRIPTS -->
 <script>
 
-/// MENU MOBILE
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
+/// ❄️ NEVE
+const container = document.querySelector(".snow-container");
+
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
+
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+    container.appendChild(flake);
 }
 
-
-/// 🎬 TRANSIÇÃO
+/// 🎬 TRANSIÇÃO (corrigida)
 const transition = document.querySelector(".transition");
 
 window.addEventListener("load", () => {
-transition.classList.remove("active");
+    setTimeout(() => {
+        transition.classList.remove("active");
+    }, 100);
 });
 
 document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
 
-link.addEventListener("click", function(e){
+        const href = this.getAttribute("href");
 
-const href = this.getAttribute("href");
+        if (!href || href.startsWith("http")) return;
 
-if(!href || href.startsWith("http")) return;
+        e.preventDefault();
 
-e.preventDefault();
+        transition.classList.add("active");
 
-transition.classList.add("active");
-
-setTimeout(()=>{
-window.location.href = href;
-},500);
-
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
 });
 
-});
-
-
-/// 🔥 SCROLL REVEAL
-function revealOnScroll(){
-
-const elements = document.querySelectorAll(".reveal");
-
-elements.forEach(el => {
-
-const windowHeight = window.innerHeight;
-const elementTop = el.getBoundingClientRect().top;
-
-if(elementTop < windowHeight - 100){
-el.classList.add("active");
-}
-
-});
-
+/// 🔥 SCROLL
+function revealOnScroll() {
+    document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("active");
+        }
+    });
 }
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
+/// 📱 MENU
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
 
-/// 🟣 SELEÇÃO ESTILO STEAM
-document.querySelectorAll(".item").forEach(item => {
+/// 🔵 HIGHLIGHT AZUL (menu)
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
 
-item.addEventListener("click", () => {
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
 
-document.querySelectorAll(".item").forEach(i=>{
-i.classList.remove("ativo");
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
+}
+
+// quando passa o mouse
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
+    });
 });
 
-item.classList.add("ativo");
-
-});
-
+// quando carrega a página (fica no botão atual)
+window.addEventListener("load", () => {
+    links.forEach(link => {
+        if (link.href.includes("livro.html")) {
+            moveHighlight(link);
+        }
+    });
 });
 
 </script>
 
 </body>
 </html>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+            <p>Sagile Studios © 2026</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="livro.html">Livros</a>
+            <a href="games.html">Games</a>
+            <a href="comics.html">Comics</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+
+        <div class="footer-social">
+            <p>Redes</p>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>Todos os direitos reservados.</p>
+    </div>
+</footer>
