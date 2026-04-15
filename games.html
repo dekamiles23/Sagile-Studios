@@ -22,21 +22,17 @@
 
 <script>
 window.addEventListener("DOMContentLoaded", () => {
-  const music = document.getElementById("bg-music");
 
-  music.volume = 0.03;
+  function playClick() {
+    const audio = new Audio("button1.mp3");
+    audio.volume = 0.3;
+    audio.play().catch(() => {});
+  }
 
-  const startMusic = () => {
-    music.play().catch(err => {
-      console.log("Autoplay bloqueado:", err);
-    });
-  };
-
-  startMusic();
-
-  document.addEventListener("click", () => {
-    startMusic();
+  document.querySelectorAll("a, button, .icon-btn").forEach(el => {
+    el.addEventListener("click", playClick);
   });
+
 });
 </script>
 
