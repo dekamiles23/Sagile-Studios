@@ -31,6 +31,8 @@
   <source src="musicbg.mp3" type="audio/mpeg">
 </audio>
 
+<audio id="click-sound" src="button1.mp3"></audio>
+
 <script>
 window.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
@@ -48,6 +50,25 @@ window.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", () => {
     startMusic();
   });
+});
+</script>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+
+  const clickSound = new Audio("button1.mp3");
+  clickSound.volume = 0.3;
+
+ function playClick() {
+  const audio = new Audio("button1.mp3");
+  audio.volume = 0.3;
+  audio.play();
+}
+
+  document.querySelectorAll("a, button, .icon-btn").forEach(el => {
+    el.addEventListener("click", playClick);
+  });
+
 });
 </script>
 
