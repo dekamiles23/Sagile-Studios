@@ -14,16 +14,11 @@
 
 <body class="page-cap1">
 
-<!-- TRANSIÇÃO (sem active pra não bugar) -->
 <div class="transition"></div>
-
-<!-- NEVE -->
 <div class="snow-container"></div>
 
-<!-- UPLOAD -->
 <div class="upload-box">
   <h3>Enviar nova página</h3>
-
   <input type="file" id="file">
   <button onclick="uploadImage()">📤 Enviar imagem</button>
   <img id="preview">
@@ -38,28 +33,21 @@
 </div>
 
 <div class="right-area">
-
-    <!-- 💬 Fale Conosco -->
     <a href="faleconosco.html" class="icon-btn contato">💬</a>
 
-    <!-- 🔔 Notificações -->
     <div class="icon-btn notificacao" id="btnNotif">
         🔔
         <span class="badge" id="notifCount">3</span>
     </div>
 
-    <!-- 👤 Usuário -->
     <a href="#" class="icon-btn user">👤</a>
-
     <a href="#" class="icon-btn user">👤</a>
 
     <div class="menu-toggle">☰</div>
-
 </div>
 
 <nav class="menu" id="menu">
     <div class="highlight"></div>
-
     <a href="livro.html">Livros</a>
     <a href="games.html">Games</a>
     <a href="comics.html">Comics</a>
@@ -71,7 +59,6 @@
 
 <div class="divider"></div>
 
-<!-- GRID -->
 <section class="leitor">
 <div class="grid-comic">
 
@@ -104,129 +91,76 @@
 
 <!-- ZOOM -->
 <div id="zoom" class="zoom" onclick="fecharZoom()">
-    <img id="zoomImg">
+    <img id="zoomImg" onclick="event.stopPropagation()">
 </div>
 
-<!-- JS -->
 <script>
 
-/// ❄️ NEVE
-const container = document.querySelector(".snow-container");
+/// 🔍 ZOOM + ARRASTAR
 
-for (let i = 0; i < 50; i++) {
-    const flake = document.createElement("div");
-    flake.classList.add("snowflake");
-    flake.innerHTML = "•";
+const zoom = document.getElementById("zoom");
+const zoomImg = document.getElementById("zoomImg");
 
-    flake.style.left = Math.random() * 100 + "vw";
-    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
-    flake.style.fontSize = (5 + Math.random() * 10) + "px";
+let scale = 2;
+let isDragging = false;
+let startX, startY;
+let translateX = 0;
+let translateY = 0;
 
-    container.appendChild(flake);
+function abrirZoom(img) {
+    zoom.style.display = "flex";
+    zoomImg.src = img.src;
+
+    scale = 2;
+    translateX = 0;
+    translateY = 0;
+
+    updateTransform();
 }
 
-/// 🎬 TRANSIÇÃO (corrigida)
-const transition = document.querySelector(".transition");
-
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        transition.classList.remove("active");
-    }, 100);
-});
-
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function(e) {
-
-        const href = this.getAttribute("href");
-
-        if (!href || href.startsWith("http")) return;
-
-        e.preventDefault();
-
-        transition.classList.add("active");
-
-        setTimeout(() => {
-            window.location.href = href;
-        }, 500);
-    });
-});
-
-/// 🔥 SCROLL
-function revealOnScroll() {
-    document.querySelectorAll(".reveal").forEach(el => {
-        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-            el.classList.add("active");
-        }
-    });
+function fecharZoom() {
+    zoom.style.display = "none";
 }
 
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+zoom.addEventListener("wheel", (e) => {
+    e.preventDefault();
 
-/// 📱 MENU
-document.querySelector(".menu-toggle").onclick = () => {
-    document.getElementById("menu").classList.toggle("active");
-};
+    if (e.deltaY < 0) scale += 0.2;
+    else {
+        scale -= 0.2;
+        if (scale < 1) scale = 1;
+    }
 
-/// 🔵 HIGHLIGHT AZUL (menu)
-const menu = document.querySelector("#menu");
-const highlight = menu.querySelector(".highlight");
-const links = menu.querySelectorAll("a");
+    updateTransform();
+});
 
-function moveHighlight(el) {
-    const rect = el.getBoundingClientRect();
-    const menuRect = menu.getBoundingClientRect();
+zoomImg.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.clientX - translateX;
+    startY = e.clientY - translateY;
+    zoomImg.style.cursor = "grabbing";
+});
 
-    highlight.style.width = rect.width + "px";
-    highlight.style.left = (rect.left - menuRect.left) + "px";
+window.addEventListener("mouseup", () => {
+    isDragging = false;
+    zoomImg.style.cursor = "grab";
+});
+
+window.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    translateX = e.clientX - startX;
+    translateY = e.clientY - startY;
+
+    updateTransform();
+});
+
+function updateTransform() {
+    zoomImg.style.transform =
+        `translate(${translateX}px, ${translateY}px) scale(${scale})`;
 }
 
-// quando passa o mouse
-links.forEach(link => {
-    link.addEventListener("mouseenter", () => {
-        moveHighlight(link);
-    });
-});
-
-// quando carrega a página (fica no botão atual)
-window.addEventListener("load", () => {
-    links.forEach(link => {
-        if (link.href.includes("livro.html")) {
-            moveHighlight(link);
-        }
-    });
-});
 </script>
 
-</body>
-</html>
-
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
-</footer>
 </body>
 </html>
