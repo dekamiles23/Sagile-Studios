@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
 <title>Sagile Studios - Estúdio Criativo de Animações, Quadrinhos e Livros</title>
 
-    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 
   <!-- Open Graph (Facebook, WhatsApp, Discord, etc) -->
@@ -26,6 +26,24 @@
 
 </head>
 <body> 
+
+<audio id="bg-music" autoplay loop>
+  <source src="musicbg.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bg-music");
+
+  music.volume = 0.5; // volume baixo
+
+  music.play().catch(() => {
+    document.body.addEventListener("click", () => {
+      music.play();
+    }, { once: true });
+  });
+});
+</script>
 
 <!-- INTRO -->
 <div class="intro">
@@ -263,6 +281,7 @@ document.getElementById("menu").classList.toggle("active");
 
 </body>
 </html>
+</section> <!-- fecha SOBRE -->
 
 <!-- 🔥 BANNER AQUI -->
 <section class="banner2">
@@ -270,7 +289,7 @@ document.getElementById("menu").classList.toggle("active");
     <p></p>
 </section>
 
-<!-- 🔥 NOVIDADES HOME -->
+<!-- 🔥 NOVIDADES -->
 <section class="home-news">
 
     <div class="news-header">
