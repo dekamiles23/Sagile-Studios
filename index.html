@@ -35,13 +35,15 @@
 window.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
 
-music.volume = 0.03;
+  music.volume = 0.03;
 
-  music.play().catch(() => {
-    document.body.addEventListener("click", () => {
-      music.play();
-    }, { once: true });
-  });
+  const tryPlay = () => {
+    music.play().catch(() => {});
+  };
+
+  tryPlay();
+
+  document.addEventListener("click", tryPlay, { once: true });
 });
 </script>
 
