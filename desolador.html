@@ -8,22 +8,10 @@
 <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
 <link rel="stylesheet" href="style.css">
 
-<!-- META (mantido) -->
-<meta property="og:title" content="O Desolador do Anoitecer">
-<meta name="description" content="O Desolador do Anoitecer é uma obra literária...">
-<meta property="og:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/...">
-<meta property="og:url" content="https://dekamiles23.github.io/Sagile-Studios/emd.html">
-<meta property="og:type" content="website">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="O Desolador do Anoitecer">
-<meta name="twitter:description" content="O Desolador do Anoitecer é uma obra literária...">
-<meta name="twitter:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/...">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body class="page-desolador">
+<body class="page-emd">
 
 <!-- TRANSIÇÃO -->
 <div class="transition"></div>
@@ -31,6 +19,7 @@
 <!-- NEVE -->
 <div class="snow-container"></div>
 
+<!-- HEADER PADRÃO -->
 <header>
 
 <div class="logo">
@@ -41,16 +30,18 @@
 
 <div class="right-area">
 
-    <!-- 💬 -->
+    <!-- 💬 Fale Conosco -->
     <a href="faleconosco.html" class="icon-btn contato">💬</a>
 
-    <!-- 🔔 -->
+    <!-- 🔔 Notificações -->
     <div class="icon-btn notificacao" id="btnNotif">
         🔔
         <span class="badge" id="notifCount">3</span>
     </div>
 
-    <!-- 👤 -->
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
     <a href="#" class="icon-btn user">👤</a>
 
     <div class="menu-toggle">☰</div>
@@ -69,7 +60,9 @@
 
 </header>
 
-<!-- 🔥 CONTEÚDO ORIGINAL -->
+<div class="divider"></div>
+
+<!-- 🔥 PÁGINA DO LIVRO (INALTERADA) -->
 <section class="pagina-livro">
 
 <div class="coluna-capa reveal">
@@ -81,8 +74,7 @@
 
 </div>
 
-<div class="coluna-info reveal">
-
+<div class="coluna-info reveal delay2">
 <p><b>Classificação:</b> +16</p>
 
 <p>
@@ -90,13 +82,11 @@
 Ação, aventura, misticismo, fantasia, luta, artes marciais, sobrenatural, magia, militar
 </p>
 
-<p><b>Plataforma</b> Amazon, Uiclap</p>
-<p><b>Formato</b> Ebook, Livro físico</p>
-
+<p><b>Plataforma:</b> Amazon, Uiclap</p>
+<p><b>Formato:</b> Ebook, Livro físico</p>
 </div>
 
-<div class="coluna-sinopse reveal">
-
+<div class="coluna-sinopse reveal delay3">
 <h2>Sinopse</h2>
 
 <p>
@@ -117,15 +107,22 @@ Um garoto de 16 anos chamado Mikavil, é mandado para um quartel general para se
 
 </div>
 
+</section>
+
+<!-- SETA -->
+<div class="area-seta">
+<a href="#capa-grande" class="seta">▼</a>
 </div>
 
+<section id="capa-grande" class="reveal">
+<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dhqfwu0-e341774a-2a2b-462a-8d0c-4478bdd6ca2c.jpg/v1/fill/w_1192,h_670,q_70,strp/the_nightfall_desolator___green_steel_vs_desolator_by_milesdeka2_dhqfwu0-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGhxZnd1MC1lMzQxNzc0YS0yYTJiLTQ2MmEtOGQwYy00NDc4YmRkNmNhMmMuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.hHHngLOdXYy2jWx6x7M2lV9KoxSIY7KDaB2lqzK3t9M">
 </section>
 
 <!-- ⭐ AVALIAÇÃO -->
-<section class="avaliacao-box">
-
+<section class="avaliacoes reveal">
 <h2>Avalie esta obra</h2>
 
+<div class="nota">
 <div id="estrelas">
 <span data-v="1">★</span>
 <span data-v="2">★</span>
@@ -135,47 +132,8 @@ Um garoto de 16 anos chamado Mikavil, é mandado para um quartel general para se
 </div>
 
 <p id="resultado">Clique nas estrelas</p>
-
+</div>
 </section>
-
-<!-- SETA -->
-<div class="area-seta">
-<a href="#capa-grande" class="seta">▼</a>
-</div>
-
-<!-- CAPA GRANDE -->
-<section id="capa-grande" class="reveal">
-<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dhqfwu0-e341774a-2a2b-462a-8d0c-4478bdd6ca2c.jpg/v1/fill/w_1192,h_670,q_70,strp/the_nightfall_desolator___green_steel_vs_desolator_by_milesdeka2_dhqfwu0-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGhxZnd1MC1lMzQxNzc0YS0yYTJiLTQ2MmEtOGQwYy00NDc4YmRkNmNhMmMuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.hHHngLOdXYy2jWx6x7M2lV9KoxSIY7KDaB2lqzK3t9M">
-
-</section>
-
-<footer class="footer">
-<div class="footer-container">
-
-<div class="footer-logo">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-<p>Sagile Studios © 2026</p>
-</div>
-
-<div class="footer-links">
-<a href="livro.html">Livros</a>
-<a href="games.html">Games</a>
-<a href="comics.html">Comics</a>
-<a href="sobre.html">Sobre</a>
-</div>
-
-<div class="footer-social">
-<p>Redes</p>
-<a href="#">Instagram</a>
-<a href="#">YouTube</a>
-</div>
-
-</div>
-
-<div class="footer-bottom">
-<p>Todos os direitos reservados.</p>
-</div>
-</footer>
 
 <!-- SCRIPTS -->
 <script>
@@ -271,3 +229,31 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+            <p>Sagile Studios © 2026</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="livro.html">Livros</a>
+            <a href="games.html">Games</a>
+            <a href="comics.html">Comics</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+
+        <div class="footer-social">
+            <p>Redes</p>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>Todos os direitos reservados.</p>
+    </div>
+</footer>
