@@ -163,21 +163,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-window.addEventListener("DOMContentLoaded", () => {
-  const clickSound = document.getElementById("click-sound");
+document.addEventListener("DOMContentLoaded", () => {
 
-  clickSound.volume = 0.3;
+  function playClick() {
+    const audio = new Audio("./button1.mp3");
+    audio.volume = 0.2;
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+  }
 
-  document.querySelectorAll("a, button, .icon-btn").forEach(el => {
-    el.addEventListener("click", () => {
-      clickSound.currentTime = 0;
-      clickSound.play().catch(() => {});
-    });
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("a, button, .icon-btn")) {
+      playClick();
+    }
   });
-});
 
-function playClick() {
-  const audio = new Audio("./button1.mp3");
-  audio.volume = 0.3;
-  audio.play().catch(() => {});
-}
+});
