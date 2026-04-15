@@ -162,3 +162,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+window.addEventListener("DOMContentLoaded", () => {
+  const clickSound = document.getElementById("click-sound");
+
+  clickSound.volume = 0.3;
+
+  document.querySelectorAll("a, button, .icon-btn").forEach(el => {
+    el.addEventListener("click", () => {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(() => {});
+    });
+  });
+});
