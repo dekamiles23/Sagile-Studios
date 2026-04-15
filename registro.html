@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Conta - Sagile Studios</title>
+
+    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="page-games">
+
+<!-- TRANSIÇÃO -->
+<div class="transition"></div>
+
+<!-- ❄️ NEVE -->
+<div class="snow-container"></div>
+
+<!-- MENU -->
+<header>
+
+    <div class="logo">
+        <a href="index.html">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+        </a>
+    </div>
+
+<div class="right-area">
+
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
+    </div>
+
+    <div class="notif-box" id="notifBox">
+        <p>🔔 Você tem 3 notificações</p>
+        <ul>
+            <li>Novo capítulo disponível</li>
+            <li>Atualização no site</li>
+            <li>Nova obra adicionada</li>
+        </ul>
+    </div>
+
+    <!-- 👤 Usuário -->
+    <a href="registro.html" class="icon-btn user">👤</a>
+
+   <a href="registro.html" class="icon-btn user">👤</a>
+
+    <div class="menu-toggle">☰</div>
+
+</div>
+
+    <nav class="menu" id="menu">
+        <div class="highlight"></div>
+
+    <a href="livro.html">Livros</a>
+    <a href="games.html">Games</a>
+    <a href="comics.html">Comics</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="novidades.html">Novidades</a>
+</nav>
+
+</header>
+
+<!-- ✅ LOGIN / REGISTRO -->
+<section class="auth-page">
+
+    <h1>Conta</h1>
+    <p>Ainda não é funcional, não coloque suas informações aqui</p>
+
+    <!-- LOGIN -->
+<div class="auth-box" id="loginBox">
+    <h2>Login</h2>
+
+    <form class="form-auth">
+        <input type="email" placeholder="Seu email" required>
+        <input type="password" placeholder="Senha" required>
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p class="toggle" onclick="toggleAuth()">
+        Não tem conta? Registre-se
+    </p>
+</div>
+
+    <!-- REGISTRO -->
+<div class="auth-box hidden" id="registerBox">
+    <h2>Registro</h2>
+
+    <form class="form-auth">
+
+        <input type="text" placeholder="Nome" required>
+
+        <input type="email" placeholder="Email" required>
+
+        <input type="password" placeholder="Senha" required>
+
+        <!-- DATA -->
+        <input type="date" required>
+
+        <!-- TERMOS -->
+        <label class="terms">
+            <input type="checkbox" required>
+            Concordo com todos os termos
+        </label>
+
+        <button type="submit">Criar conta</button>
+    </form>
+
+    <p class="toggle" onclick="toggleAuth()">
+        Já tem conta? Fazer login
+    </p>
+</div>
+
+</section>
+
+<!-- SCRIPT -->
+<script>
+
+// ❄️ NEVE
+const container = document.querySelector(".snow-container");
+
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
+
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+    container.appendChild(flake);
+}
+
+// 🎬 TRANSIÇÃO
+const transition = document.querySelector(".transition");
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        transition.classList.remove("active");
+    }, 100);
+});
+
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("http")) return;
+
+        e.preventDefault();
+
+        transition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
+});
+
+// 📱 MENU
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
+
+// 🔵 HIGHLIGHT
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
+
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
+
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
+}
+
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
+    });
+});
+
+// 🔄 TROCAR LOGIN/REGISTRO
+function toggleAuth() {
+    document.getElementById("loginBox").classList.toggle("hidden");
+    document.getElementById("registerBox").classList.toggle("hidden");
+}
+
+</script>
+
+<!-- RODAPÉ -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+            <p>Sagile Studios © 2026</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="livro.html">Livros</a>
+            <a href="games.html">Games</a>
+            <a href="comics.html">Comics</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+
+        <div class="footer-social">
+            <p>Redes</p>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+</body>
+</html>
