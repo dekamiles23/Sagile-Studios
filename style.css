@@ -1543,3 +1543,211 @@ html, body {
 .contato { order: 1; }
 .notificacao { order: 2; }
 .user { order: 3; }
+
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    z-index: 10000;
+}
+
+.nav:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.notif-box {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    background: #111;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 220px;
+    display: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.notif-box.active {
+    display: block;
+}
+
+.user-area {
+    position: relative;
+    display: inline-block;
+}
+
+.user-menu {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: #111;
+    border-radius: 10px;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    min-width: 140px;
+    z-index: 999;
+}
+
+.user-menu a {
+    color: white;
+    padding: 8px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.user-menu a:hover {
+    background: #333;
+    border-radius: 6px;
+}
+
+.user-menu.active {
+    display: flex;
+}
+
+.transition {
+    position: fixed;
+    inset: 0;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 9998;
+}
+
+/* ===== LOGIN / REGISTRO ===== */
+
+.auth-page {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    text-align: center;
+    box-shadow: 0 0 25px rgba(0, 170, 255, 0.15);
+}
+
+.auth-page h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.auth-page p {
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+/* BOXES */
+.auth-box {
+    margin-top: 20px;
+    animation: fadeIn 0.4s ease;
+}
+
+/* FORM */
+.form-auth {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* INPUTS */
+.form-auth input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    transition: 0.3s;
+}
+
+.form-auth input::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+/* efeito ao clicar */
+.form-auth input:focus {
+    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 8px rgba(0,170,255,0.4);
+}
+
+/* BOTÃO */
+.form-auth button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #00aaff, #0088cc);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+/* hover botão */
+.form-auth button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0,170,255,0.4);
+}
+
+/* TEXTO TROCA */
+.toggle {
+    margin-top: 15px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.toggle:hover {
+    opacity: 1;
+}
+
+.toggle span {
+    color: #00aaff;
+}
+
+/* ESCONDER */
+.hidden {
+    display: none;
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.terms input {
+    width: auto;
+    cursor: pointer;
+}
