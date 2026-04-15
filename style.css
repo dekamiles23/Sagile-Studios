@@ -1750,3 +1750,27 @@ html, body {
     width: auto;
     cursor: pointer;
 }
+
+.banner2 {
+    width: 90%;
+    max-width: 1100px;
+    height: 250px;
+
+    margin: 50px auto;
+
+    background: url("https://i.ibb.co/N2d5wwKY/Banner-Sagile-Studios-para-site.jpg");
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.6),
+        0 0 20px rgba(122,92,255,0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
