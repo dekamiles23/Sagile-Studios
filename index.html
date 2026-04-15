@@ -41,25 +41,36 @@
 <!-- MENU -->
 <header>
 
-<div class="logo">
-<a href="index.html">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-</a>
+    <div class="logo">
+        <a href="index.html">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+        </a>
+    </div>
+
+<div class="right-area">
+
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
+    </div>
+
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
+    <div class="menu-toggle">☰</div>
+
 </div>
 
-<a href="faleconosco.html" class="contato-icon">
-💬
-</a>
+    <nav class="menu" id="menu">
+        <div class="highlight"></div>
 
-<div class="search-box">
-<input type="text" id="search" placeholder="Pesquisar livros, games, comics...">
-</div>
-
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-<!-- MENU -->
-<nav id="menu">
-<a href="livro.html">Livros</a>
+      <a href="livro.html">Livros</a>
 <a href="games.html">Games</a>
 <a href="comics.html">Comics</a>
 <a href="sobre.html">Sobre</a>
@@ -73,6 +84,10 @@
     <h1>Bem-vindo à Sagile Studios</h1>
     <p>Explorando mundos através de histórias</p>
 </section>
+
+<div class="search-area">
+    <input type="text" id="search" placeholder="Pesquisar...">
+</div>
 
 <h2 class="titulo-secao">Obras</h2>
 
@@ -229,10 +244,10 @@ window.addEventListener("load", revealOnScroll);
 
 <script src="script.js"></script>
 
-<script src="script.js"></script>
-
 <script>
+
 function toggleMenu() {
+
 document.getElementById("menu").classList.toggle("active");
 }
 </script>
