@@ -3,53 +3,54 @@
 
 <head>
 <meta charset="UTF-8">
+<title>Em meu Destino</title>
+
+<link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
+<link rel="stylesheet" href="style.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Em meu Destino - Trilogia</title>
-
-    <link rel="icon" href="https://i.ibb.co/GvPc7F82/Favicon.png">
-    <link rel="stylesheet" href="style.css">
-
-  <!-- Open Graph (Facebook, WhatsApp, Discord, etc) -->
-  <meta property="og:title" content="Em meu Destino - Trilogia">
-  <meta name="description" content="Em meu Destino Trilogia, é uma obra literária que junta todos os livros da série de Em meu Destino, sendo três livros canônicos.">
-  <meta property="og:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dleo6s3-9c99ea97-7493-4a7e-b88d-b5a41240b7d5.jpg/v1/fill/w_1192,h_670,q_70,strp/em_meu_destino_2___stevany_remake_by_milesdeka2_dleo6s3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxlbzZzMy05Yzk5ZWE5Ny03NDkzLTRhN2UtYjg4ZC1iNWE0MTI0MGI3ZDUuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Xsz8RBIq8MCrBtQA30diswhmIQ6_9-GBT_7K_ju5Eyk">
-  <meta property="og:url" content="https://dekamiles23.github.io/Sagile-Studios/emdtrilogia.html">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter (opcional, mas bom) -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Em meu Destino - Trilogia">
- <meta name="twitter:description" content="Em meu Destino Trilogia, é uma obra literária que junta todos os livros da série de Em meu Destino, sendo três livros canônicos.">
-  <meta name="twitter:image" content="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dleo6s3-9c99ea97-7493-4a7e-b88d-b5a41240b7d5.jpg/v1/fill/w_1192,h_670,q_70,strp/em_meu_destino_2___stevany_remake_by_milesdeka2_dleo6s3-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxlbzZzMy05Yzk5ZWE5Ny03NDkzLTRhN2UtYjg4ZC1iNWE0MTI0MGI3ZDUuanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Xsz8RBIq8MCrBtQA30diswhmIQ6_9-GBT_7K_ju5Eyk">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
-<body class="page-emdtrilogia">
+<body class="page-emd">
 
+<!-- TRANSIÇÃO -->
+<div class="transition"></div>
+
+<!-- NEVE -->
+<div class="snow-container"></div>
+
+<!-- HEADER PADRÃO -->
 <header>
 
 <div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
-    </a>
+<a href="index.html">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+</a>
 </div>
 
-<a href="faleconosco.html" class="contato-icon">💬</a>
+<div class="right-area">
 
-<div class="search-box">
-<input type="text" placeholder="Pesquisar livros, games, comics...">
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
+    </div>
+
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
+    <div class="menu-toggle">☰</div>
+
 </div>
 
-<!-- BOTÃO 3 BARRAS -->
-<div class="menu-toggle" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
+<nav class="menu" id="menu">
+<div class="highlight"></div>
 
-<nav id="menu">
 <a href="livro.html">Livros</a>
 <a href="games.html">Games</a>
 <a href="comics.html">Comics</a>
@@ -85,12 +86,24 @@
 <a href="https://loja.uiclap.com/titulo/ua63465/" target="_blank" class="botao-comprar fisico">📦 Comprar Físico</a>
 </div>
 
-</div>
-
 </section>
 
-<section class="avaliacao-box">
+<!-- SETA -->
+<div class="area-seta">
+<a href="#capa-grande" class="seta">▼</a>
+</div>
+
+<!-- 🖼️ CAPA GRANDE -->
+<section id="capa-grande" class="reveal">
+<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dleo46m-fe94ff40-2b91-47b2-a766-f2f7f6191048.jpg/v1/fill/w_1192,h_670,q_70,strp/em_meu_destino__2025____ultima_foto__by_milesdeka2_dleo46m-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxlbzQ2bS1mZTk0ZmY0MC0yYjkxLTQ3YjItYTc2Ni1mMmY3ZjYxOTEwNDguanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Jce71SDMmSufVES-YWAV79VvbvOYQx_3zK2ogodCCOM">
+</section>
+
+
+<!-- ⭐ AVALIAÇÃO -->
+<section class="avaliacoes reveal">
 <h2>Avalie esta obra</h2>
+
+<div class="nota">
 <div id="estrelas">
 <span data-v="1">★</span>
 <span data-v="2">★</span>
@@ -98,82 +111,59 @@
 <span data-v="4">★</span>
 <span data-v="5">★</span>
 </div>
+
 <p id="resultado">Clique nas estrelas</p>
+</div>
 </section>
 
-<div class="area-seta">
-<a href="#capa-grande" class="seta">▼</a>
-</div>
-
-<section id="capa-grande" class="reveal">
-<img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48fa-b825-328a20106f7f/dleo46m-fe94ff40-2b91-47b2-a766-f2f7f6191048.jpg/v1/fill/w_1192,h_670,q_70,strp/em_meu_destino__2025____ultima_foto__by_milesdeka2_dleo46m-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA4MCIsInBhdGgiOiIvZi9iM2JhY2M1ZS03NWMxLTQ4ZmEtYjgyNS0zMjhhMjAxMDZmN2YvZGxlbzQ2bS1mZTk0ZmY0MC0yYjkxLTQ3YjItYTc2Ni1mMmY3ZjYxOTEwNDguanBnIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Jce71SDMmSufVES-YWAV79VvbvOYQx_3zK2ogodCCOM">
-
-</section>
-
-<footer class="footer">
-<div class="footer-container">
-<div class="footer-logo">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-<p>Sagile Studios © 2026</p>
-</div>
-<div class="footer-links">
-<a href="livro.html">Livros</a>
-<a href="games.html">Games</a>
-<a href="comics.html">Comics</a>
-<a href="sobre.html">Sobre</a>
-</div>
-<div class="footer-social">
-<p>Redes</p>
-<a href="#">Instagram</a>
-<a href="#">YouTube</a>
-</div>
-</div>
-<div class="footer-bottom">
-<p>Todos os direitos reservados.</p>
-</div>
-</footer>
-
+<!-- SCRIPTS -->
 <script>
 
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-    document.querySelector(".menu-toggle").classList.toggle("open");
+/// ❄️ NEVE
+const container = document.querySelector(".snow-container");
+
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
+
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
+
+    container.appendChild(flake);
 }
 
-// Avaliação
-const estrelas = document.querySelectorAll("#estrelas span");
-const resultado = document.getElementById("resultado");
-let notaAtual = localStorage.getItem("trilogiaNota") || 0;
+/// 🎬 TRANSIÇÃO (corrigida)
+const transition = document.querySelector(".transition");
 
-function pintarEstrelas(nota){
-    estrelas.forEach(star => {
-        star.classList.remove("ativo");
-        if(star.dataset.v <= nota){
-            star.classList.add("ativo");
-        }
-    });
-}
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        transition.classList.remove("active");
+    }, 100);
+});
 
-pintarEstrelas(notaAtual);
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
 
-estrelas.forEach(star => {
-    star.addEventListener("click", () => {
-        notaAtual = star.dataset.v;
-        localStorage.setItem("trilogiaNota", notaAtual);
-        pintarEstrelas(notaAtual);
-        resultado.innerText = "Você avaliou com " + notaAtual + " estrelas ⭐";
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("http")) return;
+
+        e.preventDefault();
+
+        transition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
     });
 });
 
-// Scroll reveal
+/// 🔥 SCROLL
 function revealOnScroll() {
-    const elements = document.querySelectorAll(".reveal");
-
-    elements.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-
-        if (elementTop < windowHeight - 100) {
+    document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
             el.classList.add("active");
         }
     });
@@ -182,7 +172,69 @@ function revealOnScroll() {
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
+/// 📱 MENU
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
+
+/// 🔵 HIGHLIGHT AZUL (menu)
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
+
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
+
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
+}
+
+// quando passa o mouse
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
+    });
+});
+
+// quando carrega a página (fica no botão atual)
+window.addEventListener("load", () => {
+    links.forEach(link => {
+        if (link.href.includes("livro.html")) {
+            moveHighlight(link);
+        }
+    });
+});
+
 </script>
 
 </body>
 </html>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+            <p>Sagile Studios © 2026</p>
+        </div>
+
+        <div class="footer-links">
+            <a href="livro.html">Livros</a>
+            <a href="games.html">Games</a>
+            <a href="comics.html">Comics</a>
+            <a href="sobre.html">Sobre</a>
+        </div>
+
+        <div class="footer-social">
+            <p>Redes</p>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>Todos os direitos reservados.</p>
+    </div>
+</footer>
