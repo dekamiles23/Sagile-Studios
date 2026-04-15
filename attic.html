@@ -13,26 +13,43 @@
 
 <body class="page-attic">
 
+<!-- TRANSIÇÃO -->
+<div class="transition"></div>
+
+<!-- NEVE -->
+<div class="snow-container"></div>
+
 <header>
 
 <div class="logo">
 <a href="index.html">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png" alt="Sagile Studios">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
 </a>
 </div>
 
-<a href="faleconosco.html" class="contato-icon">
-💬
-</a>
+<div class="right-area">
 
-<div class="search-box">
-<input type="text" placeholder="Pesquisar livros, games, comics...">
+    <!-- 💬 Fale Conosco -->
+    <a href="faleconosco.html" class="icon-btn contato">💬</a>
+
+    <!-- 🔔 Notificações -->
+    <div class="icon-btn notificacao" id="btnNotif">
+        🔔
+        <span class="badge" id="notifCount">3</span>
+    </div>
+
+    <!-- 👤 Usuário -->
+    <a href="#" class="icon-btn user">👤</a>
+
+    <a href="#" class="icon-btn user">👤</a>
+
+    <div class="menu-toggle">☰</div>
+
 </div>
 
-<!-- BOTÃO MENU CELULAR -->
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav class="menu" id="menu">
+<div class="highlight"></div>
 
-<nav id="menu">
 <a href="livro.html">Livros</a>
 <a href="games.html">Games</a>
 <a href="comics.html">Comics</a>
@@ -43,6 +60,7 @@
 </header>
 
 
+<!-- ✅ CONTEÚDO ORIGINAL (NÃO ALTERADO) -->
 <section class="pagina-livro reveal">
 
 <div class="coluna-capa reveal">
@@ -117,77 +135,95 @@ Preço: 30,00 R$
 </section>
 
 
+<!-- SCRIPTS -->
 <script>
 
-/* REVEAL */
-function revealOnScroll() {
+/// ❄️ NEVE
+const container = document.querySelector(".snow-container");
 
-const elements = document.querySelectorAll(".reveal");
+for (let i = 0; i < 50; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("snowflake");
+    flake.innerHTML = "•";
 
-elements.forEach(el => {
+    flake.style.left = Math.random() * 100 + "vw";
+    flake.style.animationDuration = (5 + Math.random() * 5) + "s";
+    flake.style.fontSize = (5 + Math.random() * 10) + "px";
 
-const windowHeight = window.innerHeight;
-const elementTop = el.getBoundingClientRect().top;
-
-if (elementTop < windowHeight - 100) {
-el.classList.add("active");
+    container.appendChild(flake);
 }
 
+/// 🎬 TRANSIÇÃO (corrigida)
+const transition = document.querySelector(".transition");
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        transition.classList.remove("active");
+    }, 100);
 });
 
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(e) {
+
+        const href = this.getAttribute("href");
+
+        if (!href || href.startsWith("http")) return;
+
+        e.preventDefault();
+
+        transition.classList.add("active");
+
+        setTimeout(() => {
+            window.location.href = href;
+        }, 500);
+    });
+});
+
+/// 🔥 SCROLL
+function revealOnScroll() {
+    document.querySelectorAll(".reveal").forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("active");
+        }
+    });
 }
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 
+/// 📱 MENU
+document.querySelector(".menu-toggle").onclick = () => {
+    document.getElementById("menu").classList.toggle("active");
+};
 
-/* ⭐ AVALIAÇÃO */
+/// 🔵 HIGHLIGHT AZUL (menu)
+const menu = document.querySelector("#menu");
+const highlight = menu.querySelector(".highlight");
+const links = menu.querySelectorAll("a");
 
-const estrelas = document.querySelectorAll("#estrelas span");
-const resultado = document.getElementById("resultado");
+function moveHighlight(el) {
+    const rect = el.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
 
-const chave = "nota-attic";
-
-let notaSalva = localStorage.getItem(chave);
-
-if (notaSalva) pintar(notaSalva);
-
-estrelas.forEach(star => {
-
-star.addEventListener("click", () => {
-
-let valor = star.getAttribute("data-v");
-
-localStorage.setItem(chave, valor);
-
-pintar(valor);
-
-});
-
-});
-
-function pintar(valor){
-
-estrelas.forEach(star => {
-
-star.classList.remove("ativo");
-
-if(star.getAttribute("data-v") <= valor){
-star.classList.add("ativo");
+    highlight.style.width = rect.width + "px";
+    highlight.style.left = (rect.left - menuRect.left) + "px";
 }
 
+// quando passa o mouse
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => {
+        moveHighlight(link);
+    });
 });
 
-resultado.innerText = valor + " / 5";
-
-}
-
-
-/* MENU MOBILE */
-
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
-}
+// quando carrega a página (fica no botão atual)
+window.addEventListener("load", () => {
+    links.forEach(link => {
+        if (link.href.includes("livro.html")) {
+            moveHighlight(link);
+        }
+    });
+});
 
 </script>
 
