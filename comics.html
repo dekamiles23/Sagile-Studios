@@ -9,11 +9,14 @@
 <link rel="stylesheet" href="style.css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- LUCIDE -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
 <body class="page-comics">
 
-    
 <audio id="bg-music" autoplay loop>
   <source src="musicbg.mp3" type="audio/mpeg">
 </audio>
@@ -23,20 +26,14 @@
 <script>
 window.addEventListener("DOMContentLoaded", () => {
   const music = document.getElementById("bg-music");
-
   music.volume = 0.03;
 
   const startMusic = () => {
-    music.play().catch(err => {
-      console.log("Autoplay bloqueado:", err);
-    });
+    music.play().catch(() => {});
   };
 
   startMusic();
-
-  document.addEventListener("click", () => {
-    startMusic();
-  });
+  document.addEventListener("click", startMusic);
 });
 </script>
 
@@ -49,8 +46,10 @@ window.addEventListener("DOMContentLoaded", () => {
     audio.play().catch(() => {});
   }
 
-  document.querySelectorAll("a, button, .icon-btn").forEach(el => {
-    el.addEventListener("click", playClick);
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("a, button, .icon-btn")) {
+      playClick();
+    }
   });
 
 });
@@ -62,7 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
 <!-- NEVE -->
 <div class="snow-container"></div>
 
-<!-- MENU NOVO (PADRÃO INDEX) -->
+<!-- HEADER PADRÃO INDEX -->
 <header>
 
 <div class="logo">
@@ -71,37 +70,8 @@ window.addEventListener("DOMContentLoaded", () => {
 </a>
 </div>
 
-<div class="right-area">
-
-    <!-- 💬 Fale Conosco -->
-    <a href="faleconosco.html" class="icon-btn contato">💬</a>
-
-    <!-- 🔔 Notificações -->
-    <div class="icon-btn notificacao" id="btnNotif">
-        🔔
-        <span class="badge" id="notifCount">3</span>
-    </div>
-
-    <div class="notif-box" id="notifBox">
-    <p>🔔 Você tem 3 notificações</p>
-    <ul>
-        <li>Novo capítulo disponível</li>
-        <li>Atualização no site</li>
-        <li>Nova obra adicionada</li>
-    </ul>
-</div>
-
-    <!-- 👤 Usuário -->
-    <a href="registro.html" class="icon-btn user">👤</a>
-
-   <a href="registro.html" class="icon-btn user">👤</a>
-
-    <div class="menu-toggle">☰</div>
-
-</div>
-
-    <nav class="menu" id="menu">
-        <div class="highlight"></div>
+<nav class="menu" id="menu">
+    <div class="highlight"></div>
 
     <a href="livro.html">Livros</a>
     <a href="games.html">Games</a>
@@ -110,14 +80,50 @@ window.addEventListener("DOMContentLoaded", () => {
     <a href="novidades.html">Novidades</a>
 </nav>
 
+<div class="right-icons">
+
+    <!-- 🔔 NOTIFICAÇÃO -->
+    <div class="notification-wrapper">
+        <div class="icon-btn" id="btnNotif">
+            <i data-lucide="bell"></i>
+            <span class="badge">3</span>
+        </div>
+
+        <div class="notif-box" id="notifBox">
+            <p>Nova atualização disponível</p>
+            <p>Capítulo novo lançado</p>
+        </div>
+    </div>
+
+    <!-- 💬 FALE CONOSCO -->
+    <a href="faleconosco.html" class="icon-btn">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <!-- 👤 USUÁRIO -->
+    <div class="user-area">
+        <a href="registro.html" class="icon-btn">
+            <i data-lucide="user"></i>
+        </a>
+    </div>
+
+    <!-- ⬇️ DOWNLOAD -->
+    <a href="download.html" class="icon-btn">
+        <i data-lucide="download"></i>
+    </a>
+
+    <div class="menu-toggle">☰</div>
+
+</div>
+
 </header>
 
-<!-- 🔍 PESQUISA (PADRÃO) -->
+<!-- 🔍 PESQUISA -->
 <div class="search-area">
 <input type="text" placeholder="Pesquisar livros, games, comics...">
 </div>
 
-<!-- 📚 CATÁLOGO (INTACTO) -->
+<!-- 📚 CATÁLOGO -->
 <section class="catalogo reveal">
 
 <h1>Comics</h1>
@@ -176,6 +182,9 @@ Uma aventura lhe aguarda, nossas história em quadrinhos irá transformar seu la
 <!-- SCRIPTS -->
 <script>
 
+// ativa ícones
+lucide.createIcons();
+
 /// ❄️ NEVE
 const container = document.querySelector(".snow-container");
 
@@ -191,7 +200,7 @@ for (let i = 0; i < 50; i++) {
     container.appendChild(flake);
 }
 
-/// 🎬 TRANSIÇÃO (corrigida)
+/// 🎬 TRANSIÇÃO
 const transition = document.querySelector(".transition");
 
 window.addEventListener("load", () => {
@@ -234,7 +243,7 @@ document.querySelector(".menu-toggle").onclick = () => {
     document.getElementById("menu").classList.toggle("active");
 };
 
-/// 🔵 HIGHLIGHT AZUL (menu)
+/// 🔵 HIGHLIGHT
 const menu = document.querySelector("#menu");
 const highlight = menu.querySelector(".highlight");
 const links = menu.querySelectorAll("a");
@@ -247,36 +256,24 @@ function moveHighlight(el) {
     highlight.style.left = (rect.left - menuRect.left) + "px";
 }
 
-// quando passa o mouse
 links.forEach(link => {
     link.addEventListener("mouseenter", () => {
         moveHighlight(link);
     });
 });
 
-// quando carrega a página (fica no botão atual)
-window.addEventListener("load", () => {
-    links.forEach(link => {
-        if (link.href.includes("livro.html")) {
-            moveHighlight(link);
-        }
-    });
-});
-
-// 🔔 NOTIFICAÇÕES
+/// 🔔 NOTIFICAÇÃO (PADRÃO INDEX)
 const btnNotif = document.getElementById("btnNotif");
 const notifBox = document.getElementById("notifBox");
 
 if (btnNotif && notifBox) {
 
-    // abrir/fechar
     btnNotif.addEventListener("click", () => {
         notifBox.classList.toggle("active");
     });
 
-    // fechar clicando fora
     document.addEventListener("click", (e) => {
-        if (!btnNotif.contains(e.target) && !notifBox.contains(e.target)) {
+        if (!e.target.closest(".right-icons")) {
             notifBox.classList.remove("active");
         }
     });
@@ -287,31 +284,3 @@ if (btnNotif && notifBox) {
 
 </body>
 </html>
-
-<footer class="footer">
-    <div class="footer-container">
-
-        <div class="footer-logo">
-            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-            <p>Sagile Studios © 2026</p>
-        </div>
-
-        <div class="footer-links">
-            <a href="livro.html">Livros</a>
-            <a href="games.html">Games</a>
-            <a href="comics.html">Comics</a>
-            <a href="sobre.html">Sobre</a>
-        </div>
-
-        <div class="footer-social">
-            <p>Redes</p>
-            <a href="#">Instagram</a>
-            <a href="#">YouTube</a>
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-        <p>Todos os direitos reservados.</p>
-    </div>
-</footer>
