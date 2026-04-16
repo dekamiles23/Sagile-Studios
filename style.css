@@ -1940,3 +1940,49 @@ url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b3bacc5e-75c1-48f
 background-size:cover;
 background-position:center;
 }
+
+@media (max-width: 768px) {
+
+    .notif-box {
+        position: fixed;
+
+        top: 150%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        width: 90%;
+        max-width: 320px;
+
+        background: rgba(0, 0, 0, 0.95);
+        border-radius: 16px;
+
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: auto;
+    min-height: 100vh; /* ocupa a tela sem cortar */
+    
+    background-size: contain; /* 🔥 evita corte */
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner2 {
+    margin-top: 0;
+    padding: 20px;
+
+    height: auto;        /* 🔥 remove altura exagerada */
+    min-height: 40vh;    /* tamanho mais equilibrado */
+
+    background-size: contain; /* evita corte */
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
