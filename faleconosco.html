@@ -84,10 +84,11 @@
     </style>
 </head>
 
+<script src="https://unpkg.com/lucide@latest"></script>
+
 <body>
 
-    
-<audio id="bg-music" autoplay loop>
+ <audio id="bg-music" autoplay loop>
   <source src="musicbg.mp3" type="audio/mpeg">
 </audio>
 
@@ -135,51 +136,71 @@ window.addEventListener("DOMContentLoaded", () => {
 <!-- NEVE -->
 <div class="snow-container"></div>
 
+<!-- HEADER PADRÃO -->
 <header>
 
 <div class="logo">
-    <a href="index.html">
-        <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-    </a>
+<a href="index.html">
+<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+</a>
 </div>
 
-<div class="right-area">
-
-    <!-- 💬 Fale Conosco -->
-    <a href="faleconosco.html" class="icon-btn contato">💬</a>
-
-    <!-- 🔔 Notificações -->
-    <div class="icon-btn notificacao" id="btnNotif">
-        🔔
-        <span class="badge" id="notifCount">3</span>
-    </div>
-
-    <div class="notif-box" id="notifBox">
-    <p>🔔 Você tem 3 notificações</p>
-    <ul>
-        <li>Novo capítulo disponível</li>
-        <li>Atualização no site</li>
-        <li>Nova obra adicionada</li>
-    </ul>
-</div>
-
-    <!-- 👤 Usuário -->
-    <a href="registro.html" class="icon-btn user">👤</a>
-
-   <a href="registro.html" class="icon-btn user">👤</a>
-
-    <div class="menu-toggle">☰</div>
-
-</div>
-
-    <nav class="menu" id="menu">
-        <div class="highlight"></div>
+<nav class="menu" id="menu">
+    <div class="highlight"></div>
 
     <a href="livro.html">Livros</a>
     <a href="games.html">Games</a>
     <a href="comics.html">Comics</a>
     <a href="sobre.html">Sobre</a>
     <a href="novidades.html">Novidades</a>
+</nav>
+
+<div class="right-icons">
+
+    <!-- NOTIFICAÇÃO -->
+    <div class="notification-wrapper">
+        <div class="icon-btn" onclick="toggleNotif()">
+            <i data-lucide="bell"></i>
+            <span class="badge">3</span>
+        </div>
+
+        <div class="notif-box" id="notifBox">
+            <p>Nova atualização disponível</p>
+            <p>Capítulo novo lançado</p>
+        </div>
+    </div>
+
+    <!-- FALE CONOSCO -->
+    <a href="faleconosco.html" class="icon-btn">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <!-- USUÁRIO -->
+    <a href="registro.html" class="icon-btn">
+        <i data-lucide="user"></i>
+    </a>
+
+    <!-- DOWNLOAD -->
+    <a href="download.html" class="icon-btn">
+        <i data-lucide="download"></i>
+    </a>
+
+    <div class="menu-toggle">☰</div>
+
+</div>
+
+</header>
+
+</div>
+
+    <nav class="menu" id="menu">
+        <div class="highlight"></div>
+
+<a href="livro.html">Livros</a>
+<a href="games.html">Games</a>
+<a href="comics.html">Comics</a>
+<a href="sobre.html">Sobre</a>
+<a href="novidades.html">Novidades</a>
 </nav>
 
 </header>
@@ -250,6 +271,21 @@ links.forEach(link => {
     link.addEventListener("mouseenter", () => {
         moveHighlight(link);
     });
+});
+
+lucide.createIcons();
+
+// NOTIFICAÇÃO
+function toggleNotif() {
+    const box = document.getElementById("notifBox");
+    box.classList.toggle("active");
+}
+
+// fechar clicando fora
+document.addEventListener("click", function(e) {
+    if (!e.target.closest(".notification-wrapper")) {
+        document.getElementById("notifBox").classList.remove("active");
+    }
 });
 
 // 🔔 NOTIFICAÇÕES
