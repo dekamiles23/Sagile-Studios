@@ -166,7 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
 
   function playClick() {
-    const audio = new Audio("./button1.mp3");
+    const audio = new Audio("assets/button1.mp3")
     audio.volume = 0.2;
     audio.currentTime = 0;
     audio.play().catch(() => {});
@@ -179,3 +179,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
