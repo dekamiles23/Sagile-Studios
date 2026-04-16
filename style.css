@@ -600,7 +600,7 @@ header {
 }
 
 .reveal {
-    opacity: 0.2; /* NÃO fica invisível total */
+    opacity: 1; /* 🔥 nunca deixa transparente */
     transform: translateY(30px);
     transition: 0.6s ease;
 }
