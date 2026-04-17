@@ -742,7 +742,7 @@ nav a:hover::after {
 
     background:
         linear-gradient(to top, rgba(2,6,23,1) 5%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.7) 100%),
-        url('https://i.ibb.co/ynsVKJT6/ezgif-51d7c61eec150381.gif');
+        url('https://i.ibb.co/353wBJsC/ezgif-51d7c61eec150381.gif');
 
     background-size: cover;
     background-position: center top; /* 🔥 MUITO IMPORTANTE */
@@ -1636,11 +1636,21 @@ html, body {
 .transition {
     position: fixed;
     inset: 0;
-    background: black;
+
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
     opacity: 0;
     pointer-events: none;
+
+    z-index: 9999;
     transition: opacity 0.4s ease;
-    z-index: 9998;
+}
+
+.transition.active {
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* ===== LOGIN / REGISTRO ===== */
@@ -1986,3 +1996,4 @@ background-position:center;
     background-repeat: no-repeat;
   }
 }
+
