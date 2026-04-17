@@ -9,6 +9,7 @@ body {
     
 
     color: white;
+    position: relative;
 
     background: 
         linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
@@ -818,6 +819,7 @@ nav a:hover::after {
 .footer {
     padding: 20px 20px 10px; /* antes era 40px */
     margin-top: 50px; /* diminui espaço */
+    position: relative;
 }
 
 .footer-container {
@@ -1997,3 +1999,26 @@ background-position:center;
   }
 }
 
+.easter-r34 {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 60px;   /* pequeno mesmo */
+    z-index: 99999;
+    cursor: pointer;
+
+    opacity: 0.85;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.easter-r34 img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.easter-r34:hover {
+    transform: scale(1.15);
+    opacity: 1;
+}
