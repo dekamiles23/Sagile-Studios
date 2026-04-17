@@ -34,39 +34,6 @@
   video.src = window.api.getVideoPath();
 </script>
 
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  const updateBtn = document.getElementById("update-btn");
-
-  if (window.electronAPI?.isElectron) {
-
-    window.updater.onAvailable(() => {
-      updateBtn.style.display = "flex";
-      updateBtn.classList.add("has-update");
-
-      lucide.createIcons();
-    });
-
-  }
-});
-</script>
-
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  const updateBtn = document.getElementById("update-btn");
-
-  if (window.electronAPI?.isElectron) {
-
-    window.updater.onAvailable(() => {
-      updateBtn.style.display = "flex";
-      updateBtn.classList.add("has-update");
-
-      lucide.createIcons();
-    });
-
-  }
-});
-</script>
 
 <div id="updateModal" class="update-modal hidden">
   <div class="update-box">
@@ -216,7 +183,7 @@ window.addEventListener("DOMContentLoaded", () => {
     </a>
 
    <!-- ⬇️ Update -->
-<a href="#" class="icon-btn" id="update-btn">
+<a href="#" class="icon-btn" id="update-btn" style="display: none;">
     <i data-lucide="arrow-down-circle"></i>
 </a>
 
@@ -233,37 +200,35 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 const updateBtn = document.getElementById("update-btn");
+const isElectron = window.electronAPI?.isElectron === true;
 
-// // ❌ se NÃO for Electron → remove botão
-// if (!window.electronAPI?.isElectron) {
-//   updateBtn.remove();
-// }
+if (updateBtn) {
+  updateBtn.style.display = isElectron ? "flex" : "none";
+}
 
-// ✅ se for Electron → ativa updater
-if (window.electronAPI?.isElectron) {
-
+if (isElectron && window.updater?.onAvailable) {
   window.updater.onAvailable(() => {
-    updateBtn.style.display = "flex";
-
-    // recria ícone
+    if (updateBtn) {
+      updateBtn.style.display = "flex";
+      updateBtn.classList.add("has-update");
+    }
     setTimeout(() => {
       lucide.createIcons();
     }, 50);
   });
 
-window.updater.onAvailable((data) => {
-  const modal = document.getElementById("updateModal");
-  const version = document.getElementById("updateVersion");
-  const notes = document.getElementById("updateNotes");
+  window.updater.onAvailable((data) => {
+    const modal = document.getElementById("updateModal");
+    const version = document.getElementById("updateVersion");
+    const notes = document.getElementById("updateNotes");
 
-  if (!modal || !version || !notes) return;
+    if (!modal || !version || !notes) return;
 
-  version.innerText = "Versão: " + data.version;
-  notes.innerText = data.notes || "Sem changelog disponível";
+    version.innerText = "Versão: " + data.version;
+    notes.innerText = data.notes || "Sem changelog disponível";
 
-  modal.classList.remove("hidden");
-});
-
+    modal.classList.remove("hidden");
+  });
 }
 
   // ativa ícones
