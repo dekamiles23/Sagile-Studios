@@ -34,6 +34,52 @@
   video.src = window.api.getVideoPath();
 </script>
 
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const updateBtn = document.getElementById("update-btn");
+
+  if (window.electronAPI?.isElectron) {
+
+    window.updater.onAvailable(() => {
+      updateBtn.style.display = "flex";
+      updateBtn.classList.add("has-update");
+
+      lucide.createIcons();
+    });
+
+  }
+});
+</script>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const updateBtn = document.getElementById("update-btn");
+
+  if (window.electronAPI?.isElectron) {
+
+    window.updater.onAvailable(() => {
+      updateBtn.style.display = "flex";
+      updateBtn.classList.add("has-update");
+
+      lucide.createIcons();
+    });
+
+  }
+});
+</script>
+
+<div id="updateModal" class="update-modal hidden">
+  <div class="update-box">
+    <h2>Atualização disponível</h2>
+
+    <p id="updateVersion"></p>
+
+    <div id="updateNotes"></div>
+
+    <button onclick="startUpdate()">Atualizar agora</button>
+  </div>
+</div>
+
 <audio id="bg-music" autoplay loop>
   <source src="musicbg.mp3" type="audio/mpeg">
 </audio>
@@ -60,14 +106,45 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+
+<!-- tudo do site -->
+
 <script>
 window.addEventListener("DOMContentLoaded", () => {
 
+    const r34 = document.getElementById("easterR34");
+    const img = document.getElementById("r34-img");
+    const sound = document.getElementById("r34-sound");
+
+    let toggled = false;
+
+    const img1 = "https://i.ibb.co/qHb04mr/skyline-padr-o.png";
+    const img2 = "https://i.ibb.co/4wdsprty/skyline-do-brian.png";
+
+    if (!r34 || !img || !sound) return;
+
+    r34.addEventListener("click", () => {
+
+        toggled = !toggled;
+        img.src = toggled ? img2 : img1;
+
+        sound.currentTime = 0;
+        sound.volume = 0.5;
+        sound.play().catch(() => {});
+    });
+
+});
+</script>
+
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+
+  const clickSound = document.getElementById("click-sound");
+
   function playClick() {
-    const audio = new Audio("./button1.mp3");
-    audio.volume = 0.3;
-    audio.currentTime = 0;
-    audio.play().catch(() => {});
+    clickSound.currentTime = 0;
+    clickSound.volume = 0.3;
+    clickSound.play().catch(() => {});
   }
 
   document.addEventListener("click", (e) => {
@@ -77,7 +154,12 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
 </script>
+
+<audio id="r34-sound">
+    <source src="2f2f-theme.mp3" type="audio/mpeg">
+</audio>
 
 <!-- INTRO -->
 <div class="intro">
@@ -85,7 +167,7 @@ window.addEventListener("DOMContentLoaded", () => {
 </div>
 
 <!-- TRANSIÇÃO -->
-<div class="transition active"></div>
+<div class="transition" id="pageTransition"></div>
 
 <!-- NEVE -->
 <div class="snow-container"></div>
@@ -133,9 +215,57 @@ window.addEventListener("DOMContentLoaded", () => {
         <i data-lucide="download"></i>
     </a>
 
+   <!-- ⬇️ Update -->
+<a href="#" class="icon-btn" id="update-btn">
+    <i data-lucide="arrow-down-circle"></i>
+</a>
+
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <script>
+
+    window.addEventListener("DOMContentLoaded", () => {
+    const transition = document.querySelector(".transition");
+    if (transition) {
+        transition.classList.remove("active");
+    }
+    lucide.createIcons();
+});
+
+const updateBtn = document.getElementById("update-btn");
+
+// // ❌ se NÃO for Electron → remove botão
+// if (!window.electronAPI?.isElectron) {
+//   updateBtn.remove();
+// }
+
+// ✅ se for Electron → ativa updater
+if (window.electronAPI?.isElectron) {
+
+  window.updater.onAvailable(() => {
+    updateBtn.style.display = "flex";
+
+    // recria ícone
+    setTimeout(() => {
+      lucide.createIcons();
+    }, 50);
+  });
+
+window.updater.onAvailable((data) => {
+  const modal = document.getElementById("updateModal");
+  const version = document.getElementById("updateVersion");
+  const notes = document.getElementById("updateNotes");
+
+  if (!modal || !version || !notes) return;
+
+  version.innerText = "Versão: " + data.version;
+  notes.innerText = data.notes || "Sem changelog disponível";
+
+  modal.classList.remove("hidden");
+});
+
+}
+
   // ativa ícones
   lucide.createIcons();
 
@@ -414,6 +544,11 @@ document.getElementById("menu").classList.toggle("active");
             <a href="#">Instagram</a>
             <a href="#">YouTube</a>
         </div>
+
+<!-- 🔥 EASTER EGG R34 -->
+<div class="easter-r34" id="easterR34">
+    <img id="r34-img" src="https://i.ibb.co/qHb04mr/skyline-padr-o.png" alt="R34 GTR">
+</div>
 
     </div>
 
