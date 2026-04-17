@@ -2012,7 +2012,7 @@ background-position:center;
 }
 
 .easter-r34 img {
-    width: 30%;
+    width: 100%;
     height: auto;
     display: block;
     border-radius: 8px;
@@ -2022,3 +2022,4 @@ background-position:center;
     transform: scale(1.15);
     opacity: 1;
 }
+
