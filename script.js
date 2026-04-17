@@ -180,3 +180,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+window.updater.onAvailable((data) => {
+  const modal = document.getElementById("updateModal");
+
+  document.getElementById("updateVersion").innerText =
+    "Versão: " + data.version;
+
+  document.getElementById("updateNotes").innerText =
+    data.notes || "Sem changelog disponível";
+
+  modal.classList.remove("hidden");
+});
