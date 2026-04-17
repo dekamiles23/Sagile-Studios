@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const transition = document.querySelector(".transition");
 
     document.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", function(e) {
+        link.addEventListener("click", function (e) {
 
             const href = this.getAttribute("href");
 
@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Corrige tela travada ao voltar
     window.addEventListener("pageshow", () => {
         if (transition) transition.classList.remove("active");
     });
@@ -84,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       ✨ HIGHLIGHT MENU (PS STYLE)
+       ✨ HIGHLIGHT MENU
     ========================= */
     const menu = document.querySelector(".menu");
     const highlight = document.querySelector(".highlight");
@@ -106,14 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
             item.addEventListener("mouseenter", () => moveHighlight(item));
         });
 
-        // Mantém no ativo (se existir)
         const ativo = document.querySelector(".menu a.ativo");
         if (ativo) moveHighlight(ativo);
     }
 
 
     /* =========================
-       ❄️ NEVE (opcional)
+       ❄️ NEVE
     ========================= */
     const snowContainer = document.querySelector(".snow-container");
 
@@ -133,61 +131,112 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+/* =========================
+   🔔 NOTIFICAÇÕES (SAFE)
+========================= */
 const btnNotif = document.getElementById("btnNotif");
 const notifBox = document.getElementById("notifBox");
 
-btnNotif.addEventListener("click", () => {
-    notifBox.classList.toggle("active");
-});
+if (btnNotif && notifBox) {
+    btnNotif.addEventListener("click", () => {
+        notifBox.classList.toggle("active");
+    });
+}
 
 
+/* =========================
+   👤 LOGIN (SAFE)
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
     const btnUser = document.getElementById("btnUser");
     const loginOverlay = document.getElementById("loginOverlay");
     const closeLogin = document.getElementById("closeLogin");
 
-    if (!btnUser || !loginOverlay || !closeLogin) {
-        console.log("Login não encontrado no HTML");
-        return;
+    if (btnUser && loginOverlay && closeLogin) {
+
+        btnUser.addEventListener("click", (e) => {
+            e.preventDefault();
+            loginOverlay.classList.add("active");
+        });
+
+        closeLogin.addEventListener("click", () => {
+            loginOverlay.classList.remove("active");
+        });
+
     }
-
-    btnUser.addEventListener("click", (e) => {
-        e.preventDefault();
-        loginOverlay.classList.add("active");
-    });
-
-    closeLogin.addEventListener("click", () => {
-        loginOverlay.classList.remove("active");
-    });
-
 });
 
+
+/* =========================
+   🔊 CLICK SOUND
+========================= */
 document.addEventListener("DOMContentLoaded", () => {
 
-  function playClick() {
-    const audio = new Audio("assets/button1.mp3")
-    audio.volume = 0.2;
-    audio.currentTime = 0;
-    audio.play().catch(() => {});
-  }
-
-  document.addEventListener("click", (e) => {
-    if (e.target.closest("a, button, .icon-btn")) {
-      playClick();
+    function playClick() {
+        const audio = new Audio("assets/button1.mp3");
+        audio.volume = 0.2;
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
     }
-  });
+
+    document.addEventListener("click", (e) => {
+        if (e.target.closest("a, button, .icon-btn")) {
+            playClick();
+        }
+    });
 
 });
 
-window.updater.onAvailable((data) => {
-  const modal = document.getElementById("updateModal");
 
-  document.getElementById("updateVersion").innerText =
-    "Versão: " + data.version;
+document.addEventListener("DOMContentLoaded", () => {
+    const updateBtn = document.getElementById("update-btn");
 
-  document.getElementById("updateNotes").innerText =
-    data.notes || "Sem changelog disponível";
+    if (!updateBtn) return;
 
-  modal.classList.remove("hidden");
+    if (window.electronAPI?.isElectron) {
+        updateBtn.style.display = "flex";
+    } else {
+        updateBtn.style.display = "none";
+    }
 });
+
+
+/* =========================
+   🆕 UPDATER (FIX PRINCIPAL)
+========================= */
+if (window.updater && typeof window.updater.onAvailable === "function") {
+
+    window.updater.onAvailable((data) => {
+
+        const modal = document.getElementById("updateModal");
+
+        if (document.getElementById("updateVersion")) {
+            document.getElementById("updateVersion").innerText =
+                "Versão: " + (data?.version || "");
+        }
+
+        if (document.getElementById("updateNotes")) {
+            document.getElementById("updateNotes").innerText =
+                data?.notes || "Sem changelog disponível";
+        }
+
+        if (modal) {
+            modal.classList.remove("hidden");
+        }
+
+        /* 🔥 BOTÃO UPDATE (ESSA É A PARTE QUE SUMIA) */
+        const updateBtn = document.getElementById("update-btn");
+
+        if (updateBtn) {
+            updateBtn.style.display = "flex";
+            updateBtn.classList.add("has-update");
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        }
+    });
+}
+
