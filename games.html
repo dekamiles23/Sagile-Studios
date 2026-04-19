@@ -140,58 +140,43 @@ window.addEventListener("DOMContentLoaded", () => {
 
 <!-- CONTEÚDO CENTRAL -->
 <section class="games-content">
-    
+
     <h1><strong>ECLIPSE-7</strong></h1>
 
     <p>
         O Eclipse-7 tem o intuito de trazer jogos retrô, antigos, e alguns modernos 
-        para dentro da plataforma, ainda está na primeira fase beta, e se quiser testar, 
-        disponibilizamos a versão 1.0.0, por enquanto não há hardware para suportar os jogos, 
-        mas isso já é um gosto de como seria o programa. A Sagile Studios se esforça ao máximo 
-        para entregar com paciência e dignidade nosso conteúdo para o mundo inteiro.
+        para dentro da plataforma. Ainda está na primeira fase beta.
     </p>
 
-    <p>
-        <a href="https://download1339.mediafire.com/41bg3vjfu0aglUhnl4IXDt0ec9vQy3Uo0_Tufmzs-PZUrj5Z7zr7w7FrmPtLqhykbQdb-YwfEOfp6EbzBIgu6ONHsz1ZLyzEZ6lqKqZ3kjW88yGnAXTB-CUgpkEmSGeeYoLChLl297y9riNNY0cjGDNgxLRk_-LnwtSmvo0acWAcrboY/xqbufkc8tntr7fj/Eclipse-7+Beta+1.0.0.zip">Baixar versão 1.0.0</a>
-    </p>
+    <!-- SELECTOR DE VERSÃO (estilo stable) -->
+    <div class="version-box">
+
+        <label>Versão:</label>
+
+        <select id="versionSelect">
+            <option value="1.0.0" data-link="https://download1339.mediafire.com/41bg3vjfu0aglUhnl4IXDt0ec9vQy3Uo0_Tufmzs-PZUrj5Z7zr7w7FrmPtLqhykbQdb-YwfEOfp6EbzBIgu6ONHsz1ZLyzEZ6lqKqZ3kjW88yGnAXTB-CUgpkEmSGeeYoLChLl297y9riNNY0cjGDNgxLRk_-LnwtSmvo0acWAcrboY/xqbufkc8tntr7fj/Eclipse-7+Beta+1.0.0.zip">
+                Stable 1.0.0
+            </option>
+
+            <option value="1.0.1" data-link="https://github.com/dekamiles23/Sagile-Studios/releases/tag/EC7v1.0.1">
+                Stable 1.0.1
+            </option>
+
+            <option value="1.0.2" data-link="https://github.com/dekamiles23/Sagile-Studios/releases/tag/EC7V1.0.2">
+                Stable 1.0.2
+            </option>
+        </select>
+
+        <!-- BOTÃO DOWNLOAD -->
+        <button id="downloadBtn">Download</button>
+
+    </div>
 
     <p>
-       Versão 1.0.1 Changelog:
-
-       Adicionado sistema de emulador integrado
-Adicionado novo layout
-Adicionado conquistas e biblioteca funcional
-Sistema de avatar melhorado
-Sistema de captação de jogos melhorado
-Sistema de capa de jogos melhorado
-Refomulagem em todo o sistema.
-    </p>
-
-    <p>
-        <a href="https://github.com/dekamiles23/Sagile-Studios/releases/tag/EC7v1.0.1">Baixar versão 1.0.1</a>
-    </p>
-
-
-    <p>
-       Versão 1.0.2 Changelog:
-
-      Menu Full gaming atualizado
-Barra de navegação atualizada
-Configurações e ferramentas de botões atualizadas
-Emulação e biblioteca atualizadas
-Novas animações adicionadas
-Sistema do console atualizado
-Interface de sessões atualizada
-Perfil atualizado
-Bugs corrigidos
-    </p>
-
-    <p>
-        <a href="https://github.com/dekamiles23/Sagile-Studios/releases/tag/EC7V1.0.2">Baixar versão 1.0.2</a>
+        Aproveite a versão selecionada, pois novas atualizações chegarão em breve.
     </p>
 
 </section>
-
 <!-- ❄️ SCRIPT DA NEVE -->
 <script>
 
@@ -302,6 +287,25 @@ if (btnNotif && notifBox) {
 
 }
 
+</script>
+
+<script>
+const select = document.getElementById("versionSelect");
+const button = document.getElementById("downloadBtn");
+
+button.addEventListener("click", () => {
+    const selectedOption = select.options[select.selectedIndex];
+    const link = selectedOption.getAttribute("data-link");
+
+    if (link) {
+        const a = document.createElement("a");
+        a.href = link;
+        a.setAttribute("download", "");
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+});
 </script>
 
 <!-- RODAPÉ -->
