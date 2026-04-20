@@ -2095,3 +2095,32 @@ background-position:center;
 #downloadBtn:hover {
     background: #009acd;
 }
+
+.version-box {
+    font-family: Arial, sans-serif;
+}
+
+#versionSelect {
+    background-color: #1e1e1e;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 40px 10px 10px;
+    border-radius: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+/* seta personalizada */
+#versionSelect {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+#versionSelect:focus {
+    outline: none;
+    border-color: #888;
+}
