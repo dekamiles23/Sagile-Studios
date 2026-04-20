@@ -37,15 +37,105 @@
 
 <div id="updateModal" class="update-modal hidden">
   <div class="update-box">
+    <div class="update-icon">⬇️</div>
     <h2>Atualização disponível</h2>
-
     <p id="updateVersion"></p>
+    <div id="updateNotes" class="update-notes"></div>
 
-    <div id="updateNotes"></div>
+    <div id="updateProgress" class="update-progress hidden">
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+      <span id="progressText">0%</span>
+    </div>
 
-    <button onclick="startUpdate()">Atualizar agora</button>
+    <div id="updateActions">
+      <button class="update-btn-primary" onclick="startUpdate()">Baixar e instalar</button>
+      <button class="update-btn-secondary" onclick="document.getElementById('updateModal').classList.add('hidden')">Agora não</button>
+    </div>
+
+    <div id="updateReady" class="hidden">
+      <p class="update-ready-msg">✅ Pronto! Reinicie para aplicar.</p>
+      <button class="update-btn-primary" onclick="window.updater.restart()">Reiniciar agora</button>
+    </div>
   </div>
 </div>
+
+<style>
+.update-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+.update-modal.hidden { display: none; }
+.update-box {
+  background: rgba(10,10,25,0.95);
+  border: 1px solid rgba(122,92,255,0.4);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(122,92,255,0.3);
+  animation: fadeIn 0.3s ease;
+}
+.update-icon { font-size: 36px; margin-bottom: 10px; }
+.update-box h2 { margin: 0 0 8px; font-size: 20px; }
+.update-box #updateVersion { opacity: 0.6; font-size: 13px; margin-bottom: 12px; }
+.update-notes {
+  font-size: 13px;
+  opacity: 0.7;
+  background: rgba(255,255,255,0.04);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  max-height: 80px;
+  overflow-y: auto;
+  text-align: left;
+}
+.update-progress { margin-bottom: 16px; }
+.progress-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7a5cff, #5f3bff);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+#progressText { font-size: 12px; opacity: 0.6; }
+#updateActions { display: flex; flex-direction: column; gap: 10px; }
+.update-btn-primary {
+  padding: 11px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #7a5cff, #5f3bff);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.update-btn-primary:hover { box-shadow: 0 0 15px rgba(122,92,255,0.5); transform: translateY(-1px); }
+.update-btn-secondary {
+  padding: 9px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.update-btn-secondary:hover { color: white; border-color: rgba(255,255,255,0.3); }
+.update-ready-msg { color: #00e676; margin-bottom: 12px; font-size: 14px; }
+</style>
 
 <audio id="bg-music" autoplay loop>
   <source src="musicbg.mp3" type="audio/mpeg">
@@ -207,28 +297,44 @@ if (updateBtn) {
 }
 
 if (isElectron && window.updater?.onAvailable) {
-  window.updater.onAvailable(() => {
-    if (updateBtn) {
-      updateBtn.style.display = "flex";
-      updateBtn.classList.add("has-update");
-    }
-    setTimeout(() => {
-      lucide.createIcons();
-    }, 50);
-  });
-
   window.updater.onAvailable((data) => {
-    const modal = document.getElementById("updateModal");
+    const modal   = document.getElementById("updateModal");
     const version = document.getElementById("updateVersion");
-    const notes = document.getElementById("updateNotes");
+    const notes   = document.getElementById("updateNotes");
+    const btn     = document.getElementById("update-btn");
 
-    if (!modal || !version || !notes) return;
-
-    version.innerText = "Versão: " + data.version;
-    notes.innerText = data.notes || "Sem changelog disponível";
-
-    modal.classList.remove("hidden");
+    if (version) version.textContent = "Versão " + data.version + " disponível";
+    if (notes)   notes.textContent   = data.notes || "Sem changelog disponível.";
+    if (modal)   modal.classList.remove("hidden");
+    if (btn)   { btn.style.display = "flex"; btn.classList.add("has-update"); }
   });
+
+  window.updater.onProgress((percent) => {
+    const bar  = document.getElementById("updateProgress");
+    const fill = document.getElementById("progressFill");
+    const txt  = document.getElementById("progressText");
+    if (bar)  bar.classList.remove("hidden");
+    if (fill) fill.style.width = percent + "%";
+    if (txt)  txt.textContent  = Math.round(percent) + "%";
+  });
+
+  window.updater.onDownloaded(() => {
+    const actions = document.getElementById("updateActions");
+    const ready   = document.getElementById("updateReady");
+    const bar     = document.getElementById("updateProgress");
+    if (actions) actions.classList.add("hidden");
+    if (bar)     bar.classList.add("hidden");
+    if (ready)   ready.classList.remove("hidden");
+  });
+}
+
+function startUpdate() {
+  const actions = document.getElementById("updateActions");
+  const bar     = document.getElementById("updateProgress");
+  if (actions) actions.classList.add("hidden");
+  if (bar)     bar.classList.remove("hidden");
+  // o download já começou automaticamente (autoDownload: true)
+  // este botão apenas esconde as opções e mostra a barra
 }
 
   // ativa ícones
