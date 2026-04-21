@@ -23,15 +23,20 @@
   <meta name="twitter:image" content="https://i.ibb.co/yFdkmtrW/banner-Sagile.jpg">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/lucide@latest"></script>
 
 </head>
 <body> 
 
+    
+
     <video id="video" autoplay loop></video>
 
 <script>
-  const video = document.getElementById("video");
-  video.src = window.api.getVideoPath();
+  if (window.api && window.api.getVideoPath) {
+    const video = document.getElementById("video");
+    video.src = window.api.getVideoPath();
+  }
 </script>
 
 
@@ -151,8 +156,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const startMusic = () => {
     music.play().catch(err => {
-      console.log("Autoplay bloqueado:", err);
-    });
+          });
   };
 
   startMusic();
@@ -259,7 +263,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
  <div class="user-area">
     <a href="registro.html" class="icon-btn">
-        <i data-lucide="user"></i>
+        <img id="userAvatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCAyMXYtMmE0IDQgMCAwIDAtNC00SDhhNCA0IDAgMCAwLTQgNHYyIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ii8+PC9zdmc+" style="width:28px;height:28px;border-radius:50%;object-fit:cover;pointer-events:none;">
     </a>
 </div>
 
@@ -277,107 +281,45 @@ window.addEventListener("DOMContentLoaded", () => {
     <i data-lucide="arrow-down-circle"></i>
 </a>
 
-<script src="https://unpkg.com/lucide@latest"></script>
-
 <script>
+window.addEventListener("DOMContentLoaded", () => {
+  lucide.createIcons();
 
-    window.addEventListener("DOMContentLoaded", () => {
-    const transition = document.querySelector(".transition");
-    if (transition) {
-        transition.classList.remove("active");
+  const isElectron = window.electronAPI?.isElectron === true;
+  const updateBtn  = document.getElementById("update-btn");
+  if (updateBtn) updateBtn.style.display = "none";
+
+  function toggleNotif() {
+    const box = document.getElementById("notifBox");
+    if (box) box.classList.toggle("active");
+  }
+  window.toggleNotif = toggleNotif;
+
+  document.addEventListener("click", function(e) {
+    if (!e.target.closest(".notification-wrapper")) {
+      const box = document.getElementById("notifBox");
+      if (box) box.classList.remove("active");
     }
-    lucide.createIcons();
+  });
 });
-
-const updateBtn = document.getElementById("update-btn");
-const isElectron = window.electronAPI?.isElectron === true;
-
-if (updateBtn) {
-  updateBtn.style.display = isElectron ? "flex" : "none";
-}
-
-if (isElectron && window.updater?.onAvailable) {
-  window.updater.onAvailable((data) => {
-    const modal   = document.getElementById("updateModal");
-    const version = document.getElementById("updateVersion");
-    const notes   = document.getElementById("updateNotes");
-    const btn     = document.getElementById("update-btn");
-
-    if (version) version.textContent = "Versão " + data.version + " disponível";
-    if (notes)   notes.textContent   = data.notes || "Sem changelog disponível.";
-    if (modal)   modal.classList.remove("hidden");
-    if (btn)   { btn.style.display = "flex"; btn.classList.add("has-update"); }
-  });
-
-  window.updater.onProgress((percent) => {
-    const bar  = document.getElementById("updateProgress");
-    const fill = document.getElementById("progressFill");
-    const txt  = document.getElementById("progressText");
-    if (bar)  bar.classList.remove("hidden");
-    if (fill) fill.style.width = percent + "%";
-    if (txt)  txt.textContent  = Math.round(percent) + "%";
-  });
-
-  window.updater.onDownloaded(() => {
-    const actions = document.getElementById("updateActions");
-    const ready   = document.getElementById("updateReady");
-    const bar     = document.getElementById("updateProgress");
-    if (actions) actions.classList.add("hidden");
-    if (bar)     bar.classList.add("hidden");
-    if (ready)   ready.classList.remove("hidden");
-  });
-}
 
 function startUpdate() {
   const actions = document.getElementById("updateActions");
   const bar     = document.getElementById("updateProgress");
   if (actions) actions.classList.add("hidden");
   if (bar)     bar.classList.remove("hidden");
-  // o download já começou automaticamente (autoDownload: true)
-  // este botão apenas esconde as opções e mostra a barra
+  if (window.updater) window.updater.downloadUpdate();
 }
-
-  // ativa ícones
-  lucide.createIcons();
-
-  // NOTIFICAÇÃO
-  function toggleNotif() {
-    const box = document.getElementById("notifBox");
-    box.classList.toggle("active");
-
-    // fecha user menu se estiver aberto
-    document.getElementById("userMenu").classList.remove("active");
-  }
-
-  // MENU USER
-  function toggleUserMenu() {
-    const menu = document.getElementById("userMenu");
-    menu.classList.toggle("active");
-
-    // fecha notificações
-    document.getElementById("notifBox").classList.remove("active");
-  }
-
-  // clicar fora fecha tudo
-  document.addEventListener("click", function(e) {
-    if (!e.target.closest(".right-icons")) {
-      document.getElementById("notifBox").classList.remove("active");
-      document.getElementById("userMenu").classList.remove("active");
-    }
-  });
 </script>
 
     <nav class="menu" id="menu">
         <div class="highlight"></div>
-
-      <a href="livro.html">Livros</a>
-<a href="games.html">Games</a>
-<a href="comics.html">Comics</a>
-<a href="sobre.html">Sobre</a>
-<a href="novidades.html">Novidades</a>
-</nav>
-
-<div class="right-icons">
+        <a href="livro.html">Livros</a>
+        <a href="games.html">Games</a>
+        <a href="comics.html">Comics</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="novidades.html">Novidades</a>
+    </nav>
 
 </header>
 
@@ -628,5 +570,7 @@ document.getElementById("menu").classList.toggle("active");
     </div>
 </footer>
 
+<script src="updater-ui.js"></script>
 </body>
 </html>
+
