@@ -30,8 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const startMusic = () => {
     music.play().catch(err => {
-      console.log("Autoplay bloqueado:", err);
-    });
+          });
   };
 
   startMusic();
@@ -67,55 +66,49 @@ window.addEventListener("DOMContentLoaded", () => {
 <!-- HEADER PADRÃO -->
 <header>
 
-<div class="logo">
-<a href="index.html">
-<img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
-</a>
-</div>
-
-<nav class="menu" id="menu">
-    <div class="highlight"></div>
-
-    <a href="livro.html">Livros</a>
-    <a href="games.html">Games</a>
-    <a href="comics.html">Comics</a>
-    <a href="sobre.html">Sobre</a>
-    <a href="novidades.html">Novidades</a>
-</nav>
-
-<div class="right-icons">
-
-    <!-- NOTIFICAÇÃO -->
-    <div class="notification-wrapper">
-        <div class="icon-btn" onclick="toggleNotif()">
-            <i data-lucide="bell"></i>
-            <span class="badge">3</span>
-        </div>
-
-        <div class="notif-box" id="notifBox">
-            <p>Nova atualização disponível</p>
-            <p>Capítulo novo lançado</p>
-        </div>
+    <div class="logo">
+        <a href="index.html">
+            <img src="https://i.ibb.co/twfczfvc/Sagile-logo-png.png">
+        </a>
     </div>
 
-    <!-- FALE CONOSCO -->
-    <a href="faleconosco.html" class="icon-btn">
-        <i data-lucide="message-circle"></i>
-    </a>
+    <nav class="menu" id="menu">
+        <div class="highlight"></div>
+        <a href="livro.html">Livros</a>
+        <a href="games.html">Games</a>
+        <a href="comics.html">Comics</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="novidades.html">Novidades</a>
+    </nav>
 
-    <!-- USUÁRIO -->
-    <a href="registro.html" class="icon-btn">
-        <i data-lucide="user"></i>
-    </a>
+    <div class="right-icons">
 
-    <!-- DOWNLOAD -->
-    <a href="download.html" class="icon-btn">
-        <i data-lucide="download"></i>
-    </a>
+        <div class="notification-wrapper">
+            <div class="icon-btn" onclick="toggleNotif()">
+                <i data-lucide="bell"></i>
+                <span class="badge">3</span>
+            </div>
+            <div class="notif-box" id="notifBox">
+                <p>Nova atualização disponível</p>
+                <p>Capítulo novo lançado</p>
+            </div>
+        </div>
 
-    <div class="menu-toggle">☰</div>
+        <a href="faleconosco.html" class="icon-btn">
+            <i data-lucide="message-circle"></i>
+        </a>
 
-</div>
+        <a href="registro.html" class="icon-btn">
+            <img id="userAvatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCAyMXYtMmE0IDQgMCAwIDAtNC00SDhhNCA0IDAgMCAwLTQgNHYyIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ii8+PC9zdmc+" style="width:28px;height:28px;border-radius:50%;object-fit:cover;pointer-events:none;">
+        </a>
+
+        <a href="download.html" class="icon-btn">
+            <i data-lucide="download"></i>
+        </a>
+
+        <div class="menu-toggle">☰</div>
+
+    </div>
 
 </header>
 
@@ -588,6 +581,8 @@ document.getElementById('avatarInput').addEventListener('change', function() {
         const d = JSON.parse(localStorage.getItem('sgProfile') || '{}');
         d.avatar = e.target.result;
         localStorage.setItem('sgProfile', JSON.stringify(d));
+        // atualiza o ícone do header na mesma página
+        if (typeof applyUserAvatar === 'function') applyUserAvatar();
     };
     reader.readAsDataURL(file);
 });
@@ -632,5 +627,7 @@ loadProfile();
     </div>
 </footer>
 
+<script src="updater-ui.js"></script>
 </body>
 </html>
+
