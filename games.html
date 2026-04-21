@@ -105,7 +105,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     <!-- USUÁRIO -->
     <a href="registro.html" class="icon-btn">
-        <i data-lucide="user"></i>
+        <img id="userAvatar" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCAyMXYtMmE0IDQgMCAwIDAtNC00SDhhNCA0IDAgMCAwLTQgNHYyIi8+PGNpcmNsZSBjeD0iMTIiIGN5PSI3IiByPSI0Ii8+PC9zdmc+" style="width:28px;height:28px;border-radius:50%;object-fit:cover;pointer-events:none;">
     </a>
 
     <!-- DOWNLOAD -->
@@ -154,20 +154,9 @@ window.addEventListener("DOMContentLoaded", () => {
     <label>Versão:</label>
 
     <select id="versionSelect">
-        <option value="1.0.0" data-link="https://download1339.mediafire.com/41bg3vjfu0aglUhnl4IXDt0ec9vQy3Uo0_Tufmzs-PZUrj5Z7zr7w7FrmPtLqhykbQdb-YwfEOfp6EbzBIgu6ONHsz1ZLyzEZ6lqKqZ3kjW88yGnAXTB-CUgpkEmSGeeYoLChLl297y9riNNY0cjGDNgxLRk_-LnwtSmvo0acWAcrboY/xqbufkc8tntr7fj/Eclipse-7+Beta+1.0.0.zip">
-            Beta 1.0.0
-        </option>
 
-        <option value="1.0.1" data-link="https://github.com/dekamiles23/Sagile-Studios/releases/tag/EC7v1.0.1">
-            Beta 1.0.1
-        </option>
-
-        <option value="1.0.2" data-link="https://github.com/dekamiles23/Sagile-Studios/releases/download/EC7V1.0.2/Eclipse-7.Beta.1.0.2.zip">
-            Beta 1.0.2
-        </option>
-
-        <option value="1.0.3" data-link="https://github.com/dekamiles23/Sagile-Studios/releases/tag/Platform">
-            Beta 1.0.3
+        <option value="Beta" data-link="https://github.com/dekamiles23/Sagile-Studios/releases/tag/v1.0.8">
+            Beta
         </option>
     </select>
 
@@ -341,5 +330,7 @@ button.addEventListener("click", () => {
     </div>
 </footer>
 
+<script src="updater-ui.js"></script>
 </body>
 </html>
+
