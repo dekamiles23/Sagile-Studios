@@ -2124,3 +2124,216 @@ background-position:center;
     outline: none;
     border-color: #888;
 }
+
+.btn-historias {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #7a5cff, #5f3bff);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(122,92,255,0.4);
+}
+
+.btn-historias:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(122,92,255,0.7);
+}
+
+/* CARROSSEL HISTÓRIAS PARALELAS */
+.hp-carousel {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    overflow: hidden;
+}
+
+.hp-track {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.hp-card {
+    min-width: 100%;
+    background: rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.hp-card img {
+    width: 160px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.hp-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hp-card-info h2 { margin: 0; font-size: 24px; }
+.hp-card-info .hp-rating { color: gold; font-size: 20px; }
+.hp-card-info p { opacity: 0.85; line-height: 1.7; }
+.hp-card-info .hp-historia { margin-top: 10px; font-style: italic; opacity: 0.75; }
+
+.hp-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    border: none;
+    color: white;
+    font-size: 28px;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    z-index: 10;
+    transition: 0.3s;
+}
+.hp-nav:hover { background: rgba(122,92,255,0.6); }
+.hp-prev { left: 0; }
+.hp-next { right: 0; }
+
+.hp-dots {
+    text-align: center;
+    margin-top: 15px;
+}
+.hp-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.hp-dot.active { background: #7a5cff; }
+
+/* BOTÃO ADICIONAR (DEV) */
+.btn-add-hp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7a5cff, #5f3bff);
+    color: white;
+    font-size: 28px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(122,92,255,0.6);
+    z-index: 500;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-add-hp:hover { transform: scale(1.1); }
+
+/* MODAL ADICIONAR */
+.hp-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.hp-modal-overlay.active { display: flex; }
+
+.hp-modal {
+    background: #111;
+    border-radius: 14px;
+    padding: 30px;
+    width: 90%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.hp-modal h2 { margin: 0 0 5px; }
+.hp-modal input,
+.hp-modal textarea,
+.hp-modal select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.07);
+    color: white;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.hp-modal textarea { resize: vertical; min-height: 80px; }
+.hp-modal-btns { display: flex; gap: 10px; justify-content: flex-end; }
+.hp-modal-btns button {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.hp-btn-save { background: #7a5cff; color: white; }
+.hp-btn-cancel { background: rgba(255,255,255,0.1); color: white; }
+.hp-btn-save:hover { background: #5f3bff; }
+
+/* MODAL SENHA */
+.hp-auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.hp-auth-overlay.active { display: flex; }
+.hp-auth-box {
+    background: #111;
+    border-radius: 14px;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 300px;
+}
+.hp-auth-box input {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.07);
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+.hp-auth-box button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #7a5cff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+.hp-auth-error { color: #ff5555; font-size: 13px; display: none; }
+
+@media (max-width: 600px) {
+    .hp-card { flex-direction: column; align-items: center; }
+    .hp-card img { width: 130px; height: 190px; }
+}
